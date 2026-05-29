@@ -94,7 +94,7 @@
     .portrait-deco { position: absolute; border-radius: 1.25rem; border: 1px solid var(--border); pointer-events: none; }
     .portrait-deco.d1 { inset: -1rem; opacity: .6; }
     .portrait-deco.d2 { inset: -2rem; opacity: .3; }
-    .portrait-img { width: 21rem; height: 27rem; border-radius: 1rem; overflow: hidden; background: var(--bg-alt); }
+    .portrait-img { width: 21rem; height: 21rem; border-radius: 1rem; overflow: hidden; background: var(--bg-alt); }
     .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
     /* SECTION HEADER */
@@ -203,6 +203,28 @@
     .footer-links a { font-size: .875rem; color: var(--muted); transition: color .2s; }
     .footer-links a:hover { color: var(--fg); }
     .footer-copy { font-size: .75rem; color: var(--muted); }
+
+    /* PROJ VIEW HINT */
+    .proj-view { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--accent); font-weight: 500; margin-top: auto; padding-top: .5rem; }
+
+    /* MODAL */
+    .proj-modal { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .proj-modal.open { opacity: 1; pointer-events: all; }
+    .proj-modal-panel { width: 100%; max-width: 780px; max-height: 88vh; background: var(--card); border-radius: 1.5rem; overflow-y: auto; transform: translateY(20px) scale(.97); transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .proj-modal.open .proj-modal-panel { transform: none; }
+    .modal-header { position: sticky; top: 0; display: flex; justify-content: flex-end; padding: .85rem .85rem 0; background: var(--card); z-index: 5; border-radius: 1.5rem 1.5rem 0 0; }
+    .modal-close { width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 1px solid var(--border); background: var(--card); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .9rem; cursor: pointer; transition: background .2s; }
+    .modal-close:hover { background: var(--bg-alt); color: var(--fg); }
+    .modal-imgs { padding: 0 1.5rem; display: grid; gap: .65rem; }
+    .modal-imgs.two { grid-template-columns: 1fr 1fr; }
+    @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } }
+    .modal-img { width: 100%; border-radius: .85rem; object-fit: cover; display: block; background: var(--bg-alt); }
+    .modal-body { padding: 1.5rem; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .85rem; }
+    .modal-title { font-family: 'Playfair Display', serif; font-size: 1.55rem; line-height: 1.2; margin-bottom: .85rem; }
+    .modal-desc { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; white-space: pre-line; }
+    .modal-impact { display: flex; gap: .5rem; padding: .65rem .9rem; border-radius: .65rem; background: var(--bg-alt); border: 1px solid var(--border); font-size: .82rem; font-weight: 500; }
+    .modal-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -269,7 +291,7 @@
   <div class="wrap">
     <div class="sh r">
       <span class="sh-label">About</span>
-      <h2 class="sh-title">Built across cultures, industries, and time zones.</h2>
+      <h2 class="sh-title">Building. Leading. Repeat.</h2>
       <div class="sh-line"></div>
     </div>
     <div class="about-grid">
@@ -378,13 +400,11 @@
     <div class="proj-section-label r">Work</div>
     <div class="proj-grid three r">
 
-      <div class="proj-card" onclick="toggleProj(this)">
+      <div class="proj-card" onclick="openModal(this)">
         <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
-          <!-- Orchestration layer (center) -->
           <circle cx="240" cy="100" r="28" fill="var(--accent)" opacity="0.9"/>
           <text x="240" y="97" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Orchestration</text>
           <text x="240" y="109" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Layer</text>
-          <!-- Agent nodes -->
           <circle cx="100" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
           <text x="100" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
           <circle cx="380" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
@@ -393,7 +413,6 @@
           <text x="100" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
           <circle cx="380" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
           <text x="380" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-          <!-- Tool nodes -->
           <circle cx="170" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
           <text x="170" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
           <circle cx="310" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
@@ -406,7 +425,6 @@
           <text x="44" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
           <circle cx="436" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
           <text x="436" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <!-- Connections: tools to agents -->
           <line x1="58" y1="100" x2="80" y2="70" stroke="var(--border)" stroke-width="1"/>
           <line x1="58" y1="100" x2="80" y2="130" stroke="var(--border)" stroke-width="1"/>
           <line x1="422" y1="100" x2="400" y2="70" stroke="var(--border)" stroke-width="1"/>
@@ -419,7 +437,6 @@
           <line x1="170" y1="148" x2="215" y2="122" stroke="var(--border)" stroke-width="1"/>
           <line x1="310" y1="148" x2="320" y2="128" stroke="var(--border)" stroke-width="1"/>
           <line x1="310" y1="148" x2="265" y2="122" stroke="var(--border)" stroke-width="1"/>
-          <!-- Connections: agents to orchestration -->
           <line x1="118" y1="68" x2="215" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
           <line x1="362" y1="68" x2="265" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
           <line x1="118" y1="132" x2="215" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
@@ -428,79 +445,174 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
           <h3 class="proj-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
-          <p class="proj-summary">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
-          <div class="proj-impact">Presented at board level. Target: 30% efficiency gain across the CS org.</div>
-          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
-          <div class="proj-more">Full scope initiative mapping AI opportunities across the CS lifecycle, from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</div>
+          <p class="proj-summary">Designed and presented a CS AI roadmap to executive leadership — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <div class="proj-impact">Presented at board level. Target: 30% efficiency gain.</div>
+          <span class="proj-view">View project →</span>
         </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
+              <circle cx="240" cy="100" r="28" fill="var(--accent)" opacity="0.9"/>
+              <text x="240" y="97" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Orchestration</text>
+              <text x="240" y="109" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Layer</text>
+              <circle cx="100" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+              <text x="100" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+              <circle cx="380" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+              <text x="380" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+              <circle cx="100" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+              <text x="100" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+              <circle cx="380" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+              <text x="380" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+              <circle cx="170" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="170" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <circle cx="310" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="310" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <circle cx="170" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="170" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <circle cx="310" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="310" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <circle cx="44" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="44" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <circle cx="436" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+              <text x="436" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+              <line x1="58" y1="100" x2="80" y2="70" stroke="var(--border)" stroke-width="1"/>
+              <line x1="58" y1="100" x2="80" y2="130" stroke="var(--border)" stroke-width="1"/>
+              <line x1="422" y1="100" x2="400" y2="70" stroke="var(--border)" stroke-width="1"/>
+              <line x1="422" y1="100" x2="400" y2="130" stroke="var(--border)" stroke-width="1"/>
+              <line x1="170" y1="52" x2="160" y2="72" stroke="var(--border)" stroke-width="1"/>
+              <line x1="170" y1="52" x2="215" y2="78" stroke="var(--border)" stroke-width="1"/>
+              <line x1="310" y1="52" x2="320" y2="72" stroke="var(--border)" stroke-width="1"/>
+              <line x1="310" y1="52" x2="265" y2="78" stroke="var(--border)" stroke-width="1"/>
+              <line x1="170" y1="148" x2="160" y2="128" stroke="var(--border)" stroke-width="1"/>
+              <line x1="170" y1="148" x2="215" y2="122" stroke="var(--border)" stroke-width="1"/>
+              <line x1="310" y1="148" x2="320" y2="128" stroke="var(--border)" stroke-width="1"/>
+              <line x1="310" y1="148" x2="265" y2="122" stroke="var(--border)" stroke-width="1"/>
+              <line x1="118" y1="68" x2="215" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="362" y1="68" x2="265" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="118" y1="132" x2="215" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+              <line x1="362" y1="132" x2="265" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="modal-body">
+            <div class="modal-tags"><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
+            <h2 class="modal-title">AI Roadmap: Tools, Agents &amp; Orchestration</h2>
+            <p class="modal-desc">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.
+
+Full scope initiative mapping AI opportunities across the CS lifecycle, from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</p>
+            <div class="modal-impact">Presented at board level. Target: 30% efficiency gain across the CS org.</div>
+          </div>
+        </template>
       </div>
 
-      <div class="proj-card" onclick="toggleProj(this)">
+      <div class="proj-card" onclick="openModal(this)">
         <img class="proj-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" />
         <div class="proj-body">
           <div class="proj-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
           <h3 class="proj-title">JAGGAER Elevator</h3>
-          <p class="proj-summary">I built this to answer one question: what data layer could move us past simple chat prompts and into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.</p>
+          <p class="proj-summary">A RAG per customer app that brings data from one floor to the next. No stairs. All queryable in one place — moving CS past chat prompts into true task delegation.</p>
           <div class="proj-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
-          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
-          <div class="proj-more">It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor — Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
+          <span class="proj-view">View project →</span>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs two">
+            <img class="modal-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" style="aspect-ratio:16/9;"/>
+            <img class="modal-img" src="public/images/elevator2.png" alt="JAGGAER Elevator detail" style="aspect-ratio:16/9;"/>
+          </div>
+          <div class="modal-body">
+            <div class="modal-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
+            <h2 class="modal-title">JAGGAER Elevator</h2>
+            <p class="modal-desc">I built this to answer one question: what data layer could move us past simple chat prompts and into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.
+
+It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor — Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
 
 The question driving it: how do we make AI work for us, instead of working alongside AI?
 
-Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</div>
-        </div>
+Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</p>
+            <div class="modal-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
+          </div>
+        </template>
       </div>
 
-      <div class="proj-card" onclick="toggleProj(this)">
+      <div class="proj-card" onclick="openModal(this)">
         <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
-          <!-- Grid lines -->
           <line x1="60" y1="20" x2="60" y2="165" stroke="var(--border)" stroke-width="1"/>
           <line x1="60" y1="165" x2="450" y2="165" stroke="var(--border)" stroke-width="1"/>
           <line x1="60" y1="140" x2="450" y2="140" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
           <line x1="60" y1="110" x2="450" y2="110" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
           <line x1="60" y1="80" x2="450" y2="80" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
           <line x1="60" y1="50" x2="450" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-          <!-- Y axis labels -->
           <text x="50" y="168" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">6</text>
           <text x="50" y="143" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">8</text>
           <text x="50" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">11</text>
           <text x="50" y="83" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">14</text>
           <text x="50" y="53" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">16</text>
-          <!-- X axis labels -->
           <text x="100" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 23</text>
           <text x="175" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 23</text>
           <text x="255" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 24</text>
           <text x="335" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 24</text>
           <text x="415" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 25</text>
-          <!-- Area fill -->
           <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="var(--accent)" opacity="0.08"/>
-          <!-- Line -->
           <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-          <!-- Data points -->
           <circle cx="100" cy="165" r="4" fill="var(--accent)"/>
           <circle cx="175" cy="150" r="4" fill="var(--accent)"/>
           <circle cx="255" cy="118" r="4" fill="var(--accent)"/>
           <circle cx="335" cy="88" r="4" fill="var(--accent)"/>
           <circle cx="415" cy="55" r="5" fill="var(--accent)"/>
-          <!-- End label -->
           <text x="425" y="52" font-family="Inter,sans-serif" font-size="10" fill="var(--accent)" font-weight="500">16 CSMs</text>
-          <!-- Y axis title -->
           <text x="15" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" transform="rotate(-90,15,100)">Team size</text>
         </svg>
         <div class="proj-body">
           <div class="proj-tags"><span class="tag">Workforce Planning</span><span class="tag">ARR Strategy</span></div>
           <h3 class="proj-title">Capacity Model</h3>
-          <p class="proj-summary">Enterprise coverage and capacity model mapping headcount to ARR targets. Enabled us to hire behind the curve while scaling the CSM org from 6 to 16 — growing intentionally without outpacing revenue coverage.</p>
-          <div class="proj-impact">6 to 16 CSMs. Delivered at board level. Aligned global CS leadership.</div>
-          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
-          <div class="proj-more">Ground-up model connecting headcount, customer complexity, and ARR coverage goals. Translates operational CS data into strategic narrative for executive decision making.</div>
+          <p class="proj-summary">Enterprise coverage model mapping headcount to ARR targets. Hired behind the curve while scaling from 6 to 16 CSMs — growing intentionally without outpacing revenue coverage.</p>
+          <div class="proj-impact">6 to 16 CSMs. Delivered at board level.</div>
+          <span class="proj-view">View project →</span>
         </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
+              <line x1="60" y1="20" x2="60" y2="165" stroke="var(--border)" stroke-width="1"/>
+              <line x1="60" y1="165" x2="450" y2="165" stroke="var(--border)" stroke-width="1"/>
+              <line x1="60" y1="140" x2="450" y2="140" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+              <line x1="60" y1="110" x2="450" y2="110" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+              <line x1="60" y1="80" x2="450" y2="80" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+              <line x1="60" y1="50" x2="450" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+              <text x="50" y="168" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">6</text>
+              <text x="50" y="143" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">8</text>
+              <text x="50" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">11</text>
+              <text x="50" y="83" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">14</text>
+              <text x="50" y="53" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">16</text>
+              <text x="100" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 23</text>
+              <text x="175" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 23</text>
+              <text x="255" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 24</text>
+              <text x="335" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 24</text>
+              <text x="415" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 25</text>
+              <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="var(--accent)" opacity="0.08"/>
+              <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="100" cy="165" r="4" fill="var(--accent)"/>
+              <circle cx="175" cy="150" r="4" fill="var(--accent)"/>
+              <circle cx="255" cy="118" r="4" fill="var(--accent)"/>
+              <circle cx="335" cy="88" r="4" fill="var(--accent)"/>
+              <circle cx="415" cy="55" r="5" fill="var(--accent)"/>
+              <text x="425" y="52" font-family="Inter,sans-serif" font-size="10" fill="var(--accent)" font-weight="500">16 CSMs</text>
+              <text x="15" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" transform="rotate(-90,15,100)">Team size</text>
+            </svg>
+          </div>
+          <div class="modal-body">
+            <div class="modal-tags"><span class="tag">Workforce Planning</span><span class="tag">ARR Strategy</span></div>
+            <h2 class="modal-title">Capacity Model</h2>
+            <p class="modal-desc">Enterprise coverage and capacity model mapping headcount to ARR targets. Enabled us to hire behind the curve while scaling the CSM org from 6 to 16 — growing intentionally without outpacing revenue coverage.
+
+Ground-up model connecting headcount, customer complexity, and ARR coverage goals. Translates operational CS data into strategic narrative for executive decision making.</p>
+            <div class="modal-impact">6 to 16 CSMs. Delivered at board level. Aligned global CS leadership.</div>
+          </div>
+        </template>
       </div>
 
     </div>
 
     <div class="proj-section-label r" style="margin-top:2rem;">Personal</div>
-    <div class="proj-grid r">
+    <div class="proj-grid three r">
 
       <div class="proj-card">
         <img class="proj-img" src="public/images/wonder.png" alt="Wonder Catchball Coach Tool" style="object-position:top;" />
@@ -550,7 +662,6 @@ Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</
       <span class="sh-label">Tools</span>
       <h2 class="sh-title">How I work.</h2>
       <div class="sh-line"></div>
-      <p class="sh-sub">The platforms and workflows I use day to day.</p>
     </div>
     <div class="tools-grid r">
 
@@ -655,8 +766,6 @@ Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</
   <div class="wrap">
     <div class="contact-wrap r">
       <span class="sh-label" style="display:block;text-align:center;margin-bottom:.85rem;">Connect</span>
-      <h2>Let's talk.</h2>
-      <p>Open to conversations about CS strategy, AI deployment, and what's next.</p>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener noreferrer" class="clink">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -674,6 +783,16 @@ Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</
     </div>
   </div>
 </section>
+
+<!-- PROJECT MODAL -->
+<div class="proj-modal" id="projModal">
+  <div class="proj-modal-panel">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
 
 </main>
 
@@ -709,7 +828,20 @@ Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</
   const mob = document.getElementById('mobMenu');
   ham.onclick = () => { ham.classList.toggle('open'); mob.classList.toggle('open'); };
   mob.querySelectorAll('a').forEach(a => a.onclick = () => { ham.classList.remove('open'); mob.classList.remove('open'); });
-  function toggleProj(card) { card.classList.toggle('open'); }
+  function openModal(card) {
+    const tpl = card.querySelector('.modal-tpl');
+    if (!tpl) return;
+    document.getElementById('modalBody').innerHTML = tpl.innerHTML;
+    document.getElementById('projModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('projModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').onclick = closeModal;
+  document.getElementById('projModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
