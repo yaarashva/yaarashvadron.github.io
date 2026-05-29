@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yaara Shvadron — Customer Success & Enterprise Strategy</title>
-  <meta name="description" content="Senior Customer Success & Enterprise Strategy Leader. Scaling global CS organizations, transforming operations, and driving outcomes that matter." />
+  <title>Yaara Shvadron</title>
+  <meta name="description" content="AI Deployment Leader and Customer Execution Executive. Turning enterprise AI strategy into measurable production outcomes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
     :root {
       --bg: #FAFAF8; --fg: #201C16; --muted: #7D6E5A;
       --border: #EAE4D8; --card: #FFFFFF; --bg-alt: #F5F1EA;
-      --accent: #C08850; --accent-dim: rgba(192,136,80,0.15);
+      --accent: #C08850; --accent-dim: rgba(192,136,80,0.12);
     }
     [data-theme="dark"] {
       --bg: #100E0A; --fg: #F5F1EA; --muted: #A0907A;
@@ -32,10 +32,9 @@
     @media(min-width:768px){ .wrap { padding: 0 3rem; } }
     @media(min-width:1024px){ .wrap { padding: 0 5rem; } }
 
-    .section { padding: 6rem 0; }
+    .section { padding: 2rem 0; }
     .alt { background: var(--bg-alt); }
 
-    /* Reveal */
     .r { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
     .r.d1 { transition-delay: .1s; } .r.d2 { transition-delay: .2s; }
     .r.d3 { transition-delay: .3s; } .r.d4 { transition-delay: .4s; }
@@ -54,56 +53,41 @@
     .nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
     .nav-links a:hover { color: var(--fg); }
     .nav-right { display: flex; align-items: center; gap: .5rem; }
-
     .theme-btn { width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: background .2s; }
     .theme-btn:hover { background: var(--border); }
     .theme-btn svg { width: 1rem; height: 1rem; }
     .icon-moon { display: none; }
     [data-theme="dark"] .icon-sun { display: none; }
     [data-theme="dark"] .icon-moon { display: block; }
-
     .ham { display: flex; flex-direction: column; gap: 5px; padding: 4px; }
     @media(min-width:768px){ .ham { display: none; } }
     .ham span { display: block; width: 20px; height: 1px; background: var(--fg); transition: transform .3s, opacity .3s; }
     .ham.open span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
     .ham.open span:nth-child(2){ opacity: 0; }
     .ham.open span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
-
     .mob-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: color-mix(in srgb, var(--bg) 96%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 1.5rem; flex-direction: column; gap: 1.25rem; }
     .mob-menu.open { display: flex; }
     .mob-menu a { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
 
     /* HERO */
-    #hero { min-height: 100vh; display: flex; align-items: center; padding: 5rem 0 3rem; position: relative; overflow: hidden; }
+    #hero { display: flex; align-items: center; padding: 5.5rem 0 2.5rem; position: relative; overflow: hidden; }
     .blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
     .blob1 { top: 20%; left: -8rem; width: 22rem; height: 22rem; background: rgba(232,225,213,.45); }
     .blob2 { bottom: 20%; right: -8rem; width: 18rem; height: 18rem; background: rgba(196,148,106,.15); }
     [data-theme="dark"] .blob1 { background: rgba(44,38,30,.3); }
     [data-theme="dark"] .blob2 { background: rgba(160,80,30,.1); }
-
-    .hero-grid { display: grid; gap: 3.5rem; position: relative; z-index: 1; }
-    @media(min-width:1024px){ .hero-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; } }
-
-    .hero-label { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.75rem; }
+    .hero-grid { display: grid; gap: 2.5rem; position: relative; z-index: 1; }
+    @media(min-width:1024px){ .hero-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; } }
+    .hero-label { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.1rem; }
     .hero-label-line { width: 2rem; height: 1px; background: var(--accent); }
     .hero-label span { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-
-    h1.name { font-size: clamp(3.5rem,8vw,6.5rem); line-height: .95; margin-bottom: 1.75rem; }
+    h1.name { font-size: clamp(3.5rem,8vw,6.5rem); line-height: .95; margin-bottom: 1.1rem; }
     .name-first { display: block; }
     .name-last { display: block; font-style: italic; color: var(--accent); }
-
-    .hero-title { display: flex; flex-wrap: wrap; gap: .35rem .5rem; margin-bottom: 2rem; }
+    .hero-title { display: flex; flex-wrap: wrap; gap: .35rem .5rem; margin-bottom: 1rem; }
     .hero-title span { font-size: 1.05rem; font-weight: 300; }
     .hero-title .amp { color: var(--muted); }
-
-    .hero-tagline { font-size: .95rem; color: var(--muted); line-height: 1.75; max-width: 25rem; margin-bottom: 2.5rem; }
-
-    .ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .btn-dark { padding: .85rem 1.75rem; border-radius: 999px; background: var(--fg); color: var(--bg); font-size: .875rem; font-weight: 500; transition: opacity .2s; }
-    .btn-dark:hover { opacity: .8; }
-    .btn-outline { padding: .85rem 1.75rem; border-radius: 999px; border: 1px solid var(--border); font-size: .875rem; font-weight: 500; transition: border-color .2s; }
-    .btn-outline:hover { border-color: var(--fg); }
-
+    .hero-tagline { font-size: .95rem; color: var(--muted); line-height: 1.75; max-width: 25rem; }
     .portrait-wrap { display: none; justify-content: center; }
     @media(min-width:1024px){ .portrait-wrap { display: flex; } }
     .portrait-frame { position: relative; }
@@ -112,135 +96,106 @@
     .portrait-deco.d2 { inset: -2rem; opacity: .3; }
     .portrait-img { width: 21rem; height: 27rem; border-radius: 1rem; overflow: hidden; background: var(--bg-alt); }
     .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .float-card { position: absolute; bottom: -1.5rem; left: -2rem; background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: .85rem 1rem; max-width: 160px; animation: float 5s ease-in-out infinite; }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-    .float-card p:first-child { font-size: .68rem; color: var(--muted); margin-bottom: .2rem; }
-    .float-card p:last-child { font-size: .8rem; font-weight: 500; line-height: 1.3; }
 
     /* SECTION HEADER */
-    .sh { margin-bottom: 3.5rem; }
-    .sh-label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .85rem; }
-    .sh-title { font-size: clamp(1.9rem,3.5vw,2.75rem); line-height: 1.15; }
-    .sh-line { width: 2.5rem; height: 1px; background: var(--accent); margin: 1.25rem 0; }
-    .sh-sub { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 38rem; }
+    .sh { margin-bottom: 1.25rem; }
+    .sh-label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .6rem; }
+    .sh-title { font-size: clamp(1.7rem,3vw,2.4rem); line-height: 1.15; }
+    .sh-line { width: 2.5rem; height: 1px; background: var(--accent); margin: .75rem 0; }
+    .sh-sub { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 38rem; }
 
     /* ABOUT */
-    .about-grid { display: grid; gap: 4rem; }
-    @media(min-width:1024px){ .about-grid { grid-template-columns: 1fr 1fr; gap: 6rem; } }
-    .about-intro { font-family: 'Playfair Display', serif; font-size: 1.35rem; line-height: 1.5; margin-bottom: 1.25rem; }
-    .about-p { color: var(--muted); line-height: 1.85; margin-bottom: 1.1rem; font-size: .975rem; }
-    .about-quote { margin-top: 1.75rem; padding-left: 1.5rem; border-left: 2px solid var(--accent); }
-    .about-quote p { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; line-height: 1.5; }
-
+    .about-grid { display: grid; gap: 2.5rem; }
+    @media(min-width:1024px){ .about-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+    .about-summary { font-size: 1.05rem; line-height: 1.65; margin-bottom: 1rem; }
+    .about-summary strong { color: var(--fg); font-weight: 500; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: 1rem; }
+    .stat { padding: .85rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--card); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent); line-height: 1; margin-bottom: .15rem; }
+    .stat-label { font-size: .75rem; color: var(--muted); line-height: 1.3; }
+    .about-bio { font-size: .9rem; color: var(--muted); line-height: 1.75; }
     .timeline { position: relative; padding-left: 2.75rem; }
     .timeline::before { content:''; position: absolute; left: .9rem; top: .4rem; bottom: .4rem; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 60%, transparent); }
-    .tl-item { position: relative; margin-bottom: 2.25rem; }
+    .tl-item { position: relative; margin-bottom: 1.25rem; }
     .tl-dot { position: absolute; left: -1.9rem; top: .35rem; width: .5rem; height: .5rem; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); }
-    .tl-period { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .25rem; }
-    .tl-event { font-size: .9rem; line-height: 1.55; }
+    .tl-period { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .15rem; }
+    .tl-event { font-size: .86rem; line-height: 1.45; }
+    .tl-event span { color: var(--muted); font-size: .8rem; display: block; margin-top: .1rem; }
 
-    /* EXPERIENCE */
-    .exp-item { border-bottom: 1px solid var(--border); }
-    .exp-btn { width: 100%; text-align: left; padding: 1.85rem 0; cursor: pointer; background: none; border: none; font-family: inherit; color: var(--fg); display: grid; gap: .85rem; }
-    @media(min-width:768px){ .exp-btn { grid-template-columns: 10rem 1fr auto; gap: 2rem; align-items: start; } }
-    .exp-btn:hover .exp-role { color: var(--accent); }
-    .exp-type { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .2rem; }
-    .exp-period { font-size: .8rem; color: var(--muted); }
-    .exp-loc { font-size: .75rem; color: var(--muted); margin-top: .15rem; }
-    .exp-role { font-family: 'Playfair Display', serif; font-size: 1.25rem; transition: color .2s; }
-    .exp-co { font-size: .85rem; color: var(--muted); font-weight: 500; margin-top: .2rem; }
-    .exp-arrow { color: var(--muted); transition: transform .25s; display: none; margin-top: .35rem; }
-    @media(min-width:768px){ .exp-arrow { display: block; } }
-    .exp-item.open .exp-arrow { transform: rotate(180deg); }
-    .exp-details { display: none; padding-bottom: 1.75rem; }
-    @media(min-width:768px){ .exp-details { padding-left: 12rem; } }
-    .exp-item.open .exp-details { display: block; }
-    .exp-desc { color: var(--muted); line-height: 1.8; margin-bottom: 1.1rem; font-size: .9rem; }
-    .exp-hl { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
-    .exp-hl li { display: flex; gap: .65rem; font-size: .875rem; line-height: 1.6; }
-    .exp-hl li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    /* SKILLS */
+    .skills-grid { display: grid; gap: 1rem; }
+    @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(3, 1fr); } }
+    .skill-group { padding: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
+    .skill-group-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .skill-tag { padding: .35rem .85rem; border-radius: 999px; font-size: .8rem; background: var(--bg-alt); color: var(--fg); border: 1px solid var(--border); transition: background .2s, border-color .2s; }
+    .skill-tag:hover { background: var(--accent-dim); border-color: var(--accent); }
 
     /* PROJECTS */
-    .proj-grid { display: grid; gap: 1.1rem; }
+    .proj-section-label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; margin-top: 1.5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .proj-section-label:first-of-type { margin-top: 0; }
+    .proj-grid { display: grid; gap: 1rem; }
     @media(min-width:640px){ .proj-grid { grid-template-columns: 1fr 1fr; } }
-    .proj-card { border: 1px solid var(--border); border-radius: 1rem; padding: 1.85rem; background: var(--card); cursor: pointer; transition: transform .3s, box-shadow .3s; }
-    .proj-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.07); }
-    [data-theme="dark"] .proj-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,.3); }
-    .proj-card.featured { grid-column: 1 / -1; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .9rem; }
-    .proj-head { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: .9rem; }
-    .proj-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.3; flex: 1; transition: color .2s; }
+    @media(min-width:1024px){ .proj-grid.three { grid-template-columns: 1fr 1fr 1fr; } }
+    .proj-card { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: var(--card); cursor: pointer; transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
+    .proj-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+    [data-theme="dark"] .proj-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+    .proj-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--bg-alt); display: block; }
+    .proj-img-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--bg-alt) 0%, color-mix(in srgb, var(--accent) 8%, var(--bg-alt)) 100%); display: flex; align-items: center; justify-content: center; }
+    .proj-img-placeholder span { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--border); }
+    .proj-body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .6rem; }
+    .proj-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.3; margin-bottom: .45rem; transition: color .2s; }
     .proj-card:hover .proj-title { color: var(--accent); }
-    .proj-toggle { flex-shrink: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1.1rem; transition: transform .2s; line-height: 1; }
-    .proj-card.open .proj-toggle { transform: rotate(45deg); }
-    .proj-summary { font-size: .875rem; color: var(--muted); line-height: 1.7; margin-bottom: .9rem; }
-    .proj-impact { display: flex; gap: .65rem; padding: .8rem .95rem; border-radius: .65rem; background: var(--bg-alt); border: 1px solid var(--border); font-size: .83rem; font-weight: 500; }
+    .proj-summary { font-size: .845rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: .65rem; }
+    .proj-impact { display: flex; gap: .5rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--bg-alt); border: 1px solid var(--border); font-size: .78rem; font-weight: 500; margin-bottom: .6rem; }
     .proj-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
-    .proj-more { display: none; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); font-size: .875rem; color: var(--muted); line-height: 1.8; white-space: pre-line; }
+    .proj-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; color: var(--accent); font-weight: 500; margin-top: auto; }
+    .proj-link svg { width: .85rem; height: .85rem; }
+    .proj-more { display: none; padding-top: .65rem; border-top: 1px solid var(--border); font-size: .845rem; color: var(--muted); line-height: 1.75; white-space: pre-line; }
     .proj-card.open .proj-more { display: block; }
+    .proj-toggle-row { display: flex; align-items: center; justify-content: space-between; margin-top: .5rem; }
+    .proj-toggle { width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1rem; transition: transform .2s; line-height: 1; flex-shrink: 0; }
+    .proj-card.open .proj-toggle { transform: rotate(45deg); }
 
-    /* WRITING */
-    .writing-list { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; display: flex; flex-direction: column; gap: 1px; background: var(--border); }
-    .writing-item { background: var(--card); padding: 1.85rem; display: flex; gap: 1.25rem; cursor: default; transition: background .2s; }
-    .writing-item:hover { background: var(--bg-alt); }
-    .writing-num { font-family: 'Playfair Display', serif; font-size: 3rem; line-height: 1; color: var(--border); flex-shrink: 0; transition: color .3s; user-select: none; }
-    .writing-item:hover .writing-num { color: var(--accent-dim); filter: none; }
-    .writing-body { flex: 1; min-width: 0; }
-    .writing-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .65rem; }
-    .writing-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.35; margin-bottom: .65rem; transition: color .2s; }
-    .writing-item:hover .writing-title { color: var(--accent); }
-    .writing-excerpt { font-size: .86rem; color: var(--muted); line-height: 1.7; margin-bottom: .85rem; }
-    .writing-meta { display: flex; align-items: center; gap: .65rem; font-size: .75rem; color: var(--muted); }
-    .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
-    .writing-arrow { flex-shrink: 0; width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; align-self: center; transition: border-color .2s, color .2s; }
-    .writing-item:hover .writing-arrow { border-color: var(--accent); color: var(--accent); }
+    /* TOOLS */
+    .tools-grid { display: grid; gap: 1rem; }
+    @media(min-width:640px){ .tools-grid { grid-template-columns: 1fr 1fr; } }
+    @media(min-width:1024px){ .tools-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .tool-card { padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
+    .tool-card-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
+    .tool-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tool-pill { padding: .35rem .85rem; border-radius: 999px; font-size: .8rem; background: var(--bg-alt); color: var(--fg); border: 1px solid var(--border); }
 
     /* PERSONAL */
-    .phil { max-width: 44rem; margin-bottom: 4rem; }
-    .phil p { color: var(--muted); line-height: 1.85; margin-bottom: 1.1rem; font-size: 1rem; }
-    .pers-grid { display: grid; gap: 1.1rem; }
+    .phil { max-width: 44rem; margin-bottom: 2rem; }
+    .phil p { color: var(--muted); line-height: 1.75; margin-bottom: .75rem; font-size: .95rem; }
+    .pers-grid { display: grid; gap: .85rem; }
     @media(min-width:640px){ .pers-grid { grid-template-columns: 1fr 1fr; } }
     @media(min-width:1024px){ .pers-grid { grid-template-columns: 1fr 1fr 1fr; } }
-    .pers-card { padding: 1.85rem; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); transition: border-color .3s; }
+    .pers-card { padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); transition: border-color .3s; }
     .pers-card:hover { border-color: rgba(192,136,80,.4); }
-    .pers-head { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.1rem; }
-    .pers-icon { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--muted); }
+    .pers-head { display: flex; align-items: center; gap: .55rem; margin-bottom: .75rem; }
+    .pers-icon { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--muted); }
     .pers-cat { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-    .pers-desc { font-size: .85rem; color: var(--muted); font-style: italic; line-height: 1.6; margin-bottom: .9rem; }
-    .pers-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
-    .pers-list li { display: flex; gap: .45rem; font-size: .85rem; line-height: 1.4; }
-    .pers-list li::before { content: '—'; color: rgba(192,136,80,.5); flex-shrink: 0; font-size: .78rem; margin-top: .1rem; }
-    .closing { margin-top: 4.5rem; text-align: center; }
-    .closing p { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; max-width: 36rem; margin: 0 auto; line-height: 1.5; }
-    .closing-line { width: 2rem; height: 1px; background: var(--accent); margin: 1.25rem auto 0; }
+    .pers-desc { font-size: .845rem; color: var(--muted); font-style: italic; line-height: 1.55; margin-bottom: .65rem; }
+    .pers-list { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+    .pers-list li { display: flex; gap: .4rem; font-size: .845rem; line-height: 1.4; }
+    .pers-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; font-size: .9rem; }
 
     /* CONTACT */
-    .contact-wrap { max-width: 44rem; margin: 0 auto; }
-    .contact-hd { text-align: center; margin-bottom: 3.5rem; }
-    .contact-hd .sh-label { text-align: center; margin-bottom: .85rem; }
-    .contact-hd h2 { font-size: clamp(2.25rem,5vw,3.25rem); margin-bottom: 1.1rem; }
-    .contact-hd p { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 32rem; margin: 0 auto; }
-    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; margin-bottom: 3.5rem; }
-    .clink { display: flex; align-items: center; gap: .65rem; padding: .85rem 1.5rem; border-radius: 999px; font-size: .875rem; font-weight: 500; border: 1px solid var(--border); transition: border-color .2s, color .2s; }
+    .contact-wrap { max-width: 36rem; margin: 0 auto; text-align: center; }
+    .contact-wrap h2 { font-size: clamp(2rem,4vw,2.75rem); margin-bottom: .75rem; }
+    .contact-wrap p { color: var(--muted); font-size: .95rem; margin-bottom: 1.75rem; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
+    .clink { display: flex; align-items: center; gap: .65rem; padding: .85rem 1.75rem; border-radius: 999px; font-size: .875rem; font-weight: 500; border: 1px solid var(--border); transition: border-color .2s, color .2s; }
     .clink:hover { border-color: var(--accent); color: var(--accent); }
     .clink.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
     .clink.primary:hover { opacity: .8; color: var(--bg); border-color: var(--fg); }
     .clink svg { width: 1rem; height: 1rem; flex-shrink: 0; }
-    .form-box { background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem; padding: 2.5rem; }
-    .form-row { display: grid; gap: 1.1rem; margin-bottom: 1.1rem; }
-    @media(min-width:560px){ .form-row { grid-template-columns: 1fr 1fr; } }
-    .fg { display: flex; flex-direction: column; gap: .45rem; }
-    .flabel { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-    .finput, .ftextarea { padding: .85rem 1rem; border-radius: .7rem; border: 1px solid var(--border); background: var(--bg); color: var(--fg); font-family: inherit; font-size: .875rem; transition: border-color .2s; width: 100%; }
-    .finput:focus, .ftextarea:focus { outline: none; border-color: var(--accent); }
-    .ftextarea { height: 7rem; resize: none; }
-    .success { display: none; text-align: center; padding: 2.5rem 0; }
-    .success-icon { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: var(--accent); }
-    .success h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: .4rem; }
-    .success p { color: var(--muted); font-size: .875rem; }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 2.75rem 0; }
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
     .footer-inner { display: flex; flex-direction: column; align-items: center; gap: .9rem; text-align: center; }
     @media(min-width:560px){ .footer-inner { flex-direction: row; justify-content: space-between; } }
     .footer-name { font-family: 'Playfair Display', serif; font-size: 1rem; }
@@ -258,10 +213,10 @@
       <a href="#hero" class="nav-logo">Yaara Shvadron</a>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Work</a>
-        <a href="#writing">Writing</a>
-        <a href="#contact">Contact</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Connect</a>
       </div>
       <div class="nav-right">
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
@@ -276,10 +231,10 @@
 
 <div class="mob-menu" id="mobMenu">
   <a href="#about">About</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Work</a>
-  <a href="#writing">Writing</a>
-  <a href="#contact">Contact</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#tools">Tools</a>
+  <a href="#contact">Connect</a>
 </div>
 
 <main>
@@ -291,23 +246,18 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-label"><div class="hero-label-line"></div><span>Durham, NC · Global</span></div>
+        <div class="hero-label"><div class="hero-label-line"></div><span>Toronto, Ontario</span></div>
         <h1 class="name"><span class="name-first">Yaara</span><span class="name-last">Shvadron</span></h1>
         <div class="hero-title">
-          <span>Customer</span><span>Success</span><span class="amp">&amp;</span><span>Enterprise</span><span>Strategy</span><span>Leader</span>
+          <span>AI</span><span>Deployment</span><span class="amp">&amp;</span><span>Customer</span><span>Success</span><span>Executive</span>
         </div>
-        <p class="hero-tagline">Scaling global CS organizations. Driving outcomes that matter. Building partnerships grounded in trust.</p>
-        <div class="ctas">
-          <a href="#projects" class="btn-dark">Explore my work</a>
-          <a href="#contact" class="btn-outline">Get in touch</a>
-        </div>
+        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.</p>
       </div>
       <div class="portrait-wrap">
         <div class="portrait-frame">
           <div class="portrait-deco d1"></div>
           <div class="portrait-deco d2"></div>
           <div class="portrait-img"><img src="public/portrait.jpg" alt="Yaara Shvadron" /></div>
-          <div class="float-card"><p>Current focus</p><p>AI-Native CS Leadership</p></div>
         </div>
       </div>
     </div>
@@ -319,53 +269,100 @@
   <div class="wrap">
     <div class="sh r">
       <span class="sh-label">About</span>
-      <h2 class="sh-title">A strategist built at the intersection of service, scholarship, and scale.</h2>
+      <h2 class="sh-title">Built across cultures, industries, and time zones.</h2>
       <div class="sh-line"></div>
     </div>
     <div class="about-grid">
       <div>
-        <p class="about-intro r">I'm a Strategic Customer Success Executive who cares deeply about customers' experience and trust.</p>
-        <p class="about-p r d1">I grew up in Israel — to parents who knew every trail and corner of the country by foot and heart. That groundedness stayed with me. My path to enterprise software ran through a gap year volunteering with teenagers at society's margins, officer training, and commanding operations between UN and Israeli forces along the Lebanon border.</p>
-        <p class="about-p r d2">After coordinating Israeli-Jordanian liaison operations — agriculture, health, water, security — across two sovereign militaries, I pursued a BA and MA in International Relations and Music at Hebrew University. My research examined the conditions that lead countries to form lasting special partnerships. The question turned out to apply to enterprise relationships, too.</p>
-        <p class="about-p r d3">I spent time as a research assistant providing political intelligence analysis to Israeli ambassadors worldwide. Then I traveled, met my partner in China, and found my way into Enterprise SaaS. I now lead Customer Success at JAGGAER in Durham, NC — where I live with my partner and two children.</p>
-        <div class="about-quote r d4"><p>"Leadership is a service, not a status."</p></div>
+        <p class="about-summary r">AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization.</p>
+
+        <div class="about-stats r d1">
+          <div class="stat"><div class="stat-num">$90M</div><div class="stat-label">ARR managed</div></div>
+          <div class="stat"><div class="stat-num">15</div><div class="stat-label">Person team led</div></div>
+          <div class="stat"><div class="stat-num">115%</div><div class="stat-label">Quota attainment</div></div>
+          <div class="stat"><div class="stat-num">F500</div><div class="stat-label">Client portfolio</div></div>
+        </div>
+
+        <p class="about-bio r d2">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, based in Toronto. Mother of two, classical flutist, new catchball player.</p>
       </div>
+
       <div class="timeline r">
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2006</div><div class="tl-event">Gap year volunteering at a youth village for at-risk teenagers</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2008–2013</div><div class="tl-event">IDF Liaison Unit — commanded a UN coordination operations room, then led Israeli-Jordanian military liaison</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2012–2016</div><div class="tl-event">BA in International Relations + BA in Music Education (Flute), Hebrew University & Jerusalem Academy — Excellence student</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2015–2017</div><div class="tl-event">MA in International Relations, Hebrew University. Research assistant — Hebrew University & Israeli Ministry of Foreign Affairs</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2016–2019</div><div class="tl-event">Product management and strategic consulting, Israel. Relocated to Raleigh-Durham, NC</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2019–2021</div><div class="tl-event">Customer Success Manager, Fast Simon Inc.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-period">2021–</div><div class="tl-event">JAGGAER — CSM → Head of CS, NA → Senior Manager CS</div></div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2025 · Present</div>
+          <div class="tl-event">Senior Manager, Customer Success&nbsp;·&nbsp;JAGGAER<span>112% attainment&nbsp;·&nbsp;Won company AI showcase&nbsp;·&nbsp;Built RAG customer intelligence POC&nbsp;·&nbsp;$90M ARR</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2023 · 2025</div>
+          <div class="tl-event">Head of Customer Success, North America&nbsp;·&nbsp;JAGGAER<span>115% targets&nbsp;·&nbsp;150+ enterprise accounts&nbsp;·&nbsp;3% GRR increase&nbsp;·&nbsp;$76M ARR</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2021 · 2023</div>
+          <div class="tl-event">Customer Success Manager&nbsp;·&nbsp;JAGGAER<span>$5.8M portfolio&nbsp;·&nbsp;Higher Ed, Public Sector, Fortune 500</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2019 · 2021</div>
+          <div class="tl-event">Lead CSM&nbsp;·&nbsp;Fast Simon<span>Built post sales from zero&nbsp;·&nbsp;100+ accounts&nbsp;·&nbsp;Initiated Klaviyo enterprise integration</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Education</div>
+          <div class="tl-event">MA International Security&nbsp;·&nbsp;Hebrew University<span>BA International Relations&nbsp;·&nbsp;BA Music Education, Flute&nbsp;·&nbsp;Jerusalem Academy, Excellence</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="section alt">
+<!-- SKILLS -->
+<section id="skills" class="section alt">
   <div class="wrap">
     <div class="sh r">
-      <span class="sh-label">Experience</span>
-      <h2 class="sh-title">A career built on complexity, trust, and outcomes.</h2>
+      <span class="sh-label">Skills</span>
       <div class="sh-line"></div>
-      <p class="sh-sub">From coordinating UN peacekeeping operations to leading AI-native CS organizations — the through-line has always been alignment.</p>
     </div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Industry</div><div class="exp-period">Oct 2025 — Present</div><div class="exp-loc">Remote (Toronto)</div></div><div><div class="exp-role">Senior Manager, Customer Success</div><div class="exp-co">JAGGAER</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Senior leadership at a global procurement SaaS company, overseeing CS strategy and operations across the North American organization.</p><ul class="exp-hl"><li>Presented a 27-tool AI roadmap to executive leadership; developed board-ready materials quantifying ROI and strategic trajectory across the CSM lifecycle</li><li>Won company-wide AI showcase with a live RAG-powered customer intelligence platform integrating 6+ enterprise systems</li><li>Led ownership of AI product enablement for the NA CSM team; proactively surfaced accuracy gaps before customer rollout</li><li>Led quarterly global CSM planning; built enterprise coverage models for board presentation mapped to ARR targets</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Industry</div><div class="exp-period">Jul 2023 — Present</div><div class="exp-loc">Remote</div></div><div><div class="exp-role">Head of Customer Success, North America</div><div class="exp-co">JAGGAER</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Led an 8–10 person CS team, responsible for team management, strategy, customer engagement, and cross-functional collaboration in North America.</p><ul class="exp-hl"><li>Led team management and professional development for 8–10 direct reports</li><li>Developed and implemented customer engagement strategies and onboarding processes</li><li>Managed relationships with key enterprise accounts; drove cross-functional collaboration with Product, Engineering, and Sales</li><li>Facilitated CSM capability gap assessment; launched a COE enablement workshop series</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Industry</div><div class="exp-period">Aug 2021 — Jun 2023</div><div class="exp-loc">Durham, NC</div></div><div><div class="exp-role">Customer Success Manager</div><div class="exp-co">JAGGAER</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Highly visible, customer-facing role managing a portfolio of high-touch enterprise accounts to drive adoption, retention, and measurable value.</p><ul class="exp-hl"><li>Developed trusted advisor relationships with key stakeholders and executive sponsors</li><li>Created reports, analyzed customer data, and provided actionable recommendations</li><li>Managed obstacles and identified ways to drive additional value across the portfolio</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Industry</div><div class="exp-period">Aug 2019 — Aug 2021</div><div class="exp-loc">Raleigh-Durham, NC</div></div><div><div class="exp-role">Customer Success Manager</div><div class="exp-co">Fast Simon Inc.</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Owned the full customer lifecycle — onboarding, adoption, engagement, renewal, and expansion — for a SaaS e-commerce search and discovery platform.</p><ul class="exp-hl"><li>Managed SaaS and client-server implementation projects for enterprise-level accounts</li><li>Led ideation, launch, and oversight of a strategic integration with key partners</li><li>Collaborated with Product and Engineering to relay market trends and customer feedback</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Industry</div><div class="exp-period">2016 — 2019</div><div class="exp-loc">Israel / Raleigh-Durham</div></div><div><div class="exp-role">Product Manager & Strategic Consultant</div><div class="exp-co">Funkey6 · Patentr by Neuron Connect</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Product management and strategic consulting across early-stage ventures, spanning brand strategy, business development, and advisory work.</p><ul class="exp-hl"><li>Led brand strategy, web traffic growth, and UI development at Funkey6</li><li>Developed business plans and sales strategies for new ventures</li><li>Product Manager at Patentr (Neuron Connect), an early-stage IP intelligence startup</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Academic</div><div class="exp-period">2012 — 2018</div><div class="exp-loc">Jerusalem, Israel</div></div><div><div class="exp-role">Teaching Assistant & Research Analyst</div><div class="exp-co">Hebrew University · Israeli Ministry of Foreign Affairs</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Dual role across academia and government while completing a BA + MA in International Relations and Music Education. Provided political intelligence analysis to Israeli ambassadors worldwide.</p><ul class="exp-hl"><li>Frontal teaching, personal student guidance, and examination across IR courses</li><li>Analysis distributed to ambassadors across multiple world regions</li><li>MA research on conditions that lead countries to form special partnerships</li></ul></div></div>
-
-    <div class="exp-item r"><button class="exp-btn" onclick="toggleExp(this.closest('.exp-item'))"><div><div class="exp-type">Service</div><div class="exp-period">2008 — 2013</div><div class="exp-loc">Israel</div></div><div><div class="exp-role">Liaison Officer</div><div class="exp-co">Israel Defense Forces — Liaison Unit</div></div><svg class="exp-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="exp-details"><p class="exp-desc">Commanded a 24/7 operations room coordinating between UN forces (UNIFIL) and the IDF along the Lebanon border, then led Israeli-Jordanian liaison — managing day-to-day and strategic collaboration across agriculture, health, water, security, and development.</p><ul class="exp-hl"><li>Commanded a team in a high-stakes, always-on coordination environment</li><li>Managed cross-border strategic collaboration between two sovereign militaries</li><li>Built trust-based partnerships across complex multi-cultural, multi-lingual environments</li></ul></div></div>
+    <div class="skills-grid r">
+      <div class="skill-group">
+        <div class="skill-group-title">AI &amp; Technical</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AI Agent Development</span>
+          <span class="skill-tag">Workflow Automation</span>
+          <span class="skill-tag">RAG Architecture</span>
+          <span class="skill-tag">AI Orchestration</span>
+          <span class="skill-tag">Enterprise AI Deployment</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Leadership &amp; Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Customer Success Leadership</span>
+          <span class="skill-tag">Team Scaling</span>
+          <span class="skill-tag">P&amp;L Ownership</span>
+          <span class="skill-tag">Executive Stakeholder Management</span>
+          <span class="skill-tag">Organizational Design</span>
+          <span class="skill-tag">Change Management</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Platforms &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Salesforce</span>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Codex</span>
+          <span class="skill-tag">Staircase AI</span>
+          <span class="skill-tag">Pendo</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Looker</span>
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">Zendesk</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -373,111 +370,223 @@
 <section id="projects" class="section">
   <div class="wrap">
     <div class="sh r">
-      <span class="sh-label">Strategic Work</span>
-      <h2 class="sh-title">Selected initiatives &amp; impact.</h2>
+      <span class="sh-label">Projects</span>
+      <h2 class="sh-title">What I am working on.</h2>
       <div class="sh-line"></div>
-      <p class="sh-sub">A look into the work that's shaped how I think about CS leadership, AI adoption, and organizational scale.</p>
     </div>
-    <div class="proj-grid">
 
-      <div class="proj-card featured r" onclick="toggleProj(this)">
-        <div class="proj-tags"><span class="tag">AI &amp; Product Innovation</span><span class="tag">RAG Architecture</span><span class="tag">Proof of Concept</span></div>
-        <div class="proj-head"><h3 class="proj-title">Unified Customer Intelligence Platform</h3><span class="proj-toggle">+</span></div>
-        <p class="proj-summary">Built a proof-of-concept customer intelligence platform on RAG architecture, integrating live data from 6+ enterprise systems into a single queryable view — eliminating manual, fragmented account research.</p>
-        <div class="proj-impact">Won company-wide AI showcase. Reduced account prep time from hours to minutes.</div>
-        <div class="proj-more">The platform integrates Salesforce, Snowflake, email threads, and CSM notes into a unified interface, letting customer-facing teams surface insights instantly.
+    <div class="proj-section-label r">Work</div>
+    <div class="proj-grid three r">
 
-The proof-of-concept has been proposed as a full roadmap candidate for the NA CSM organization.</div>
+      <div class="proj-card" onclick="toggleProj(this)">
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
+          <!-- Orchestration layer (center) -->
+          <circle cx="240" cy="100" r="28" fill="var(--accent)" opacity="0.9"/>
+          <text x="240" y="97" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Orchestration</text>
+          <text x="240" y="109" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Layer</text>
+          <!-- Agent nodes -->
+          <circle cx="100" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+          <text x="100" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+          <circle cx="380" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+          <text x="380" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+          <circle cx="100" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+          <text x="100" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+          <circle cx="380" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+          <text x="380" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
+          <!-- Tool nodes -->
+          <circle cx="170" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="170" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <circle cx="310" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="310" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <circle cx="170" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="170" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <circle cx="310" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="310" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <circle cx="44" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="44" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <circle cx="436" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
+          <text x="436" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
+          <!-- Connections: tools to agents -->
+          <line x1="58" y1="100" x2="80" y2="70" stroke="var(--border)" stroke-width="1"/>
+          <line x1="58" y1="100" x2="80" y2="130" stroke="var(--border)" stroke-width="1"/>
+          <line x1="422" y1="100" x2="400" y2="70" stroke="var(--border)" stroke-width="1"/>
+          <line x1="422" y1="100" x2="400" y2="130" stroke="var(--border)" stroke-width="1"/>
+          <line x1="170" y1="52" x2="160" y2="72" stroke="var(--border)" stroke-width="1"/>
+          <line x1="170" y1="52" x2="215" y2="78" stroke="var(--border)" stroke-width="1"/>
+          <line x1="310" y1="52" x2="320" y2="72" stroke="var(--border)" stroke-width="1"/>
+          <line x1="310" y1="52" x2="265" y2="78" stroke="var(--border)" stroke-width="1"/>
+          <line x1="170" y1="148" x2="160" y2="128" stroke="var(--border)" stroke-width="1"/>
+          <line x1="170" y1="148" x2="215" y2="122" stroke="var(--border)" stroke-width="1"/>
+          <line x1="310" y1="148" x2="320" y2="128" stroke="var(--border)" stroke-width="1"/>
+          <line x1="310" y1="148" x2="265" y2="122" stroke="var(--border)" stroke-width="1"/>
+          <!-- Connections: agents to orchestration -->
+          <line x1="118" y1="68" x2="215" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="362" y1="68" x2="265" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="118" y1="132" x2="215" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+          <line x1="362" y1="132" x2="265" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
+          <h3 class="proj-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
+          <p class="proj-summary">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <div class="proj-impact">Presented at board level. Target: 30% efficiency gain across the CS org.</div>
+          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
+          <div class="proj-more">Full scope initiative mapping AI opportunities across the CS lifecycle, from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</div>
+        </div>
       </div>
 
-      <div class="proj-card featured r" onclick="toggleProj(this)">
-        <div class="proj-tags"><span class="tag">Strategic Leadership</span><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
-        <div class="proj-head"><h3 class="proj-title">27-Tool AI Roadmap for CS Organization</h3><span class="proj-toggle">+</span></div>
-        <p class="proj-summary">Designed and presented a comprehensive 27-tool AI roadmap to executive leadership, with board-ready materials quantifying time savings and strategic trajectory across the full CSM lifecycle.</p>
-        <div class="proj-impact">Presented to executive leadership. Board materials included quantified ROI metrics.</div>
-        <div class="proj-more">A full-scope initiative mapping AI opportunities across the CS lifecycle — from onboarding and health scoring to renewal intelligence and executive communication.
+      <div class="proj-card" onclick="toggleProj(this)">
+        <img class="proj-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" />
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
+          <h3 class="proj-title">JAGGAER Elevator</h3>
+          <p class="proj-summary">I built this to answer one question: what data layer could move us past simple chat prompts and into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.</p>
+          <div class="proj-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
+          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
+          <div class="proj-more">It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor — Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
 
-Developed board-level materials with scenario planning, ROI modeling, and a phased implementation roadmap.</div>
+The question driving it: how do we make AI work for us, instead of working alongside AI?
+
+Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</div>
+        </div>
       </div>
 
-      <div class="proj-card r" onclick="toggleProj(this)">
-        <div class="proj-tags"><span class="tag">Strategic Leadership</span><span class="tag">Workforce Planning</span></div>
-        <div class="proj-head"><h3 class="proj-title">Enterprise Coverage Model &amp; Board Planning</h3><span class="proj-toggle">+</span></div>
-        <p class="proj-summary">Led quarterly global CSM planning with executive stakeholders. Developed enterprise headcount and coverage models for board presentation, mapping resource strategy to ARR targets.</p>
-        <div class="proj-impact">Delivered board-ready coverage models. Aligned global CS leadership around shared ARR targets.</div>
-        <div class="proj-more">Built a ground-up model connecting headcount, customer complexity, and ARR coverage goals, translating operational CS data into strategic narrative at board level.</div>
+      <div class="proj-card" onclick="toggleProj(this)">
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
+          <!-- Grid lines -->
+          <line x1="60" y1="20" x2="60" y2="165" stroke="var(--border)" stroke-width="1"/>
+          <line x1="60" y1="165" x2="450" y2="165" stroke="var(--border)" stroke-width="1"/>
+          <line x1="60" y1="140" x2="450" y2="140" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+          <line x1="60" y1="110" x2="450" y2="110" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+          <line x1="60" y1="80" x2="450" y2="80" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+          <line x1="60" y1="50" x2="450" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
+          <!-- Y axis labels -->
+          <text x="50" y="168" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">6</text>
+          <text x="50" y="143" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">8</text>
+          <text x="50" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">11</text>
+          <text x="50" y="83" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">14</text>
+          <text x="50" y="53" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">16</text>
+          <!-- X axis labels -->
+          <text x="100" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 23</text>
+          <text x="175" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 23</text>
+          <text x="255" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 24</text>
+          <text x="335" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 24</text>
+          <text x="415" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 25</text>
+          <!-- Area fill -->
+          <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="var(--accent)" opacity="0.08"/>
+          <!-- Line -->
+          <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- Data points -->
+          <circle cx="100" cy="165" r="4" fill="var(--accent)"/>
+          <circle cx="175" cy="150" r="4" fill="var(--accent)"/>
+          <circle cx="255" cy="118" r="4" fill="var(--accent)"/>
+          <circle cx="335" cy="88" r="4" fill="var(--accent)"/>
+          <circle cx="415" cy="55" r="5" fill="var(--accent)"/>
+          <!-- End label -->
+          <text x="425" y="52" font-family="Inter,sans-serif" font-size="10" fill="var(--accent)" font-weight="500">16 CSMs</text>
+          <!-- Y axis title -->
+          <text x="15" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" transform="rotate(-90,15,100)">Team size</text>
+        </svg>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">Workforce Planning</span><span class="tag">ARR Strategy</span></div>
+          <h3 class="proj-title">Capacity Model</h3>
+          <p class="proj-summary">Enterprise coverage and capacity model mapping headcount to ARR targets. Enabled us to hire behind the curve while scaling the CSM org from 6 to 16 — growing intentionally without outpacing revenue coverage.</p>
+          <div class="proj-impact">6 to 16 CSMs. Delivered at board level. Aligned global CS leadership.</div>
+          <div class="proj-toggle-row"><div></div><span class="proj-toggle">+</span></div>
+          <div class="proj-more">Ground-up model connecting headcount, customer complexity, and ARR coverage goals. Translates operational CS data into strategic narrative for executive decision making.</div>
+        </div>
       </div>
 
-      <div class="proj-card r" onclick="toggleProj(this)">
-        <div class="proj-tags"><span class="tag">Organizational Development</span><span class="tag">COE</span></div>
-        <div class="proj-head"><h3 class="proj-title">CSM Center of Excellence — Enablement Series</h3><span class="proj-toggle">+</span></div>
-        <p class="proj-summary">Facilitated a CS capability gap assessment and launched a COE enablement workshop series to accelerate coverage expansion and close execution gaps across the global team.</p>
-        <div class="proj-impact">Launched enablement series. Structured for repeatability and team-led delivery.</div>
-        <div class="proj-more">Identified that capability gaps — not headcount — were the primary constraint on ARR coverage expansion. Designed workshops covering strategic account planning, executive engagement, and AI workflow efficiency.</div>
+    </div>
+
+    <div class="proj-section-label r" style="margin-top:2rem;">Personal</div>
+    <div class="proj-grid r">
+
+      <div class="proj-card">
+        <img class="proj-img" src="public/images/wonder.png" alt="Wonder Catchball Coach Tool" style="object-position:top;" />
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">AI Tool</span><span class="tag">Personal Project</span></div>
+          <h3 class="proj-title">Wonder · Catchball Coach Tool</h3>
+          <p class="proj-summary">I started playing catchball and built an AI HTML tool for my coach. She used to spend time before every game manually setting up the team on the court. Now she doesn't.</p>
+          <div class="proj-impact">Saves coach setup time every single game.</div>
+          <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="proj-link">
+            Open tool
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div class="proj-card r" onclick="toggleProj(this)" style="grid-column: 1 / -1">
-        <div class="proj-tags"><span class="tag">AI &amp; Knowledge Management</span><span class="tag">Institutional Memory</span></div>
-        <div class="proj-head"><h3 class="proj-title">Organizational Knowledge Capture Initiative</h3><span class="proj-toggle">+</span></div>
-        <p class="proj-summary">Proposed and designed an AI-powered knowledge base built from 5+ years of CSM documents, meeting notes, and institutional knowledge — to preserve and scale team intelligence.</p>
-        <div class="proj-impact">Proposed to leadership. Designed for immediate implementation with existing tooling.</div>
-        <div class="proj-more">A structured knowledge capture system, augmented by AI indexing, to turn years of CS conversations, playbooks, and decisions into a searchable, scalable resource — so institutional intelligence doesn't walk out the door when people do.</div>
+      <div class="proj-card">
+        <img class="proj-img" src="public/images/jazz-trio.jpg" alt="Jazz Trio" />
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">Music</span><span class="tag">Personal Project</span></div>
+          <h3 class="proj-title">Jazz Trio</h3>
+          <p class="proj-summary">Playing flute in a jazz trio. If you can read partitures and improvise on standards, you can read code, eh?</p>
+          <div style="display:flex;flex-direction:column;gap:.45rem;margin-top:auto;">
+            <a href="https://yaarashva.github.io/trio.github.io/" target="_blank" rel="noopener noreferrer" class="proj-link">
+              Visit site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" class="proj-link">
+              SoundCloud · yaarael
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" class="proj-link">
+              SoundCloud · yaara lucas
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- WRITING -->
-<section id="writing" class="section alt">
+<!-- TOOLS -->
+<section id="tools" class="section alt">
   <div class="wrap">
     <div class="sh r">
-      <span class="sh-label">Thought Leadership</span>
-      <h2 class="sh-title">Ideas worth writing down.</h2>
+      <span class="sh-label">Tools</span>
+      <h2 class="sh-title">How I work.</h2>
       <div class="sh-line"></div>
-      <p class="sh-sub">On CS strategy, AI adoption, organizational alignment, and what I've learned from unlikely places.</p>
+      <p class="sh-sub">The platforms and workflows I use day to day.</p>
     </div>
-    <div class="writing-list r">
-      <div class="writing-item">
-        <div class="writing-num">01</div>
-        <div class="writing-body">
-          <div class="writing-tags"><span class="tag">AI</span><span class="tag">Customer Success</span><span class="tag">Leadership</span></div>
-          <h3 class="writing-title">Building AI-Native CS Organizations (Without the Hype)</h3>
-          <p class="writing-excerpt">Most AI in Customer Success is bolted on. The difference between tools that change nothing and tools that change everything is whether you started with workflows or features.</p>
-          <div class="writing-meta"><span>May 2026</span><span class="dot"></span><span>6 min read</span></div>
+    <div class="tools-grid r">
+
+      <div class="tool-card">
+        <div class="tool-card-title">AI &amp; Build</div>
+        <div class="tool-pills">
+          <span class="tool-pill">Claude Code</span>
+          <span class="tool-pill">Codex</span>
+          <span class="tool-pill">RAG Pipelines</span>
+          <span class="tool-pill">AI Agent Workflows</span>
+          <span class="tool-pill">Python</span>
+          <span class="tool-pill">Staircase AI</span>
         </div>
-        <div class="writing-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
-      <div class="writing-item">
-        <div class="writing-num">02</div>
-        <div class="writing-body">
-          <div class="writing-tags"><span class="tag">Enterprise</span><span class="tag">Customer Success</span><span class="tag">Strategy</span></div>
-          <h3 class="writing-title">Why Enterprise CS Isn't About Renewals Anymore</h3>
-          <p class="writing-excerpt">The renewal conversation is the wrong frame. Enterprise CS done well looks a lot more like strategic consulting — and the organizations that understand that are winning.</p>
-          <div class="writing-meta"><span>March 2026</span><span class="dot"></span><span>5 min read</span></div>
+
+      <div class="tool-card">
+        <div class="tool-card-title">Customer &amp; Revenue</div>
+        <div class="tool-pills">
+          <span class="tool-pill">Salesforce</span>
+          <span class="tool-pill">Pendo</span>
+          <span class="tool-pill">Gainsight</span>
+          <span class="tool-pill">Zendesk</span>
+          <span class="tool-pill">JIRA</span>
         </div>
-        <div class="writing-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
-      <div class="writing-item">
-        <div class="writing-num">03</div>
-        <div class="writing-body">
-          <div class="writing-tags"><span class="tag">Leadership</span><span class="tag">Alignment</span><span class="tag">Career</span></div>
-          <h3 class="writing-title">From Military Liaison Officer to CS Leader: What Operations Taught Me About Alignment</h3>
-          <p class="writing-excerpt">Coordinating between the IDF and the United Nations along the Lebanon border turns out to be excellent preparation for enterprise customer success. Here's what transferred.</p>
-          <div class="writing-meta"><span>November 2025</span><span class="dot"></span><span>8 min read</span></div>
+
+      <div class="tool-card">
+        <div class="tool-card-title">Data &amp; Reporting</div>
+        <div class="tool-pills">
+          <span class="tool-pill">Tableau</span>
+          <span class="tool-pill">Looker</span>
+          <span class="tool-pill">Snowflake</span>
+          <span class="tool-pill">Excel</span>
         </div>
-        <div class="writing-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
-      <div class="writing-item">
-        <div class="writing-num">04</div>
-        <div class="writing-body">
-          <div class="writing-tags"><span class="tag">Metrics</span><span class="tag">Customer Success</span><span class="tag">Operations</span></div>
-          <h3 class="writing-title">GRR Is a Lagging Indicator. Here's What to Watch Instead.</h3>
-          <p class="writing-excerpt">Gross revenue retention is the score at the end of the game. The teams with the best GRR aren't obsessing over it — they're obsessing over something else entirely.</p>
-          <div class="writing-meta"><span>August 2025</span><span class="dot"></span><span>4 min read</span></div>
-        </div>
-        <div class="writing-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -486,58 +595,81 @@ Developed board-level materials with scenario planning, ROI modeling, and a phas
 <section id="personal" class="section">
   <div class="wrap">
     <div class="sh r">
-      <span class="sh-label">Beyond the Resume</span>
+      <span class="sh-label">Beyond Work</span>
       <h2 class="sh-title">What makes me, me.</h2>
       <div class="sh-line"></div>
     </div>
-    <div class="phil r">
-      <p>I believe great CS leadership starts with radical clarity about what customers actually need — not what we want to sell them. The best partnerships I've built were grounded in honesty, even when that was harder than agreement.</p>
-      <p>My military background gave me a framework for operating in high-stakes, ambiguous environments. My academic work gave me curiosity about why things work. My CS career gave me the discipline to measure it.</p>
-      <p>I'm drawn to complexity — and I believe that complexity, held with patience and care, is where the most meaningful work happens.</p>
-    </div>
     <div class="pers-grid">
-      <div class="pers-card r"><div class="pers-head"><div class="pers-icon">♩</div><div class="pers-cat">Music</div></div><p class="pers-desc">"Music is where structure meets feeling — it's taught me more about patience and precision than almost anything else."</p><ul class="pers-list"><li>Classical flute</li><li>BA in Music Education, Jerusalem Academy — Excellence student</li></ul></div>
-      <div class="pers-card r d1"><div class="pers-head"><div class="pers-icon">◈</div><div class="pers-cat">Roots</div></div><p class="pers-desc">"My parents walked every trail in Israel by foot. I grew up with that same curiosity about land, people, and how places shape us."</p><ul class="pers-list"><li>Born and raised in Israel</li><li>Living in Durham, NC for five years</li><li>Bilingual: Hebrew &amp; English</li></ul></div>
-      <div class="pers-card r d2"><div class="pers-head"><div class="pers-icon">○</div><div class="pers-cat">Family</div></div><p class="pers-desc">"Home is wherever my family is. Right now, that's Durham — a city I've grown to love for its warmth and its pace."</p><ul class="pers-list"><li>Mother of two</li><li>Met my partner during travels in China</li></ul></div>
-      <div class="pers-card r d1"><div class="pers-head"><div class="pers-icon">□</div><div class="pers-cat">Reading</div></div><p class="pers-desc">"My reading tends toward the intersection of power, systems, and what makes people collaborate — or not."</p><ul class="pers-list"><li>International relations &amp; geopolitics</li><li>Leadership and organizational design</li><li>Philosophy of technology</li><li>Israeli literature</li></ul></div>
-      <div class="pers-card r d2"><div class="pers-head"><div class="pers-icon">◇</div><div class="pers-cat">Thinking</div></div><p class="pers-desc">"The questions I keep returning to are usually about alignment — between people, organizations, intention and impact."</p><ul class="pers-list"><li>How institutions build (and lose) trust</li><li>What makes cross-cultural partnerships last</li><li>The future of human-AI collaboration</li></ul></div>
+
+      <div class="pers-card r">
+        <div class="pers-head"><div class="pers-icon">⚙</div><div class="pers-cat">Problem Solver</div></div>
+        <ul class="pers-list">
+          <li>End to end thinker</li>
+          <li>Built CS ops, AI tools, and coach apps</li>
+          <li>Comfortable in the gap between strategy and execution</li>
+        </ul>
+      </div>
+
+      <div class="pers-card r d1">
+        <div class="pers-head"><div class="pers-icon">♩</div><div class="pers-cat">Music</div></div>
+        <ul class="pers-list">
+          <li>Classical flute</li>
+          <li>BA Music Education, Jerusalem Academy · Excellence</li>
+          <li>Currently playing in a jazz trio</li>
+        </ul>
+      </div>
+
+      <div class="pers-card r d2">
+        <div class="pers-head"><div class="pers-icon">◎</div><div class="pers-cat">Sport</div></div>
+        <ul class="pers-list">
+          <li>Rock climbing</li>
+          <li>Hiking</li>
+          <li>Camping</li>
+        </ul>
+      </div>
+
+      <div class="pers-card r d1">
+        <div class="pers-head"><div class="pers-icon">◈</div><div class="pers-cat">Roots</div></div>
+        <ul class="pers-list">
+          <li>Israeli, living in Toronto</li>
+          <li>Hebrew and English</li>
+          <li>Mother of two</li>
+        </ul>
+      </div>
+
+      <div class="pers-card r d2">
+        <div class="pers-head"><div class="pers-icon">◇</div><div class="pers-cat">Idea Maker</div></div>
+        <ul class="pers-list">
+          <li>Always generating, always sharing</li>
+          <li>How institutions build and lose trust</li>
+          <li>Human and AI collaboration in enterprise</li>
+        </ul>
+      </div>
+
     </div>
-    <div class="closing r"><p>"Built on every trail, every negotiation, every language, every border."</p><div class="closing-line"></div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="section alt">
   <div class="wrap">
-    <div class="contact-wrap">
-      <div class="contact-hd r">
-        <span class="sh-label">Contact</span>
-        <h2>Let's connect.</h2>
-        <p>Whether you want to talk about CS strategy, AI adoption, a speaking opportunity, or just have a conversation — I'm glad to hear from you.</p>
-      </div>
-      <div class="contact-links r">
+    <div class="contact-wrap r">
+      <span class="sh-label" style="display:block;text-align:center;margin-bottom:.85rem;">Connect</span>
+      <h2>Let's talk.</h2>
+      <p>Open to conversations about CS strategy, AI deployment, and what's next.</p>
+      <div class="contact-links">
         <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener noreferrer" class="clink">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a href="mailto:hello@yaarashvadron.com" class="clink primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          hello@yaarashvadron.com
+        <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener noreferrer" class="clink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+          Instagram
         </a>
-      </div>
-      <div class="form-box r">
-        <div class="success" id="success">
-          <div class="success-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <h3>Message received.</h3><p>I'll be in touch soon.</p>
-        </div>
-        <form id="cform">
-          <div class="form-row">
-            <div class="fg"><label class="flabel" for="fname">Name</label><input class="finput" id="fname" type="text" placeholder="Your name" required /></div>
-            <div class="fg"><label class="flabel" for="femail">Email</label><input class="finput" id="femail" type="email" placeholder="your@email.com" required /></div>
-          </div>
-          <div class="fg" style="margin-bottom:1.25rem"><label class="flabel" for="fmsg">Message</label><textarea class="ftextarea" id="fmsg" placeholder="What's on your mind?" required></textarea></div>
-          <button type="submit" class="btn-dark">Send message</button>
-        </form>
+        <a href="mailto:yaaraelazari@gmail.com" class="clink primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          yaaraelazari@gmail.com
+        </a>
       </div>
     </div>
   </div>
@@ -551,7 +683,8 @@ Developed board-level materials with scenario planning, ROI modeling, and a phas
       <span class="footer-name">Yaara Shvadron</span>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:hello@yaarashvadron.com">Email</a>
+        <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="mailto:yaaraelazari@gmail.com">Email</a>
       </div>
       <span class="footer-copy">© 2026</span>
     </div>
@@ -559,41 +692,28 @@ Developed board-level materials with scenario planning, ROI modeling, and a phas
 </footer>
 
 <script>
-  // Theme
+  // Prevent hash in URL from jumping on load
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo(0, 0);
+  }
+
   document.getElementById('themeBtn').onclick = () => {
     document.documentElement.dataset.theme =
       document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
   };
-
-  // Nav scroll
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', scrollY > 40);
   }, { passive: true });
-
-  // Mobile menu
   const ham = document.getElementById('ham');
   const mob = document.getElementById('mobMenu');
   ham.onclick = () => { ham.classList.toggle('open'); mob.classList.toggle('open'); };
   mob.querySelectorAll('a').forEach(a => a.onclick = () => { ham.classList.remove('open'); mob.classList.remove('open'); });
-
-  // Experience accordion
-  function toggleExp(item) { item.classList.toggle('open'); }
-
-  // Project expand
   function toggleProj(card) { card.classList.toggle('open'); }
-
-  // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
   }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.r').forEach(el => obs.observe(el));
-
-  // Contact form
-  document.getElementById('cform').onsubmit = e => {
-    e.preventDefault();
-    document.getElementById('cform').style.display = 'none';
-    document.getElementById('success').style.display = 'block';
-  };
 </script>
 </body>
 </html>
