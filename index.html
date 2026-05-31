@@ -88,13 +88,20 @@
     .hero-title span { font-size: 1.05rem; font-weight: 300; }
     .hero-title .amp { color: var(--muted); }
     .hero-tagline { font-size: .95rem; color: var(--muted); line-height: 1.75; max-width: 25rem; }
-    .portrait-wrap { display: none; justify-content: center; }
-    @media(min-width:1024px){ .portrait-wrap { display: flex; } }
+    @media(max-width:639px){
+      .hero-title { flex-wrap: nowrap; gap: .2rem .3rem; }
+      .hero-title span { font-size: .82rem; }
+      .hero-tagline { font-size: .8rem; max-width: none; white-space: nowrap; }
+    }
+    .portrait-wrap { display: flex; justify-content: center; margin-bottom: 1.25rem; order: -1; }
+    @media(min-width:1024px){ .portrait-wrap { margin-bottom: 0; order: 0; } }
     .portrait-frame { position: relative; }
     .portrait-deco { position: absolute; border-radius: 1.25rem; border: 1px solid var(--border); pointer-events: none; }
     .portrait-deco.d1 { inset: -1rem; opacity: .6; }
     .portrait-deco.d2 { inset: -2rem; opacity: .3; }
+    @media(max-width:1023px){ .portrait-deco { display: none; } }
     .portrait-img { width: 21rem; height: 21rem; border-radius: 1rem; overflow: hidden; background: var(--bg-alt); }
+    @media(max-width:1023px){ .portrait-img { width: 6rem; height: 6rem; border-radius: 50%; } }
     .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
     /* SECTION HEADER */
@@ -279,7 +286,7 @@
         <div class="portrait-frame">
           <div class="portrait-deco d1"></div>
           <div class="portrait-deco d2"></div>
-          <div class="portrait-img"><img src="public/portrait.jpg" alt="Yaara Shvadron" /></div>
+          <div class="portrait-img"><img src="public/portrait-new.png" alt="Yaara Shvadron" /></div>
         </div>
       </div>
     </div>
@@ -348,29 +355,30 @@
       <div class="sh-line"></div>
     </div>
     <div class="skills-grid r">
-      <div class="skill-group">
-        <div class="skill-group-title">AI &amp; Technical</div>
+      <div class="skill-group" style="border-top: 2px solid var(--accent);">
+        <div class="skill-group-title">AI</div>
         <div class="skill-tags">
           <span class="skill-tag">AI Agent Development</span>
-          <span class="skill-tag">Workflow Automation</span>
           <span class="skill-tag">RAG Architecture</span>
           <span class="skill-tag">AI Orchestration</span>
+          <span class="skill-tag">Workflow Automation</span>
           <span class="skill-tag">Enterprise AI Deployment</span>
-          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Architecture</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group" style="border-top: 2px solid var(--muted);">
         <div class="skill-group-title">Leadership &amp; Operations</div>
         <div class="skill-tags">
           <span class="skill-tag">Customer Success Leadership</span>
-          <span class="skill-tag">Team Scaling</span>
           <span class="skill-tag">P&amp;L Ownership</span>
+          <span class="skill-tag">Team Scaling</span>
           <span class="skill-tag">Executive Stakeholder Management</span>
           <span class="skill-tag">Organizational Design</span>
           <span class="skill-tag">Change Management</span>
+          <span class="skill-tag">Product Plan Map</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group" style="border-top: 2px solid var(--border); border-top-width: 2px; border-top-style: dashed;">
         <div class="skill-group-title">Platforms &amp; Tools</div>
         <div class="skill-tags">
           <span class="skill-tag">Salesforce</span>
@@ -517,6 +525,8 @@ Full scope initiative mapping AI opportunities across the CS lifecycle, from onb
           <div class="modal-imgs two">
             <img class="modal-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" style="aspect-ratio:16/9;"/>
             <img class="modal-img" src="public/images/elevator2.png" alt="JAGGAER Elevator detail" style="aspect-ratio:16/9;"/>
+            <img class="modal-img" src="public/images/elevator3.png" alt="JAGGAER Elevator detail" style="aspect-ratio:16/9;"/>
+            <img class="modal-img" src="public/images/elevator4.png" alt="JAGGAER Elevator detail" style="aspect-ratio:16/9;"/>
           </div>
           <div class="modal-body">
             <div class="modal-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
@@ -605,6 +615,59 @@ Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</
 
 Ground-up model connecting headcount, customer complexity, and ARR coverage goals. Translates operational CS data into strategic narrative for executive decision making.</p>
             <div class="modal-impact">6 to 16 CSMs. Delivered at board level. Aligned global CS leadership.</div>
+          </div>
+        </template>
+      </div>
+
+      <div class="proj-card" onclick="openModal(this)">
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
+          <!-- Before label -->
+          <text x="60" y="38" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500" text-anchor="start">BEFORE</text>
+          <!-- Before bar (full width) -->
+          <rect x="60" y="45" width="360" height="28" rx="4" fill="var(--border)"/>
+          <text x="68" y="64" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Manual process — 100% effort</text>
+          <!-- After label -->
+          <text x="60" y="103" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500" text-anchor="start">AFTER</text>
+          <!-- After bar (25% width) -->
+          <rect x="60" y="110" width="90" height="28" rx="4" fill="var(--accent)" opacity="0.85"/>
+          <text x="68" y="129" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8">25% effort</text>
+          <!-- Reduction callout -->
+          <text x="165" y="129" font-family="Inter,sans-serif" font-size="11" fill="var(--accent)" font-weight="600">75% reduction</text>
+          <!-- Arrow -->
+          <line x1="420" y1="59" x2="420" y2="138" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
+          <text x="428" y="100" font-family="Inter,sans-serif" font-size="9" fill="var(--accent)" opacity="0.7">→</text>
+          <!-- Bottom note -->
+          <text x="240" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Automation tool built for Israel's Ministry of Foreign Affairs</text>
+        </svg>
+        <div class="proj-body">
+          <div class="proj-tags"><span class="tag">Automation</span><span class="tag">Early Career</span></div>
+          <h3 class="proj-title">MFA Task Automation</h3>
+          <p class="proj-summary">Built a tool at Israel's Ministry of Foreign Affairs that automated research and reporting tasks, cutting manual work by 75% across a team of 3.</p>
+          <div class="proj-impact">75% reduction in manual work.</div>
+          <span class="proj-view">View project →</span>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
+              <text x="60" y="38" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500">BEFORE</text>
+              <rect x="60" y="45" width="360" height="28" rx="4" fill="var(--border)"/>
+              <text x="68" y="64" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Manual process — 100% effort</text>
+              <text x="60" y="103" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500">AFTER</text>
+              <rect x="60" y="110" width="90" height="28" rx="4" fill="var(--accent)" opacity="0.85"/>
+              <text x="68" y="129" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8">25% effort</text>
+              <text x="165" y="129" font-family="Inter,sans-serif" font-size="11" fill="var(--accent)" font-weight="600">75% reduction</text>
+              <text x="240" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Automation tool built for Israel's Ministry of Foreign Affairs</text>
+            </svg>
+          </div>
+          <div class="modal-body">
+            <div class="modal-tags"><span class="tag">Automation</span><span class="tag">Early Career</span></div>
+            <h2 class="modal-title">MFA Task Automation</h2>
+            <p class="modal-desc">Research Assistant, Israel's Ministry of Foreign Affairs | Jerusalem, Israel | 2013 – 2016
+
+Developed a tool to automate research and reporting tasks, reducing manual work by 75% across a team of 3. Supported policy analysis and global ambassadorial efforts across multiple departments.
+
+This was an early signal of what I'd keep doing throughout my career: finding the manual work, understanding the system, and building the fix.</p>
+            <div class="modal-impact">75% reduction in manual work. Team of 3 supervised.</div>
           </div>
         </template>
       </div>
@@ -731,11 +794,12 @@ Ground-up model connecting headcount, customer complexity, and ARR coverage goal
       </div>
 
       <div class="pers-card r d2">
-        <div class="pers-head"><div class="pers-icon">◎</div><div class="pers-cat">Sport</div></div>
+        <div class="pers-head"><div class="pers-icon">◎</div><div class="pers-cat">Adventurer</div></div>
         <ul class="pers-list">
           <li>Rock climbing</li>
-          <li>Hiking</li>
-          <li>Camping</li>
+          <li>Hiking and camping</li>
+          <li>2 tandem bicycle tours</li>
+          <li><a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:500;">Watch the ride →</a></li>
         </ul>
       </div>
 
