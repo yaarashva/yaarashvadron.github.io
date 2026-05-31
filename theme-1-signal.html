@@ -113,7 +113,8 @@
     .beyond-note { flex: 1; min-width: 180px; }
     .beyond-note-label { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; margin-bottom: .75rem; }
     .beyond-note-text { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--fg); line-height: 1.75; }
-    .beyond-note-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,163,154,.35); }
+    .beyond-note-text a { color: inherit; text-decoration: none; }
+    .beyond-note-text a::after { content: ' ↗'; font-family: 'DM Mono', monospace; font-size: .7em; color: var(--accent); vertical-align: super; }
 
     /* CONNECT */
     #connect { padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; }
