@@ -46,9 +46,13 @@
     .hero-cta { display: inline-flex; align-items: center; gap: .6rem; font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); border: 1px solid var(--accent); padding: .75rem 1.5rem; border-radius: 4px; transition: background .2s; }
     .hero-cta:hover { background: var(--accent-dim); }
     .portrait-side { display: flex; justify-content: center; }
-    @media(max-width:1023px){ .portrait-side { display: none; } }
     .portrait-box { width: 26rem; position: relative; }
     .portrait-box img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; -webkit-mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); }
+    @media(max-width:1023px){
+      .portrait-side { order: -1; margin-bottom: 1.25rem; }
+      .portrait-box { width: 7rem; }
+      .portrait-box img { aspect-ratio: 1/1; border-radius: 50%; -webkit-mask-image: none; mask-image: none; }
+    }
 
     hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
