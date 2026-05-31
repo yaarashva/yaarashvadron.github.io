@@ -1,321 +1,208 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yaara Shvadron</title>
-  <meta name="description" content="AI Deployment Leader and Customer Execution Executive. Turning enterprise AI strategy into measurable production outcomes." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #FAFAF8; --fg: #201C16; --muted: #7D6E5A;
-      --border: #EAE4D8; --card: #FFFFFF; --bg-alt: #F5F1EA;
-      --accent: #C08850; --accent-dim: rgba(192,136,80,0.12);
-    }
-    [data-theme="dark"] {
-      --bg: #100E0A; --fg: #F5F1EA; --muted: #A0907A;
-      --border: #2A261E; --card: #181410; --bg-alt: #141210;
-      --accent: #D4A878; --accent-dim: rgba(212,168,120,0.1);
+      --bg: #F6F4EF; --fg: #141210; --muted: #7A7060;
+      --accent: #1AA39A; --accent-dim: rgba(26,163,154,0.09);
+      --border: #E0DAD0; --card: #FFFFFF; --bg-alt: #EEEAE2;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background .3s, color .3s; }
-    h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.1; }
-    img { max-width: 100%; display: block; }
+    body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
-    ::selection { background: #C08850; color: #FAFAF8; }
 
-    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-    @media(min-width:768px){ .wrap { padding: 0 3rem; } }
-    @media(min-width:1024px){ .wrap { padding: 0 5rem; } }
-
-    .section { padding: 2rem 0; }
-    .alt { background: var(--bg-alt); }
-
-    .r { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-    .r.d1 { transition-delay: .1s; } .r.d2 { transition-delay: .2s; }
-    .r.d3 { transition-delay: .3s; } .r.d4 { transition-delay: .4s; }
-    .r.on { opacity: 1; transform: none; }
-
-    .tag { display: inline-flex; padding: .2rem .65rem; border-radius: 999px; font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: var(--bg-alt); color: var(--muted); border: 1px solid var(--border); }
+    /* LAYOUT */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.4rem 0; transition: background .4s, border-color .4s, padding .4s; }
-    nav.scrolled { background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: .9rem 0; }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; }
-    .nav-logo:hover { opacity: .7; }
-    .nav-links { display: none; gap: 2rem; }
-    @media(min-width:768px){ .nav-links { display: flex; align-items: center; } }
-    .nav-links a { font-size: .85rem; color: var(--muted); transition: color .2s; }
-    .nav-links a:hover { color: var(--fg); }
-    .nav-right { display: flex; align-items: center; gap: .5rem; }
-    .theme-btn { width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--muted); transition: background .2s; }
-    .theme-btn:hover { background: var(--border); }
-    .theme-btn svg { width: 1rem; height: 1rem; }
-    .icon-moon { display: none; }
-    [data-theme="dark"] .icon-sun { display: none; }
-    [data-theme="dark"] .icon-moon { display: block; }
-    .ham { display: flex; flex-direction: column; gap: 5px; padding: 4px; }
-    @media(min-width:768px){ .ham { display: none; } }
-    .ham span { display: block; width: 20px; height: 1px; background: var(--fg); transition: transform .3s, opacity .3s; }
-    .ham.open span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-    .ham.open span:nth-child(2){ opacity: 0; }
-    .ham.open span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
-    .mob-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; z-index: 99; background: color-mix(in srgb, var(--bg) 96%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 1.5rem; flex-direction: column; gap: 1.25rem; }
-    .mob-menu.open { display: flex; }
-    .mob-menu a { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 0; background: rgba(246,244,239,.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding .3s; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'DM Mono', monospace; font-size: .9rem; color: var(--accent); letter-spacing: .05em; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* SECTION COUNTER */
+    .sec-counter { font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .85rem; }
+    .sec-counter::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); flex-shrink: 0; }
+    .sec-counter span { color: var(--border); }
 
     /* HERO */
-    #hero { display: flex; align-items: center; padding: 5.5rem 0 2.5rem; position: relative; overflow: hidden; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; }
-    .blob1 { top: 20%; left: -8rem; width: 22rem; height: 22rem; background: rgba(232,225,213,.45); }
-    .blob2 { bottom: 20%; right: -8rem; width: 18rem; height: 18rem; background: rgba(196,148,106,.15); }
-    [data-theme="dark"] .blob1 { background: rgba(44,38,30,.3); }
-    [data-theme="dark"] .blob2 { background: rgba(160,80,30,.1); }
-    .hero-grid { display: grid; gap: 2.5rem; position: relative; z-index: 1; }
-    @media(min-width:1024px){ .hero-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; } }
-    .hero-label { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.1rem; }
-    .hero-label-line { width: 2rem; height: 1px; background: var(--accent); }
-    .hero-label span { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-    h1.name { font-size: clamp(3.5rem,8vw,6.5rem); line-height: .95; margin-bottom: 1.1rem; }
-    .name-first { display: block; }
-    .name-last { display: block; font-style: italic; color: var(--accent); }
-    .hero-title { display: flex; flex-wrap: wrap; gap: .35rem .5rem; margin-bottom: 1rem; }
-    .hero-title span { font-size: 1.05rem; font-weight: 300; }
-    .hero-title .amp { color: var(--muted); }
-    .hero-tagline { font-size: .95rem; color: var(--muted); line-height: 1.75; max-width: 25rem; }
-    @media(max-width:639px){
-      .hero-title { flex-wrap: nowrap; gap: .2rem .3rem; }
-      .hero-title span { font-size: .82rem; }
-      .hero-tagline { font-size: .8rem; max-width: none; white-space: nowrap; }
-    }
-    .portrait-wrap { display: flex; justify-content: center; margin-bottom: 1.25rem; order: -1; }
-    @media(min-width:1024px){ .portrait-wrap { margin-bottom: 0; order: 0; } }
-    .portrait-frame { position: relative; }
-    .portrait-deco { position: absolute; border-radius: 1.25rem; border: 1px solid var(--border); pointer-events: none; }
-    .portrait-deco.d1 { inset: -1rem; opacity: .6; }
-    .portrait-deco.d2 { inset: -2rem; opacity: .3; }
-    @media(max-width:1023px){ .portrait-deco { display: none; } }
-    .portrait-img { width: 21rem; height: 21rem; border-radius: 1rem; overflow: hidden; background: var(--bg-alt); }
-    @media(max-width:1023px){ .portrait-img { width: 6rem; height: 6rem; border-radius: 50%; } }
-    .portrait-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    #hero { display: flex; align-items: center; padding: 5.5rem 0 3rem; position: relative; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    @media(max-width:1023px){ .hero-grid { grid-template-columns: 1fr; } }
+    h1.name { font-size: clamp(3.5rem,6vw,5.5rem); font-weight: 700; line-height: .92; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+    .name-first { display: block; color: var(--fg); }
+    .name-last { display: block; color: var(--accent); }
+    .hero-role { font-family: 'DM Mono', monospace; font-size: .82rem; color: var(--muted); letter-spacing: .06em; margin-bottom: 1.5rem; }
+    .hero-tagline { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 38rem; margin-bottom: 2.5rem; }
+    .hero-cta { display: inline-flex; align-items: center; gap: .6rem; font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); border: 1px solid var(--accent); padding: .75rem 1.5rem; border-radius: 4px; transition: background .2s; }
+    .hero-cta:hover { background: var(--accent-dim); }
+    .portrait-side { display: flex; justify-content: center; }
+    @media(max-width:1023px){ .portrait-side { display: none; } }
+    .portrait-box { width: 26rem; position: relative; }
+    .portrait-box img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; -webkit-mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); }
 
-    /* SECTION HEADER */
-    .sh { margin-bottom: 1.25rem; }
-    .sh-label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: .6rem; }
-    .sh-title { font-size: clamp(1.7rem,3vw,2.4rem); line-height: 1.15; }
-    .sh-line { width: 2.5rem; height: 1px; background: var(--accent); margin: .75rem 0; }
-    .sh-sub { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 38rem; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ABOUT */
-    .about-grid { display: grid; gap: 2.5rem; }
-    @media(min-width:1024px){ .about-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
-    .about-summary { font-size: 1.05rem; line-height: 1.65; margin-bottom: 1rem; }
-    .about-summary strong { color: var(--fg); font-weight: 500; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: 1rem; }
-    .stat { padding: .85rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--card); }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent); line-height: 1; margin-bottom: .15rem; }
-    .stat-label { font-size: .75rem; color: var(--muted); line-height: 1.3; }
-    .about-bio { font-size: .9rem; color: var(--muted); line-height: 1.75; }
-    .timeline { position: relative; padding-left: 2.75rem; }
-    .timeline::before { content:''; position: absolute; left: .9rem; top: .4rem; bottom: .4rem; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 60%, transparent); }
-    .tl-item { position: relative; margin-bottom: 1.25rem; }
-    .tl-dot { position: absolute; left: -1.9rem; top: .35rem; width: .5rem; height: .5rem; border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); }
-    .tl-period { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .15rem; }
-    .tl-event { font-size: .86rem; line-height: 1.45; }
-    .tl-event span { color: var(--muted); font-size: .8rem; display: block; margin-top: .1rem; }
+    #about { padding: 2rem 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+    .stat-box { background: var(--card); padding: 1.5rem; }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: .3rem; letter-spacing: -.02em; }
+    .stat-lbl { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .1em; }
+    .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    @media(max-width:767px){ .about-cols { grid-template-columns: 1fr; } }
+    .about-bio { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .85rem; }
+    .about-bio strong { color: var(--fg); font-weight: 600; }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2.25rem; }
+    .timeline::before { content: ''; position: absolute; left: .6rem; top: .35rem; bottom: .35rem; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent); }
+    .tl-item { position: relative; margin-bottom: 1.35rem; }
+    .tl-dot { position: absolute; left: calc(-2.25rem + .6rem); top: .42rem; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); transform: translateX(-50%); }
+    .tl-period { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); letter-spacing: .15em; text-transform: uppercase; margin-bottom: .12rem; }
+    .tl-event { font-size: .87rem; font-weight: 600; line-height: 1.35; }
+    .tl-event span { display: block; font-size: .77rem; color: var(--muted); font-weight: 400; margin-top: .12rem; line-height: 1.5; }
 
     /* SKILLS */
-    .skills-grid { display: grid; gap: 1rem; }
-    @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(3, 1fr); } }
-    .skill-group { padding: 1rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
-    .skill-group-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .6rem; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .skill-tag { padding: .35rem .85rem; border-radius: 999px; font-size: .8rem; background: var(--bg-alt); color: var(--fg); border: 1px solid var(--border); transition: background .2s, border-color .2s; }
-    .skill-tag:hover { background: var(--accent-dim); border-color: var(--accent); }
+    #skills { padding: 2rem 0; background: var(--bg-alt); }
+    .skill-table { display: flex; flex-direction: column; }
+    .skill-row { display: grid; grid-template-columns: 10rem 1fr; gap: 2.5rem; padding: 1.1rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .skill-row:last-child { border-bottom: 1px solid var(--border); }
+    @media(max-width:639px){ .skill-row { grid-template-columns: 1fr; gap: .3rem; } }
+    .skill-row-cat { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; padding-top: .1rem; }
+    .skill-row:first-child .skill-row-cat { color: var(--accent); }
+    .skill-row-items { font-size: .88rem; color: var(--fg); line-height: 1.8; }
+    .skill-row-items .dot { color: var(--accent); margin: 0 .45rem; font-size: .75rem; opacity: .7; }
 
     /* PROJECTS */
-    .proj-section-label { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; margin-top: 1.5rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
-    .proj-section-label:first-of-type { margin-top: 0; }
-    .proj-grid { display: grid; gap: 1rem; }
-    @media(min-width:640px){ .proj-grid { grid-template-columns: 1fr 1fr; } }
-    @media(min-width:1024px){ .proj-grid.three { grid-template-columns: 1fr 1fr 1fr; } }
-    .proj-card { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: var(--card); cursor: pointer; transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
-    .proj-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
-    [data-theme="dark"] .proj-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.3); }
-    .proj-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--bg-alt); display: block; }
-    .proj-img-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, var(--bg-alt) 0%, color-mix(in srgb, var(--accent) 8%, var(--bg-alt)) 100%); display: flex; align-items: center; justify-content: center; }
-    .proj-img-placeholder span { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--border); }
-    .proj-body { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .6rem; }
-    .proj-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; line-height: 1.3; margin-bottom: .45rem; transition: color .2s; }
-    .proj-card:hover .proj-title { color: var(--accent); }
-    .proj-summary { font-size: .845rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: .65rem; }
-    .proj-impact { display: flex; gap: .5rem; padding: .6rem .8rem; border-radius: .6rem; background: var(--bg-alt); border: 1px solid var(--border); font-size: .78rem; font-weight: 500; margin-bottom: .6rem; }
-    .proj-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
-    .proj-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; color: var(--accent); font-weight: 500; margin-top: auto; }
-    .proj-link svg { width: .85rem; height: .85rem; }
-    .proj-more { display: none; padding-top: .65rem; border-top: 1px solid var(--border); font-size: .845rem; color: var(--muted); line-height: 1.75; white-space: pre-line; }
-    .proj-card.open .proj-more { display: block; }
-    .proj-toggle-row { display: flex; align-items: center; justify-content: space-between; margin-top: .5rem; }
-    .proj-toggle { width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1rem; transition: transform .2s; line-height: 1; flex-shrink: 0; }
-    .proj-card.open .proj-toggle { transform: rotate(45deg); }
+    #projects { padding: 2rem 0 1rem; }
+    .proj-sep { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; margin-top: 2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); display: flex; gap: .6rem; }
+    .proj-sep::before { content: '//'; color: var(--border); }
+    .proj-sep:first-of-type { margin-top: 0; }
+    .proj-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    @media(max-width:639px){ .proj-grid-2 { grid-template-columns: 1fr; } }
+    .proj-card { background: var(--card); display: flex; flex-direction: column; border-top: 2px solid transparent; transition: border-color .2s, background .2s; }
+    .proj-card[onclick] { cursor: pointer; }
+    .proj-card[onclick]:hover { border-top-color: var(--accent); background: color-mix(in srgb, var(--card) 96%, var(--accent)); }
+    .proj-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--bg-alt); }
+    .proj-card-svg { width: 100%; display: block; background: var(--bg-alt); aspect-ratio: 16/9; }
+    .proj-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-card-num { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); margin-bottom: .5rem; }
+    .proj-card-title { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; letter-spacing: -.01em; transition: color .2s; }
+    .proj-card[onclick]:hover .proj-card-title { color: var(--accent); }
+    .proj-card-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; margin-bottom: .65rem; flex: 1; }
+    .proj-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .65rem; }
+    .proj-card-tag { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); border: 1px solid rgba(26,163,154,.3); padding: .18rem .5rem; border-radius: 2px; }
+    .proj-card-impact { font-family: 'DM Mono', monospace; font-size: .72rem; background: var(--bg-alt); padding: .5rem .75rem; margin-bottom: .6rem; border-left: 2px solid var(--accent); color: var(--muted); }
+    .proj-view { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); margin-top: auto; }
+    .proj-link-row { display: flex; flex-direction: column; gap: .35rem; margin-top: auto; }
+    .proj-ext-link { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); display: inline-flex; align-items: center; gap: .3rem; }
 
-    /* TOOLS */
-    .tools-grid { display: grid; gap: 1rem; }
-    @media(min-width:640px){ .tools-grid { grid-template-columns: 1fr 1fr; } }
-    @media(min-width:1024px){ .tools-grid { grid-template-columns: 1fr 1fr 1fr; } }
-    .tool-card { padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
-    .tool-card-title { font-size: .68rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
-    .tool-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
-    .tool-pill { padding: .35rem .85rem; border-radius: 999px; font-size: .8rem; background: var(--bg-alt); color: var(--fg); border: 1px solid var(--border); }
+    /* BEYOND WORK */
+    #beyond { padding: 1rem 0; }
+    .beyond-notes { display: flex; gap: 5rem; flex-wrap: wrap; }
+    .beyond-note { flex: 1; min-width: 180px; }
+    .beyond-note-label { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; margin-bottom: .75rem; }
+    .beyond-note-text { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--fg); line-height: 1.75; }
+    .beyond-note-text a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,163,154,.35); }
 
-    /* PERSONAL */
-    .phil { max-width: 44rem; margin-bottom: 2rem; }
-    .phil p { color: var(--muted); line-height: 1.75; margin-bottom: .75rem; font-size: .95rem; }
-    .pers-grid { display: grid; gap: .85rem; }
-    @media(min-width:640px){ .pers-grid { grid-template-columns: 1fr 1fr; } }
-    @media(min-width:1024px){ .pers-grid { grid-template-columns: 1fr 1fr 1fr; } }
-    .pers-card { padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); background: var(--card); transition: border-color .3s; }
-    .pers-card:hover { border-color: rgba(192,136,80,.4); }
-    .pers-head { display: flex; align-items: center; gap: .55rem; margin-bottom: .75rem; }
-    .pers-icon { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--muted); }
-    .pers-cat { font-size: .68rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-    .pers-desc { font-size: .845rem; color: var(--muted); font-style: italic; line-height: 1.55; margin-bottom: .65rem; }
-    .pers-list { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
-    .pers-list li { display: flex; gap: .4rem; font-size: .845rem; line-height: 1.4; }
-    .pers-list li::before { content: '·'; color: var(--accent); flex-shrink: 0; font-size: .9rem; }
-
-    /* CONTACT */
-    .contact-wrap { max-width: 36rem; margin: 0 auto; text-align: center; }
-    .contact-wrap h2 { font-size: clamp(2rem,4vw,2.75rem); margin-bottom: .75rem; }
-    .contact-wrap p { color: var(--muted); font-size: .95rem; margin-bottom: 1.75rem; }
-    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
-    .clink { display: flex; align-items: center; gap: .65rem; padding: .85rem 1.75rem; border-radius: 999px; font-size: .875rem; font-weight: 500; border: 1px solid var(--border); transition: border-color .2s, color .2s; }
-    .clink:hover { border-color: var(--accent); color: var(--accent); }
-    .clink.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-    .clink.primary:hover { opacity: .8; color: var(--bg); border-color: var(--fg); }
-    .clink svg { width: 1rem; height: 1rem; flex-shrink: 0; }
+    /* CONNECT */
+    #connect { padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; }
+    .connect-heading { font-family: 'Caveat', cursive; font-size: 2.4rem; color: var(--fg); margin-bottom: .35rem; font-weight: 600; }
+    .connect-sub { font-size: .83rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+    .connect-links { display: flex; justify-content: center; gap: 2rem; }
+    .connect-link { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); border-bottom: 1px solid rgba(26,163,154,.3); padding-bottom: 2px; transition: border-color .2s, color .2s; }
+    .connect-link:hover { border-color: var(--accent); color: var(--fg); }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
-    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: .9rem; text-align: center; }
-    @media(min-width:560px){ .footer-inner { flex-direction: row; justify-content: space-between; } }
-    .footer-name { font-family: 'Playfair Display', serif; font-size: 1rem; }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: .875rem; color: var(--muted); transition: color .2s; }
-    .footer-links a:hover { color: var(--fg); }
-    .footer-copy { font-size: .75rem; color: var(--muted); }
-
-    /* PROJ VIEW HINT */
-    .proj-view { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; color: var(--accent); font-weight: 500; margin-top: auto; padding-top: .5rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'DM Mono', monospace; font-size: .82rem; color: var(--accent); }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--border); }
 
     /* MODAL */
-    .proj-modal { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .proj-modal { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .3s; }
     .proj-modal.open { opacity: 1; pointer-events: all; }
-    .proj-modal-panel { width: 100%; max-width: 780px; max-height: 88vh; background: var(--card); border-radius: 1.5rem; overflow-y: auto; transform: translateY(20px) scale(.97); transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .proj-modal-panel { width: 100%; max-width: 780px; max-height: 88vh; background: var(--card); border: 1px solid var(--border); border-radius: 8px; border-top: 3px solid var(--accent); overflow-y: auto; transform: translateY(20px) scale(.97); transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
     .proj-modal.open .proj-modal-panel { transform: none; }
-    .modal-header { position: sticky; top: 0; display: flex; justify-content: flex-end; padding: .85rem .85rem 0; background: var(--card); z-index: 5; border-radius: 1.5rem 1.5rem 0 0; }
-    .modal-close { width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 1px solid var(--border); background: var(--card); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .9rem; cursor: pointer; transition: background .2s; }
-    .modal-close:hover { background: var(--bg-alt); color: var(--fg); }
-    .modal-imgs { padding: 0 1.5rem; display: grid; gap: .65rem; }
+    .modal-hdr { position: sticky; top: 0; display: flex; justify-content: flex-end; padding: .85rem; background: var(--card); border-bottom: 1px solid var(--border); z-index: 5; }
+    .modal-close { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); border: 1px solid var(--border); background: var(--bg); padding: .3rem .7rem; border-radius: 3px; cursor: pointer; transition: color .2s, border-color .2s; }
+    .modal-close:hover { color: var(--accent); border-color: var(--accent); }
+    .modal-imgs { padding: 1.25rem 1.25rem 0; display: grid; gap: .65rem; }
     .modal-imgs.two { grid-template-columns: 1fr 1fr; }
     @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } }
-    .modal-img { width: 100%; border-radius: .85rem; object-fit: cover; display: block; background: var(--bg-alt); }
+    .modal-img { width: 100%; border-radius: 4px; object-fit: cover; display: block; background: var(--bg-alt); }
     .modal-body { padding: 1.5rem; }
-    .modal-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .85rem; }
-    .modal-title { font-family: 'Playfair Display', serif; font-size: 1.55rem; line-height: 1.2; margin-bottom: .85rem; }
-    .modal-desc { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; white-space: pre-line; }
-    .modal-impact { display: flex; gap: .5rem; padding: .65rem .9rem; border-radius: .65rem; background: var(--bg-alt); border: 1px solid var(--border); font-size: .82rem; font-weight: 500; }
+    .modal-mono { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); letter-spacing: .15em; margin-bottom: .5rem; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .85rem; }
+    .modal-tag { font-family: 'DM Mono', monospace; font-size: .63rem; color: var(--accent); border: 1px solid rgba(26,163,154,.3); padding: .18rem .5rem; border-radius: 2px; }
+    .modal-title { font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .85rem; }
+    .modal-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; white-space: pre-line; }
+    .modal-impact { display: flex; gap: .5rem; padding: .6rem .85rem; background: var(--bg-alt); border-left: 2px solid var(--accent); font-family: 'DM Mono', monospace; font-size: .73rem; color: var(--muted); }
     .modal-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
   </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="wrap">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">Yaara Shvadron</a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#tools">Tools</a>
-        <a href="#contact">Connect</a>
-      </div>
-      <div class="nav-right">
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="ham" id="ham" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-      </div>
+  <div class="nav-inner">
+    <span class="nav-logo">YS_</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#connect">Connect</a>
+      <a href="public/Yaara Shvadron 2026.pdf" target="_blank" style="color:var(--accent);border:1px solid var(--accent);padding:.25rem .6rem;border-radius:3px;">CV</a>
     </div>
   </div>
 </nav>
 
-<div class="mob-menu" id="mobMenu">
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#tools">Tools</a>
-  <a href="#contact">Connect</a>
-</div>
-
-<main>
-
 <!-- HERO -->
 <section id="hero">
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="hero-label"><div class="hero-label-line"></div><span>Toronto, Ontario</span></div>
+        <div class="sec-counter">AI Deployment and CS Executive <span>//</span> Toronto</div>
         <h1 class="name"><span class="name-first">Yaara</span><span class="name-last">Shvadron</span></h1>
-        <div class="hero-title">
-          <span>AI</span><span>Deployment</span><span class="amp">&amp;</span><span>Customer</span><span>Success</span><span>Executive</span>
-        </div>
-        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.</p>
+        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.<br>I build the tools, lead the teams, and ship the results.</p>
+        <a href="#projects" class="hero-cta">View work →</a>
       </div>
-      <div class="portrait-wrap">
-        <div class="portrait-frame">
-          <div class="portrait-deco d1"></div>
-          <div class="portrait-deco d2"></div>
-          <div class="portrait-img"><img src="public/portrait-new.png" alt="Yaara Shvadron" /></div>
+      <div class="portrait-side">
+        <div class="portrait-box">
+          <img src="public/portrait-new.png" alt="Yaara Shvadron" />
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="divider" />
+
 <!-- ABOUT -->
-<section id="about" class="section">
+<section id="about">
   <div class="wrap">
-    <div class="sh r">
-      <span class="sh-label">About</span>
-      <h2 class="sh-title">Building. Leading. Repeat.</h2>
-      <div class="sh-line"></div>
+    <div class="sec-counter">About</div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num">$90M</div><div class="stat-lbl">ARR managed</div></div>
+      <div class="stat-box"><div class="stat-num">15</div><div class="stat-lbl">Person team led</div></div>
+      <div class="stat-box"><div class="stat-num">115%</div><div class="stat-lbl">Quota attainment</div></div>
+      <div class="stat-box"><div class="stat-num">215+</div><div class="stat-lbl">Enterprise Portfolio Customers</div></div>
     </div>
-    <div class="about-grid">
+    <div class="about-cols">
       <div>
-        <p class="about-summary r">AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization.</p>
-
-        <div class="about-stats r d1">
-          <div class="stat"><div class="stat-num">$90M</div><div class="stat-label">ARR managed</div></div>
-          <div class="stat"><div class="stat-num">15</div><div class="stat-label">Person team led</div></div>
-          <div class="stat"><div class="stat-num">115%</div><div class="stat-label">Quota attainment</div></div>
-          <div class="stat"><div class="stat-num">F500</div><div class="stat-label">Client portfolio</div></div>
-        </div>
-
-        <p class="about-bio r d2">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, based in Toronto. Mother of two, classical flutist, new catchball player.</p>
+        <p class="about-bio"><strong>Building. Leading. Repeat.</strong> AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
+        <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, at home in Toronto.</p>
       </div>
-
-      <div class="timeline r">
+      <div class="timeline">
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-period">2025 · Present</div>
@@ -334,9 +221,8 @@
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-period">2019 · 2021</div>
-          <div class="tl-event">Lead CSM&nbsp;·&nbsp;Fast Simon<span>Built post sales from zero&nbsp;·&nbsp;100+ accounts&nbsp;·&nbsp;Initiated Klaviyo enterprise integration</span></div>
+          <div class="tl-event">Lead CSM&nbsp;·&nbsp;Fast Simon<span>Built post sales from zero&nbsp;·&nbsp;100+ accounts&nbsp;·&nbsp;Initiated Klaviyo enterprise partnership</span></div>
         </div>
-
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-period">Education</div>
@@ -348,178 +234,120 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="section alt">
+<section id="skills">
   <div class="wrap">
-    <div class="sh r">
-      <span class="sh-label">Skills</span>
-      <div class="sh-line"></div>
-    </div>
-    <div class="skills-grid r">
-      <div class="skill-group" style="border-top: 2px solid var(--accent);">
-        <div class="skill-group-title">AI</div>
-        <div class="skill-tags">
-          <span class="skill-tag">AI Agent Development</span>
-          <span class="skill-tag">RAG Architecture</span>
-          <span class="skill-tag">AI Orchestration</span>
-          <span class="skill-tag">Workflow Automation</span>
-          <span class="skill-tag">Enterprise AI Deployment</span>
-          <span class="skill-tag">Architecture</span>
-        </div>
+    <div class="sec-counter">Skills</div>
+    <div class="skill-table">
+      <div class="skill-row">
+        <div class="skill-row-cat">AI</div>
+        <div class="skill-row-items">AI Agent Development<span class="dot">·</span>RAG Architecture<span class="dot">·</span>AI Orchestration<span class="dot">·</span>Workflow Automation<span class="dot">·</span>Enterprise AI Deployment<span class="dot">·</span>Architecture</div>
       </div>
-      <div class="skill-group" style="border-top: 2px solid var(--muted);">
-        <div class="skill-group-title">Leadership &amp; Operations</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Customer Success Leadership</span>
-          <span class="skill-tag">P&amp;L Ownership</span>
-          <span class="skill-tag">Team Scaling</span>
-          <span class="skill-tag">Executive Stakeholder Management</span>
-          <span class="skill-tag">Organizational Design</span>
-          <span class="skill-tag">Change Management</span>
-          <span class="skill-tag">Product Plan Map</span>
-        </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">Leadership</div>
+        <div class="skill-row-items">Customer Success Leadership<span class="dot">·</span>P&amp;L Ownership<span class="dot">·</span>Team Scaling<span class="dot">·</span>Executive Stakeholder Management<span class="dot">·</span>Organizational Design<span class="dot">·</span>Change Management<span class="dot">·</span>Product Plan Map</div>
       </div>
-      <div class="skill-group" style="border-top: 2px solid var(--border); border-top-width: 2px; border-top-style: dashed;">
-        <div class="skill-group-title">Platforms &amp; Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Salesforce</span>
-          <span class="skill-tag">Claude Code</span>
-          <span class="skill-tag">Codex</span>
-          <span class="skill-tag">Staircase AI</span>
-          <span class="skill-tag">Pendo</span>
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">Looker</span>
-          <span class="skill-tag">JIRA</span>
-          <span class="skill-tag">Zendesk</span>
-        </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">Platforms</div>
+        <div class="skill-row-items">Salesforce<span class="dot">·</span>Gainsight<span class="dot">·</span>Pendo<span class="dot">·</span>Zendesk<span class="dot">·</span>JIRA<span class="dot">·</span>Claude Code<span class="dot">·</span>Codex<span class="dot">·</span>Staircase AI</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">Data &amp; Analytics</div>
+        <div class="skill-row-items">Tableau<span class="dot">·</span>Looker<span class="dot">·</span>Snowflake<span class="dot">·</span>Excel</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="section">
+<section id="projects">
   <div class="wrap">
-    <div class="sh r">
-      <span class="sh-label">Projects</span>
-      <h2 class="sh-title">What I am working on.</h2>
-      <div class="sh-line"></div>
-    </div>
+    <div class="sec-counter">Projects</div>
 
-    <div class="proj-section-label r">Work</div>
-    <div class="proj-grid three r">
+    <div class="proj-sep">Work</div>
+    <div class="proj-grid-2">
 
+      <!-- AI ROADMAP -->
       <div class="proj-card" onclick="openModal(this)">
-        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
-          <circle cx="240" cy="100" r="28" fill="var(--accent)" opacity="0.9"/>
-          <text x="240" y="97" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Orchestration</text>
-          <text x="240" y="109" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Layer</text>
-          <circle cx="100" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-          <text x="100" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-          <circle cx="380" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-          <text x="380" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-          <circle cx="100" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-          <text x="100" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-          <circle cx="380" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-          <text x="380" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-          <circle cx="170" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="170" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <circle cx="310" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="310" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <circle cx="170" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="170" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <circle cx="310" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="310" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <circle cx="44" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="44" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <circle cx="436" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-          <text x="436" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-          <line x1="58" y1="100" x2="80" y2="70" stroke="var(--border)" stroke-width="1"/>
-          <line x1="58" y1="100" x2="80" y2="130" stroke="var(--border)" stroke-width="1"/>
-          <line x1="422" y1="100" x2="400" y2="70" stroke="var(--border)" stroke-width="1"/>
-          <line x1="422" y1="100" x2="400" y2="130" stroke="var(--border)" stroke-width="1"/>
-          <line x1="170" y1="52" x2="160" y2="72" stroke="var(--border)" stroke-width="1"/>
-          <line x1="170" y1="52" x2="215" y2="78" stroke="var(--border)" stroke-width="1"/>
-          <line x1="310" y1="52" x2="320" y2="72" stroke="var(--border)" stroke-width="1"/>
-          <line x1="310" y1="52" x2="265" y2="78" stroke="var(--border)" stroke-width="1"/>
-          <line x1="170" y1="148" x2="160" y2="128" stroke="var(--border)" stroke-width="1"/>
-          <line x1="170" y1="148" x2="215" y2="122" stroke="var(--border)" stroke-width="1"/>
-          <line x1="310" y1="148" x2="320" y2="128" stroke="var(--border)" stroke-width="1"/>
-          <line x1="310" y1="148" x2="265" y2="122" stroke="var(--border)" stroke-width="1"/>
-          <line x1="118" y1="68" x2="215" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-          <line x1="362" y1="68" x2="265" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-          <line x1="118" y1="132" x2="215" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-          <line x1="362" y1="132" x2="265" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" class="proj-card-svg">
+          <rect width="480" height="200" fill="#EEEAE2"/>
+          <!-- Road surface -->
+          <rect x="30" y="88" width="420" height="28" rx="4" fill="#C8C4BA"/>
+          <!-- Center dashes -->
+          <line x1="30" y1="102" x2="450" y2="102" stroke="#F6F4EF" stroke-width="2" stroke-dasharray="18,12"/>
+          <!-- Milestone 1: Tools -->
+          <line x1="130" y1="70" x2="130" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+          <circle cx="130" cy="102" r="13" fill="#1AA39A"/>
+          <text x="130" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Tools</text>
+          <text x="130" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Phase 1</text>
+          <!-- Milestone 2: Agents -->
+          <line x1="240" y1="70" x2="240" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+          <circle cx="240" cy="102" r="13" fill="#1AA39A"/>
+          <text x="240" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Agents</text>
+          <text x="240" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Phase 2</text>
+          <!-- Milestone 3: Orchestration -->
+          <line x1="355" y1="70" x2="355" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+          <circle cx="355" cy="102" r="13" fill="#1AA39A"/>
+          <text x="355" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Orch.</text>
+          <text x="355" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Phase 3</text>
+          <!-- Destination flag -->
+          <rect x="438" y="52" width="2" height="36" fill="#1AA39A"/>
+          <polygon points="440,52 460,60 440,68" fill="#1AA39A"/>
+          <text x="450" y="82" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A">30%</text>
+          <!-- Bottom label -->
+          <text x="240" y="150" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#B0ACA4">CS AI Roadmap · Board Presentation</text>
         </svg>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
-          <h3 class="proj-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
-          <p class="proj-summary">Designed and presented a CS AI roadmap to executive leadership — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
-          <div class="proj-impact">Presented at board level. Target: 30% efficiency gain.</div>
-          <span class="proj-view">View project →</span>
+        <div class="proj-card-body">
+          <div class="proj-card-num">01</div>
+          <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
+          <p class="proj-card-desc">CS AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">AI Strategy</span><span class="proj-card-tag">Board Deck</span></div>
+          <div class="proj-card-impact">Presented at board level. Target: 30% efficiency gain.</div>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs">
-            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
-              <circle cx="240" cy="100" r="28" fill="var(--accent)" opacity="0.9"/>
-              <text x="240" y="97" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Orchestration</text>
-              <text x="240" y="109" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8" font-weight="500">Layer</text>
-              <circle cx="100" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-              <text x="100" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-              <circle cx="380" cy="60" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-              <text x="380" y="64" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-              <circle cx="100" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-              <text x="100" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-              <circle cx="380" cy="140" r="20" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
-              <text x="380" y="144" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--fg)" opacity="0.8">Agent</text>
-              <circle cx="170" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="170" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <circle cx="310" cy="38" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="310" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <circle cx="170" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="170" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <circle cx="310" cy="162" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="310" y="166" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <circle cx="44" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="44" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <circle cx="436" cy="100" r="14" fill="var(--accent)" opacity="0.15" stroke="var(--accent)" stroke-width="1"/>
-              <text x="436" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="var(--fg)" opacity="0.7">Tool</text>
-              <line x1="58" y1="100" x2="80" y2="70" stroke="var(--border)" stroke-width="1"/>
-              <line x1="58" y1="100" x2="80" y2="130" stroke="var(--border)" stroke-width="1"/>
-              <line x1="422" y1="100" x2="400" y2="70" stroke="var(--border)" stroke-width="1"/>
-              <line x1="422" y1="100" x2="400" y2="130" stroke="var(--border)" stroke-width="1"/>
-              <line x1="170" y1="52" x2="160" y2="72" stroke="var(--border)" stroke-width="1"/>
-              <line x1="170" y1="52" x2="215" y2="78" stroke="var(--border)" stroke-width="1"/>
-              <line x1="310" y1="52" x2="320" y2="72" stroke="var(--border)" stroke-width="1"/>
-              <line x1="310" y1="52" x2="265" y2="78" stroke="var(--border)" stroke-width="1"/>
-              <line x1="170" y1="148" x2="160" y2="128" stroke="var(--border)" stroke-width="1"/>
-              <line x1="170" y1="148" x2="215" y2="122" stroke="var(--border)" stroke-width="1"/>
-              <line x1="310" y1="148" x2="320" y2="128" stroke="var(--border)" stroke-width="1"/>
-              <line x1="310" y1="148" x2="265" y2="122" stroke="var(--border)" stroke-width="1"/>
-              <line x1="118" y1="68" x2="215" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-              <line x1="362" y1="68" x2="265" y2="88" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-              <line x1="118" y1="132" x2="215" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
-              <line x1="362" y1="132" x2="265" y2="112" stroke="var(--accent)" stroke-width="1.5" opacity="0.4"/>
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
+              <rect width="480" height="200" fill="#EEEAE2"/>
+              <rect x="30" y="88" width="420" height="28" rx="4" fill="#C8C4BA"/>
+              <line x1="30" y1="102" x2="450" y2="102" stroke="#F6F4EF" stroke-width="2" stroke-dasharray="18,12"/>
+              <line x1="130" y1="70" x2="130" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+              <circle cx="130" cy="102" r="13" fill="#1AA39A"/>
+              <text x="130" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Tools</text>
+              <text x="130" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">Phase 1</text>
+              <line x1="240" y1="70" x2="240" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+              <circle cx="240" cy="102" r="13" fill="#1AA39A"/>
+              <text x="240" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Agents</text>
+              <text x="240" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">Phase 2</text>
+              <line x1="355" y1="70" x2="355" y2="88" stroke="#1AA39A" stroke-width="1.5"/>
+              <circle cx="355" cy="102" r="13" fill="#1AA39A"/>
+              <text x="355" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#F6F4EF">Orchestration</text>
+              <text x="355" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">Phase 3</text>
+              <rect x="438" y="52" width="2" height="36" fill="#1AA39A"/>
+              <polygon points="440,52 460,60 440,68" fill="#1AA39A"/>
+              <text x="452" y="82" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">30%</text>
+              <text x="240" y="150" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#B0ACA4">CS AI Roadmap · Board Presentation</text>
             </svg>
           </div>
           <div class="modal-body">
-            <div class="modal-tags"><span class="tag">AI Strategy</span><span class="tag">Board Presentation</span></div>
+            <div class="modal-mono">01 // AI Strategy</div>
+            <div class="modal-tags"><span class="modal-tag">AI Strategy</span><span class="modal-tag">Board Presentation</span></div>
             <h2 class="modal-title">AI Roadmap: Tools, Agents &amp; Orchestration</h2>
-            <p class="modal-desc">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory — mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.
+            <p class="modal-desc">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.
 
-Full scope initiative mapping AI opportunities across the CS lifecycle, from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</p>
+Full scope initiative mapping AI opportunities from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</p>
             <div class="modal-impact">Presented at board level. Target: 30% efficiency gain across the CS org.</div>
           </div>
         </template>
       </div>
 
+      <!-- ELEVATOR -->
       <div class="proj-card" onclick="openModal(this)">
-        <img class="proj-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" />
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
-          <h3 class="proj-title">JAGGAER Elevator</h3>
-          <p class="proj-summary">A RAG per customer app that brings data from one floor to the next. No stairs. All queryable in one place — moving CS past chat prompts into true task delegation.</p>
-          <div class="proj-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
-          <span class="proj-view">View project →</span>
+        <img class="proj-card-img" src="public/images/elevator.gif" alt="JAGGAER Elevator" />
+        <div class="proj-card-body">
+          <div class="proj-card-num">02</div>
+          <h3 class="proj-card-title">JAGGAER Elevator</h3>
+          <p class="proj-card-desc">A RAG per customer app that brings data from one floor to the next. Moving CS past chat prompts into true task delegation. All enterprise data queryable in one place.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">RAG Architecture</span><span class="proj-card-tag">AI Orchestration</span></div>
+          <div class="proj-card-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs two">
@@ -529,89 +357,79 @@ Full scope initiative mapping AI opportunities across the CS lifecycle, from onb
             <img class="modal-img" src="public/images/elevator4.png" alt="JAGGAER Elevator detail" style="aspect-ratio:16/9;"/>
           </div>
           <div class="modal-body">
-            <div class="modal-tags"><span class="tag">RAG Architecture</span><span class="tag">AI Orchestration</span></div>
+            <div class="modal-mono">02 // RAG Architecture</div>
+            <div class="modal-tags"><span class="modal-tag">RAG Architecture</span><span class="modal-tag">AI Orchestration</span></div>
             <h2 class="modal-title">JAGGAER Elevator</h2>
-            <p class="modal-desc">I built this to answer one question: what data layer could move us past simple chat prompts and into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.
+            <p class="modal-desc">Built to answer one question: what data layer moves us past simple chat prompts into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.
 
-It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor — Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
+It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor. Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
 
-The question driving it: how do we make AI work for us, instead of working alongside AI?
-
-Next step: driving the CS AI roadmap from zero tools to a 30% efficiency gain.</p>
+The question driving it: how do we make AI work for us, instead of working alongside AI?</p>
             <div class="modal-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
           </div>
         </template>
       </div>
 
+      <!-- CAPACITY MODEL -->
       <div class="proj-card" onclick="openModal(this)">
-        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
-          <line x1="60" y1="20" x2="60" y2="165" stroke="var(--border)" stroke-width="1"/>
-          <line x1="60" y1="165" x2="450" y2="165" stroke="var(--border)" stroke-width="1"/>
-          <line x1="60" y1="140" x2="450" y2="140" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-          <line x1="60" y1="110" x2="450" y2="110" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-          <line x1="60" y1="80" x2="450" y2="80" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-          <line x1="60" y1="50" x2="450" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-          <text x="50" y="168" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">6</text>
-          <text x="50" y="143" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">8</text>
-          <text x="50" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">11</text>
-          <text x="50" y="83" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">14</text>
-          <text x="50" y="53" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">16</text>
-          <text x="100" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 23</text>
-          <text x="175" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 23</text>
-          <text x="255" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 24</text>
-          <text x="335" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 24</text>
-          <text x="415" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 25</text>
-          <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="var(--accent)" opacity="0.08"/>
-          <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-          <circle cx="100" cy="165" r="4" fill="var(--accent)"/>
-          <circle cx="175" cy="150" r="4" fill="var(--accent)"/>
-          <circle cx="255" cy="118" r="4" fill="var(--accent)"/>
-          <circle cx="335" cy="88" r="4" fill="var(--accent)"/>
-          <circle cx="415" cy="55" r="5" fill="var(--accent)"/>
-          <text x="425" y="52" font-family="Inter,sans-serif" font-size="10" fill="var(--accent)" font-weight="500">16 CSMs</text>
-          <text x="15" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" transform="rotate(-90,15,100)">Team size</text>
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" class="proj-card-svg">
+          <line x1="60" y1="20" x2="60" y2="165" stroke="#E0DAD0" stroke-width="1"/>
+          <line x1="60" y1="165" x2="450" y2="165" stroke="#E0DAD0" stroke-width="1"/>
+          <line x1="60" y1="140" x2="450" y2="140" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+          <line x1="60" y1="110" x2="450" y2="110" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+          <line x1="60" y1="80" x2="450" y2="80" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+          <line x1="60" y1="50" x2="450" y2="50" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+          <text x="50" y="168" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">6</text>
+          <text x="50" y="143" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">8</text>
+          <text x="50" y="113" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">11</text>
+          <text x="50" y="83" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">14</text>
+          <text x="50" y="53" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">16</text>
+          <text x="100" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q1 23</text>
+          <text x="175" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q3 23</text>
+          <text x="255" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q1 24</text>
+          <text x="335" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q3 24</text>
+          <text x="415" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q1 25</text>
+          <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="#1AA39A" opacity="0.08"/>
+          <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="#1AA39A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="100" cy="165" r="4" fill="#1AA39A"/>
+          <circle cx="175" cy="150" r="4" fill="#1AA39A"/>
+          <circle cx="255" cy="118" r="4" fill="#1AA39A"/>
+          <circle cx="335" cy="88" r="4" fill="#1AA39A"/>
+          <circle cx="415" cy="55" r="5" fill="#1AA39A"/>
+          <text x="423" y="52" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A" font-weight="500">16 CSMs</text>
         </svg>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">Workforce Planning</span><span class="tag">ARR Strategy</span></div>
-          <h3 class="proj-title">Capacity Model</h3>
-          <p class="proj-summary">Enterprise coverage model mapping headcount to ARR targets. Hired behind the curve while scaling from 6 to 16 CSMs — growing intentionally without outpacing revenue coverage.</p>
-          <div class="proj-impact">6 to 16 CSMs. Delivered at board level.</div>
-          <span class="proj-view">View project →</span>
+        <div class="proj-card-body">
+          <div class="proj-card-num">03</div>
+          <h3 class="proj-card-title">Capacity Model</h3>
+          <p class="proj-card-desc">Enterprise coverage model mapping headcount to ARR targets. Hired behind the curve while scaling from 6 to 16 CSMs, growing without outpacing revenue coverage.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Workforce Planning</span><span class="proj-card-tag">ARR Strategy</span></div>
+          <div class="proj-card-impact">6 to 16 CSMs. Delivered at board level.</div>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs">
-            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
-              <line x1="60" y1="20" x2="60" y2="165" stroke="var(--border)" stroke-width="1"/>
-              <line x1="60" y1="165" x2="450" y2="165" stroke="var(--border)" stroke-width="1"/>
-              <line x1="60" y1="140" x2="450" y2="140" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-              <line x1="60" y1="110" x2="450" y2="110" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-              <line x1="60" y1="80" x2="450" y2="80" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-              <line x1="60" y1="50" x2="450" y2="50" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-              <text x="50" y="168" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">6</text>
-              <text x="50" y="143" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">8</text>
-              <text x="50" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">11</text>
-              <text x="50" y="83" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">14</text>
-              <text x="50" y="53" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">16</text>
-              <text x="100" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 23</text>
-              <text x="175" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 23</text>
-              <text x="255" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 24</text>
-              <text x="335" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q3 24</text>
-              <text x="415" y="180" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Q1 25</text>
-              <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="var(--accent)" opacity="0.08"/>
-              <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-              <circle cx="100" cy="165" r="4" fill="var(--accent)"/>
-              <circle cx="175" cy="150" r="4" fill="var(--accent)"/>
-              <circle cx="255" cy="118" r="4" fill="var(--accent)"/>
-              <circle cx="335" cy="88" r="4" fill="var(--accent)"/>
-              <circle cx="415" cy="55" r="5" fill="var(--accent)"/>
-              <text x="425" y="52" font-family="Inter,sans-serif" font-size="10" fill="var(--accent)" font-weight="500">16 CSMs</text>
-              <text x="15" y="100" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" transform="rotate(-90,15,100)">Team size</text>
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
+              <line x1="60" y1="20" x2="60" y2="165" stroke="#E0DAD0" stroke-width="1"/>
+              <line x1="60" y1="165" x2="450" y2="165" stroke="#E0DAD0" stroke-width="1"/>
+              <line x1="60" y1="140" x2="450" y2="140" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+              <line x1="60" y1="110" x2="450" y2="110" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+              <line x1="60" y1="80" x2="450" y2="80" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+              <line x1="60" y1="50" x2="450" y2="50" stroke="#E0DAD0" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.6"/>
+              <text x="50" y="168" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">6</text>
+              <text x="50" y="53" text-anchor="end" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">16</text>
+              <text x="100" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q1 23</text>
+              <text x="415" y="180" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Q1 25</text>
+              <polygon points="100,165 175,150 255,118 335,88 415,55 415,165 100,165" fill="#1AA39A" opacity="0.08"/>
+              <polyline points="100,165 175,150 255,118 335,88 415,55" fill="none" stroke="#1AA39A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="100" cy="165" r="4" fill="#1AA39A"/>
+              <circle cx="415" cy="55" r="5" fill="#1AA39A"/>
+              <text x="423" y="52" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A" font-weight="500">16 CSMs</text>
             </svg>
           </div>
           <div class="modal-body">
-            <div class="modal-tags"><span class="tag">Workforce Planning</span><span class="tag">ARR Strategy</span></div>
+            <div class="modal-mono">03 // Workforce Planning</div>
+            <div class="modal-tags"><span class="modal-tag">Workforce Planning</span><span class="modal-tag">ARR Strategy</span></div>
             <h2 class="modal-title">Capacity Model</h2>
-            <p class="modal-desc">Enterprise coverage and capacity model mapping headcount to ARR targets. Enabled us to hire behind the curve while scaling the CSM org from 6 to 16 — growing intentionally without outpacing revenue coverage.
+            <p class="modal-desc">Enterprise coverage and capacity model mapping headcount to ARR targets. Enabled us to hire behind the curve while scaling the CSM org from 6 to 16, growing intentionally without outpacing revenue coverage.
 
 Ground-up model connecting headcount, customer complexity, and ARR coverage goals. Translates operational CS data into strategic narrative for executive decision making.</p>
             <div class="modal-impact">6 to 16 CSMs. Delivered at board level. Aligned global CS leadership.</div>
@@ -619,97 +437,77 @@ Ground-up model connecting headcount, customer complexity, and ARR coverage goal
         </template>
       </div>
 
+      <!-- MFA -->
       <div class="proj-card" onclick="openModal(this)">
-        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);">
-          <!-- Before label -->
-          <text x="60" y="38" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500" text-anchor="start">BEFORE</text>
-          <!-- Before bar (full width) -->
-          <rect x="60" y="45" width="360" height="28" rx="4" fill="var(--border)"/>
-          <text x="68" y="64" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Manual process — 100% effort</text>
-          <!-- After label -->
-          <text x="60" y="103" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500" text-anchor="start">AFTER</text>
-          <!-- After bar (25% width) -->
-          <rect x="60" y="110" width="90" height="28" rx="4" fill="var(--accent)" opacity="0.85"/>
-          <text x="68" y="129" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8">25% effort</text>
-          <!-- Reduction callout -->
-          <text x="165" y="129" font-family="Inter,sans-serif" font-size="11" fill="var(--accent)" font-weight="600">75% reduction</text>
-          <!-- Arrow -->
-          <line x1="420" y1="59" x2="420" y2="138" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
-          <text x="428" y="100" font-family="Inter,sans-serif" font-size="9" fill="var(--accent)" opacity="0.7">→</text>
-          <!-- Bottom note -->
-          <text x="240" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Automation tool built for Israel's Ministry of Foreign Affairs</text>
+        <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" class="proj-card-svg">
+          <text x="60" y="38" font-family="DM Mono,monospace" font-size="8" fill="#7A7060" font-weight="500">BEFORE</text>
+          <rect x="60" y="45" width="360" height="26" rx="3" fill="#E0DAD0"/>
+          <text x="68" y="63" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Manual process, 100% effort</text>
+          <text x="60" y="103" font-family="DM Mono,monospace" font-size="8" fill="#7A7060" font-weight="500">AFTER</text>
+          <rect x="60" y="110" width="90" height="26" rx="3" fill="#1AA39A" opacity="0.85"/>
+          <text x="68" y="128" font-family="DM Mono,monospace" font-size="8" fill="#FFFFFF">25%</text>
+          <text x="165" y="128" font-family="DM Mono,monospace" font-size="10" fill="#1AA39A" font-weight="600">↓ 75% reduction</text>
+          <text x="240" y="175" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">Ministry of Foreign Affairs · 2013–2016</text>
         </svg>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">Automation</span><span class="tag">Early Career</span></div>
-          <h3 class="proj-title">MFA Task Automation</h3>
-          <p class="proj-summary">Built a tool at Israel's Ministry of Foreign Affairs that automated research and reporting tasks, cutting manual work by 75% across a team of 3.</p>
-          <div class="proj-impact">75% reduction in manual work.</div>
-          <span class="proj-view">View project →</span>
+        <div class="proj-card-body">
+          <div class="proj-card-num">04</div>
+          <h3 class="proj-card-title">MFA Task Automation</h3>
+          <p class="proj-card-desc">Built a tool at Israel's Ministry of Foreign Affairs that automated research and reporting tasks, achieving a 75% reduction in manual work across a team of 3.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Automation</span><span class="proj-card-tag">Early Career</span></div>
+          <div class="proj-card-impact">75% reduction in manual work.</div>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs">
-            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:var(--bg-alt);border-radius:.85rem;">
-              <text x="60" y="38" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500">BEFORE</text>
-              <rect x="60" y="45" width="360" height="28" rx="4" fill="var(--border)"/>
-              <text x="68" y="64" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Manual process — 100% effort</text>
-              <text x="60" y="103" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)" font-weight="500">AFTER</text>
-              <rect x="60" y="110" width="90" height="28" rx="4" fill="var(--accent)" opacity="0.85"/>
-              <text x="68" y="129" font-family="Inter,sans-serif" font-size="9" fill="#FAFAF8">25% effort</text>
-              <text x="165" y="129" font-family="Inter,sans-serif" font-size="11" fill="var(--accent)" font-weight="600">75% reduction</text>
-              <text x="240" y="178" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="var(--muted)">Automation tool built for Israel's Ministry of Foreign Affairs</text>
+            <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
+              <text x="60" y="38" font-family="DM Mono,monospace" font-size="9" fill="#7A7060" font-weight="500">BEFORE</text>
+              <rect x="60" y="45" width="360" height="28" rx="3" fill="#E0DAD0"/>
+              <text x="68" y="64" font-family="DM Mono,monospace" font-size="9" fill="#7A7060">Manual process, 100% effort</text>
+              <text x="60" y="103" font-family="DM Mono,monospace" font-size="9" fill="#7A7060" font-weight="500">AFTER</text>
+              <rect x="60" y="110" width="90" height="28" rx="3" fill="#1AA39A" opacity="0.85"/>
+              <text x="68" y="129" font-family="DM Mono,monospace" font-size="9" fill="#FFFFFF">25% effort</text>
+              <text x="165" y="129" font-family="DM Mono,monospace" font-size="11" fill="#1AA39A" font-weight="600">↓ 75% reduction</text>
             </svg>
           </div>
           <div class="modal-body">
-            <div class="modal-tags"><span class="tag">Automation</span><span class="tag">Early Career</span></div>
+            <div class="modal-mono">04 // Automation · Early Career</div>
+            <div class="modal-tags"><span class="modal-tag">Automation</span><span class="modal-tag">Early Career</span></div>
             <h2 class="modal-title">MFA Task Automation</h2>
-            <p class="modal-desc">Research Assistant, Israel's Ministry of Foreign Affairs | Jerusalem, Israel | 2013 – 2016
+            <p class="modal-desc">Research Assistant, Israel's Ministry of Foreign Affairs | Jerusalem | 2013–2016
 
 Developed a tool to automate research and reporting tasks, reducing manual work by 75% across a team of 3. Supported policy analysis and global ambassadorial efforts across multiple departments.
 
-This was an early signal of what I'd keep doing throughout my career: finding the manual work, understanding the system, and building the fix.</p>
+An early signal of what I'd keep doing: find the manual work, understand the system, build the fix.</p>
             <div class="modal-impact">75% reduction in manual work. Team of 3 supervised.</div>
           </div>
         </template>
       </div>
 
-    </div>
+    </div><!-- /proj-grid work -->
 
-    <div class="proj-section-label r" style="margin-top:2rem;">Personal</div>
-    <div class="proj-grid three r">
+    <div class="proj-sep" style="margin-top:2.5rem;">Personal</div>
+    <div class="proj-grid-2" style="max-width:700px;">
 
       <div class="proj-card">
-        <img class="proj-img" src="public/images/wonder.png" alt="Wonder Catchball Coach Tool" style="object-position:top;" />
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">AI Tool</span><span class="tag">Personal Project</span></div>
-          <h3 class="proj-title">Wonder · Catchball Coach Tool</h3>
-          <p class="proj-summary">I started playing catchball and built an AI HTML tool for my coach. She used to spend time before every game manually setting up the team on the court. Now she doesn't.</p>
-          <div class="proj-impact">Saves coach setup time every single game.</div>
-          <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="proj-link">
-            Open tool
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+        <img class="proj-card-img" src="public/images/wonder.png" alt="Wonder" style="aspect-ratio:1/1;object-fit:contain;background:var(--bg-alt);" />
+        <div class="proj-card-body">
+          <div class="proj-card-num">05</div>
+          <h3 class="proj-card-title">Wonder · Catchball Tool</h3>
+          <p class="proj-card-desc">I started playing catchball and built an app using AI for my coach. Saving her time on game setting and more.</p>
+          <div class="proj-link-row">
+            <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="proj-ext-link">Open tool →</a>
+          </div>
         </div>
       </div>
 
       <div class="proj-card">
-        <img class="proj-img" src="public/images/jazz-trio.jpg" alt="Jazz Trio" />
-        <div class="proj-body">
-          <div class="proj-tags"><span class="tag">Music</span><span class="tag">Personal Project</span></div>
-          <h3 class="proj-title">Jazz Trio</h3>
-          <p class="proj-summary">Playing flute in a jazz trio. If you can read partitures and improvise on standards, you can read code, eh?</p>
-          <div style="display:flex;flex-direction:column;gap:.45rem;margin-top:auto;">
-            <a href="https://yaarashva.github.io/trio.github.io/" target="_blank" rel="noopener noreferrer" class="proj-link">
-              Visit site
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" class="proj-link">
-              SoundCloud · yaarael
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" class="proj-link">
-              SoundCloud · yaara lucas
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
+        <img class="proj-card-img" src="public/images/jazz-trio.jpg" alt="Jazz" style="aspect-ratio:1/1;object-fit:cover;" />
+        <div class="proj-card-body">
+          <div class="proj-card-num">06</div>
+          <h3 class="proj-card-title">Making Music</h3>
+          <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz. Making something out of structure is the only way I know how to work.</p>
+          <div class="proj-link-row">
+            <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" class="proj-ext-link">SoundCloud · yaarael →</a>
+            <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" class="proj-ext-link">SoundCloud · yaara-lucas →</a>
           </div>
         </div>
       </div>
@@ -718,180 +516,61 @@ This was an early signal of what I'd keep doing throughout my career: finding th
   </div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools" class="section alt">
+<!-- BEYOND WORK -->
+<section id="beyond">
   <div class="wrap">
-    <div class="sh r">
-      <span class="sh-label">Tools</span>
-      <h2 class="sh-title">How I work.</h2>
-      <div class="sh-line"></div>
-    </div>
-    <div class="tools-grid r">
-
-      <div class="tool-card">
-        <div class="tool-card-title">AI &amp; Build</div>
-        <div class="tool-pills">
-          <span class="tool-pill">Claude Code</span>
-          <span class="tool-pill">Codex</span>
-          <span class="tool-pill">RAG Pipelines</span>
-          <span class="tool-pill">AI Agent Workflows</span>
-          <span class="tool-pill">Python</span>
-          <span class="tool-pill">Staircase AI</span>
+    <div class="sec-counter">Beyond Work</div>
+    <div class="beyond-notes">
+      <div class="beyond-note">
+        <div class="beyond-note-text">Jazz trio</div>
+      </div>
+      <div class="beyond-note">
+        <div class="beyond-note-text">
+          Rock climbing, hiking, camping<br>
+          2 tandem bicycle tours<br>
+          <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Watch the ride →</a>
         </div>
       </div>
-
-      <div class="tool-card">
-        <div class="tool-card-title">Customer &amp; Revenue</div>
-        <div class="tool-pills">
-          <span class="tool-pill">Salesforce</span>
-          <span class="tool-pill">Pendo</span>
-          <span class="tool-pill">Gainsight</span>
-          <span class="tool-pill">Zendesk</span>
-          <span class="tool-pill">JIRA</span>
-        </div>
-      </div>
-
-      <div class="tool-card">
-        <div class="tool-card-title">Data &amp; Reporting</div>
-        <div class="tool-pills">
-          <span class="tool-pill">Tableau</span>
-          <span class="tool-pill">Looker</span>
-          <span class="tool-pill">Snowflake</span>
-          <span class="tool-pill">Excel</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PERSONAL -->
-<section id="personal" class="section">
-  <div class="wrap">
-    <div class="sh r">
-      <span class="sh-label">Beyond Work</span>
-      <h2 class="sh-title">What makes me, me.</h2>
-      <div class="sh-line"></div>
-    </div>
-    <div class="pers-grid">
-
-      <div class="pers-card r">
-        <div class="pers-head"><div class="pers-icon">⚙</div><div class="pers-cat">Problem Solver</div></div>
-        <ul class="pers-list">
-          <li>End to end thinker</li>
-          <li>Built CS ops, AI tools, and coach apps</li>
-          <li>Comfortable in the gap between strategy and execution</li>
-        </ul>
-      </div>
-
-      <div class="pers-card r d1">
-        <div class="pers-head"><div class="pers-icon">♩</div><div class="pers-cat">Music</div></div>
-        <ul class="pers-list">
-          <li>Classical flute</li>
-          <li>BA Music Education, Jerusalem Academy · Excellence</li>
-          <li>Currently playing in a jazz trio</li>
-        </ul>
-      </div>
-
-      <div class="pers-card r d2">
-        <div class="pers-head"><div class="pers-icon">◎</div><div class="pers-cat">Adventurer</div></div>
-        <ul class="pers-list">
-          <li>Rock climbing</li>
-          <li>Hiking and camping</li>
-          <li>2 tandem bicycle tours</li>
-          <li><a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:500;">Watch the ride →</a></li>
-        </ul>
-      </div>
-
-      <div class="pers-card r d1">
-        <div class="pers-head"><div class="pers-icon">◈</div><div class="pers-cat">Roots</div></div>
-        <ul class="pers-list">
-          <li>Israeli, living in Toronto</li>
-          <li>Hebrew and English</li>
-          <li>Mother of two</li>
-        </ul>
-      </div>
-
-      <div class="pers-card r d2">
-        <div class="pers-head"><div class="pers-icon">◇</div><div class="pers-cat">Idea Maker</div></div>
-        <ul class="pers-list">
-          <li>Always generating, always sharing</li>
-          <li>How institutions build and lose trust</li>
-          <li>Human and AI collaboration in enterprise</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section alt">
-  <div class="wrap">
-    <div class="contact-wrap r">
-      <span class="sh-label" style="display:block;text-align:center;margin-bottom:.85rem;">Connect</span>
-      <div class="contact-links">
-        <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener noreferrer" class="clink">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener noreferrer" class="clink">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
-          Instagram
-        </a>
-        <a href="mailto:yaaraelazari@gmail.com" class="clink primary">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          yaaraelazari@gmail.com
-        </a>
+      <div class="beyond-note">
+        <div class="beyond-note-text">Mother of two</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECT MODAL -->
+<!-- CONNECT -->
+<section id="connect">
+  <div class="wrap">
+    <div style="font-family:'DM Mono',monospace; font-size:2.2rem; color:var(--accent); margin-bottom:.5rem;">∞</div>
+    <div class="connect-heading">Let's talk.</div>
+    <div class="connect-links">
+      <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" class="connect-link">LinkedIn</a>
+      <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" class="connect-link">Instagram</a>
+      <a href="mailto:yaaraelazari@gmail.com" class="connect-link">Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
 <div class="proj-modal" id="projModal">
   <div class="proj-modal-panel">
-    <div class="modal-header">
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-hdr">
+      <button class="modal-close" id="modalClose">✕ close</button>
     </div>
     <div id="modalBody"></div>
   </div>
 </div>
 
-</main>
-
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <span class="footer-name">Yaara Shvadron</span>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="mailto:yaaraelazari@gmail.com">Email</a>
-      </div>
+      <span class="footer-logo">YS_</span>
       <span class="footer-copy">© 2026</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Prevent hash in URL from jumping on load
-  if (window.location.hash) {
-    history.replaceState(null, '', window.location.pathname);
-    window.scrollTo(0, 0);
-  }
-
-  document.getElementById('themeBtn').onclick = () => {
-    document.documentElement.dataset.theme =
-      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  };
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', scrollY > 40);
-  }, { passive: true });
-  const ham = document.getElementById('ham');
-  const mob = document.getElementById('mobMenu');
-  ham.onclick = () => { ham.classList.toggle('open'); mob.classList.toggle('open'); };
-  mob.querySelectorAll('a').forEach(a => a.onclick = () => { ham.classList.remove('open'); mob.classList.remove('open'); });
   function openModal(card) {
     const tpl = card.querySelector('.modal-tpl');
     if (!tpl) return;
@@ -906,10 +585,6 @@ This was an early signal of what I'd keep doing throughout my career: finding th
   document.getElementById('modalClose').onclick = closeModal;
   document.getElementById('projModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-  document.querySelectorAll('.r').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
