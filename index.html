@@ -252,12 +252,16 @@
         <div class="skill-row-items">AI Agent Development<span class="dot">·</span>RAG Architecture<span class="dot">·</span>AI Orchestration<span class="dot">·</span>Workflow Automation<span class="dot">·</span>Enterprise AI Deployment<span class="dot">·</span>Architecture</div>
       </div>
       <div class="skill-row">
+        <div class="skill-row-cat">Build</div>
+        <div class="skill-row-items">Vibe Coding<span class="dot">·</span>Prompt Engineering<span class="dot">·</span>Git &amp; GitHub<span class="dot">·</span>Markdown<span class="dot">·</span>HTML &amp; CSS<span class="dot">·</span>Claude Code</div>
+      </div>
+      <div class="skill-row">
         <div class="skill-row-cat">Leadership</div>
         <div class="skill-row-items">Customer Success Leadership<span class="dot">·</span>P&amp;L Ownership<span class="dot">·</span>Team Scaling<span class="dot">·</span>Executive Stakeholder Management<span class="dot">·</span>Organizational Design<span class="dot">·</span>Change Management<span class="dot">·</span>Product Plan Map</div>
       </div>
       <div class="skill-row">
         <div class="skill-row-cat">Platforms</div>
-        <div class="skill-row-items">Salesforce<span class="dot">·</span>Gainsight<span class="dot">·</span>Pendo<span class="dot">·</span>Zendesk<span class="dot">·</span>JIRA<span class="dot">·</span>Claude Code<span class="dot">·</span>Codex<span class="dot">·</span>Staircase AI</div>
+        <div class="skill-row-items">Salesforce<span class="dot">·</span>Gainsight<span class="dot">·</span>Pendo<span class="dot">·</span>Zendesk<span class="dot">·</span>JIRA<span class="dot">·</span>Staircase AI<span class="dot">·</span>AWS<span class="dot">·</span>ECS<span class="dot">·</span>S3<span class="dot">·</span>Nginx</div>
       </div>
       <div class="skill-row">
         <div class="skill-row-cat">Data &amp; Analytics</div>
@@ -487,6 +491,83 @@ Developed a tool to automate research and reporting tasks, reducing manual work 
 
 An early signal of what I'd keep doing: find the manual work, understand the system, build the fix.</p>
             <div class="modal-impact">75% reduction in manual work. Team of 3 supervised.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- CSM HUB -->
+      <div class="proj-card" onclick="openModal(this)" style="grid-column:1/-1;">
+        <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" class="proj-card-svg" style="aspect-ratio:480/160;">
+          <rect width="480" height="160" fill="#EEEAE2"/>
+          <!-- VPC boundary -->
+          <rect x="20" y="20" width="380" height="120" rx="6" fill="none" stroke="#1AA39A" stroke-width="1" stroke-dasharray="6,4" opacity=".5"/>
+          <text x="32" y="36" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A" opacity=".7">Corporate AWS · Private VPC</text>
+          <!-- S3 -->
+          <rect x="44" y="60" width="72" height="44" rx="4" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="80" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">S3</text>
+          <text x="80" y="93" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#B0ACA4">Static</text>
+          <!-- Arrow S3 → ECS -->
+          <line x1="116" y1="82" x2="144" y2="82" stroke="#1AA39A" stroke-width="1.5" opacity=".6"/>
+          <polygon points="144,78 152,82 144,86" fill="#1AA39A" opacity=".6"/>
+          <!-- ECS -->
+          <rect x="152" y="55" width="90" height="54" rx="4" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1"/>
+          <text x="197" y="78" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A">ECS</text>
+          <text x="197" y="91" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Nginx container</text>
+          <!-- Arrow ECS → ALB -->
+          <line x1="242" y1="82" x2="270" y2="82" stroke="#1AA39A" stroke-width="1.5" opacity=".6"/>
+          <polygon points="270,78 278,82 270,86" fill="#1AA39A" opacity=".6"/>
+          <!-- ALB -->
+          <rect x="278" y="60" width="72" height="44" rx="4" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="314" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">ALB</text>
+          <text x="314" y="93" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#B0ACA4">Load Balancer</text>
+          <!-- Arrow ALB → CS Team -->
+          <line x1="400" y1="82" x2="424" y2="82" stroke="#E0DAD0" stroke-width="1.5"/>
+          <polygon points="424,78 432,82 424,86" fill="#E0DAD0"/>
+          <!-- CS Team -->
+          <text x="448" y="79" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">CS</text>
+          <text x="448" y="90" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Team</text>
+        </svg>
+        <div class="proj-card-body">
+          <div class="proj-card-num">05</div>
+          <h3 class="proj-card-title">CSM AI Tools Hub</h3>
+          <p class="proj-card-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option — architected inside corporate AWS: ECS-hosted Nginx container, S3-backed static delivery, ALB for routing, all inside a private VPC.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Enterprise Infrastructure</span><span class="proj-card-tag">AWS</span><span class="proj-card-tag">Security</span></div>
+          <div class="proj-card-impact">From scattered AI prompts to a governed internal platform.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
+              <rect width="480" height="160" fill="#EEEAE2"/>
+              <rect x="20" y="20" width="380" height="120" rx="6" fill="none" stroke="#1AA39A" stroke-width="1" stroke-dasharray="6,4" opacity=".5"/>
+              <text x="32" y="36" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A" opacity=".7">Corporate AWS · Private VPC</text>
+              <rect x="44" y="60" width="72" height="44" rx="4" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="80" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">S3</text>
+              <text x="80" y="93" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#B0ACA4">Static content</text>
+              <line x1="116" y1="82" x2="144" y2="82" stroke="#1AA39A" stroke-width="1.5" opacity=".6"/>
+              <polygon points="144,78 152,82 144,86" fill="#1AA39A" opacity=".6"/>
+              <rect x="152" y="55" width="90" height="54" rx="4" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1"/>
+              <text x="197" y="78" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A">ECS / Nginx</text>
+              <text x="197" y="91" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Container</text>
+              <line x1="242" y1="82" x2="270" y2="82" stroke="#1AA39A" stroke-width="1.5" opacity=".6"/>
+              <polygon points="270,78 278,82 270,86" fill="#1AA39A" opacity=".6"/>
+              <rect x="278" y="60" width="72" height="44" rx="4" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="314" y="80" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#7A7060">ALB</text>
+              <text x="314" y="93" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#B0ACA4">Load Balancer</text>
+              <line x1="400" y1="82" x2="430" y2="82" stroke="#E0DAD0" stroke-width="1.5"/>
+              <polygon points="430,78 438,82 430,86" fill="#E0DAD0"/>
+              <text x="454" y="79" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">CS Team</text>
+            </svg>
+          </div>
+          <div class="modal-body">
+            <div class="modal-mono">05 // Enterprise Infrastructure</div>
+            <div class="modal-tags"><span class="modal-tag">AWS</span><span class="modal-tag">ECS</span><span class="modal-tag">S3</span><span class="modal-tag">Security &amp; Compliance</span></div>
+            <h2 class="modal-title">CSM AI Tools Hub</h2>
+            <p class="modal-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option — so we architected it inside the corporate AWS environment.
+
+Stack: ECS-hosted Nginx container serving the application, static content delivered from a connected S3 bucket, fronted by an Application Load Balancer, hosted inside a private VPC/subnet in the corporate AWS account.
+
+The result: scattered AI experiments became a governed, centralized team resource — with enterprise-grade security baked in from day one.</p>
+            <div class="modal-impact">From scattered AI prompts to a governed internal platform.</div>
           </div>
         </template>
       </div>
