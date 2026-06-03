@@ -572,6 +572,83 @@ The result: scattered AI experiments became a governed, centralized team resourc
         </template>
       </div>
 
+      <!-- LEADERSHIP DASHBOARD -->
+      <div class="proj-card" onclick="openModal(this)" style="grid-column:1/-1;">
+        <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" class="proj-card-svg" style="aspect-ratio:480/160;">
+          <rect width="480" height="160" fill="#EEEAE2"/>
+          <!-- Data sources -->
+          <rect x="24" y="44" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="62" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 1</text>
+          <rect x="24" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="62" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 2</text>
+          <rect x="24" y="132" width="76" height="0" rx="3" fill="none"/>
+          <!-- more sources implied -->
+          <text x="62" y="134" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#C0BCB4">···</text>
+          <!-- Arrows into dashboard -->
+          <line x1="100" y1="60" x2="168" y2="80" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
+          <line x1="100" y1="104" x2="168" y2="88" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
+          <polygon points="165,76 173,80 165,84" fill="#1AA39A" opacity=".5"/>
+          <polygon points="165,84 173,88 165,92" fill="#1AA39A" opacity=".5"/>
+          <!-- Dashboard -->
+          <rect x="172" y="48" width="136" height="64" rx="5" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1.5"/>
+          <text x="240" y="75" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Leadership</text>
+          <text x="240" y="89" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Dashboard</text>
+          <!-- Arrow to audience -->
+          <line x1="308" y1="80" x2="352" y2="64" stroke="#E0DAD0" stroke-width="1.5"/>
+          <line x1="308" y1="80" x2="352" y2="96" stroke="#E0DAD0" stroke-width="1.5"/>
+          <polygon points="349,60 357,64 349,68" fill="#E0DAD0"/>
+          <polygon points="349,92 357,96 349,100" fill="#E0DAD0"/>
+          <!-- Audience -->
+          <rect x="356" y="48" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="394" y="68" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Manager</text>
+          <rect x="356" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+          <text x="394" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">ELT</text>
+        </svg>
+        <div class="proj-card-body">
+          <div class="proj-card-num">06</div>
+          <h3 class="proj-card-title">Leadership Dashboard</h3>
+          <p class="proj-card-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Pulls everything into one place — giving my manager and the ELT a live, consolidated view without anyone having to chase it.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Data Integration</span><span class="proj-card-tag">Leadership</span><span class="proj-card-tag">Reporting</span></div>
+          <div class="proj-card-impact">Weekly syncs eliminated. Single source of truth for ELT.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
+              <rect width="480" height="160" fill="#EEEAE2"/>
+              <rect x="24" y="44" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="62" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 1</text>
+              <rect x="24" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="62" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 2</text>
+              <text x="62" y="134" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#C0BCB4">···</text>
+              <line x1="100" y1="60" x2="168" y2="80" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
+              <line x1="100" y1="104" x2="168" y2="88" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
+              <polygon points="165,76 173,80 165,84" fill="#1AA39A" opacity=".5"/>
+              <polygon points="165,84 173,88 165,92" fill="#1AA39A" opacity=".5"/>
+              <rect x="172" y="48" width="136" height="64" rx="5" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1.5"/>
+              <text x="240" y="75" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Leadership</text>
+              <text x="240" y="89" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Dashboard</text>
+              <line x1="308" y1="80" x2="352" y2="64" stroke="#E0DAD0" stroke-width="1.5"/>
+              <line x1="308" y1="80" x2="352" y2="96" stroke="#E0DAD0" stroke-width="1.5"/>
+              <polygon points="349,60 357,64 349,68" fill="#E0DAD0"/>
+              <polygon points="349,92 357,96 349,100" fill="#E0DAD0"/>
+              <rect x="356" y="48" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="394" y="68" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Manager</text>
+              <rect x="356" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
+              <text x="394" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">ELT</text>
+            </svg>
+          </div>
+          <div class="modal-body">
+            <div class="modal-mono">06 // Data Integration · Leadership</div>
+            <div class="modal-tags"><span class="modal-tag">Data Integration</span><span class="modal-tag">Reporting</span><span class="modal-tag">Leadership</span></div>
+            <h2 class="modal-title">Leadership Dashboard</h2>
+            <p class="modal-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Instead of chasing updates across systems, everything flows into one consolidated view — giving leadership what they need without anyone having to pull it together manually.
+
+Audience: direct manager and Executive Leadership Team. More details coming.</p>
+            <div class="modal-impact">Weekly syncs eliminated. Single source of truth for ELT.</div>
+          </div>
+        </template>
+      </div>
+
     </div><!-- /proj-grid work -->
 
     <div class="proj-sep" style="margin-top:2.5rem;">Personal</div>
