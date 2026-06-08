@@ -90,8 +90,8 @@
       display: flex; align-items: center; gap: .75rem;
     }
     .currently-label {
-      font-family: 'DM Mono', monospace; font-size: .62rem;
-      color: var(--accent); letter-spacing: .12em; text-transform: uppercase;
+      font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 600;
+      color: #FFFFFF; letter-spacing: .12em; text-transform: uppercase;
       flex-shrink: 0;
     }
     .currently-dot {
@@ -104,7 +104,7 @@
       50% { opacity: .4; }
     }
     .currently-text {
-      font-size: .78rem; color: rgba(250,250,248,.75);
+      font-size: .78rem; color: rgba(250,250,248,.9);
       font-weight: 400;
     }
     @media(max-width:639px){ .currently-text { font-size: .72rem; } }
@@ -195,29 +195,31 @@
     .focus-label { font-family: 'DM Mono', monospace; font-size: .62rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
     .focus-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
 
-    /* TIMELINE — vertical with line + dots */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: ''; position: absolute; left: .5rem; top: .4rem; bottom: .4rem;
-      width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent);
+    /* TIMELINE */
+    .timeline { }
+    .tl-dot { display: none; }
+    .tl-item {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: 1.25rem; padding: 1rem 0;
+      border-top: 1px solid var(--border); align-items: start;
     }
-    .tl-item { position: relative; margin-bottom: 1.15rem; }
-    .tl-dot {
-      position: absolute; left: calc(-2rem + .5rem); top: .42rem;
+    .tl-item:last-child { border-bottom: 1px solid var(--border); }
+    .tl-logo-col {
+      display: flex; align-items: flex-start; justify-content: center;
+      padding-top: .2rem;
+    }
+    .tl-logo {
+      width: 52px; height: auto; max-height: 32px;
+      object-fit: contain; display: block;
+    }
+    .tl-no-logo {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); transform: translateX(-50%);
+      background: var(--accent); margin-top: .4rem; flex-shrink: 0;
     }
     .tl-period {
       font-family: 'DM Mono', monospace; font-size: .58rem;
       color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
       margin-bottom: .12rem;
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .tl-logo {
-      height: 16px; width: auto; max-width: 52px;
-      object-fit: contain; display: inline-block;
-      opacity: .75; filter: grayscale(15%);
-      flex-shrink: 0;
     }
     .tl-event { font-size: .82rem; font-weight: 600; line-height: 1.35; }
     .tl-event span {
@@ -408,6 +410,85 @@
       font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted);
     }
     .modal-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+    /* ===== MOBILE ===== */
+    @media(max-width:767px) {
+      /* Nav */
+      .nav-inner { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+
+      /* Currently bar */
+      .currently-inner { padding: 0 1.25rem; gap: .5rem; }
+      .currently-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 55vw; }
+
+      /* Hero: portrait as a circle, text below */
+      #hero { padding: 5.5rem 0 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 1.75rem; align-items: start; }
+      .portrait-side { order: -1; justify-content: flex-start; }
+      .portrait-box { width: 120px; }
+      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 50%; object-position: top center; }
+      .hero-left { padding-bottom: 2.5rem; max-width: 100%; }
+      h1.name { font-size: clamp(2.2rem, 9vw, 3rem); }
+
+      /* About focus block: stack label + desc */
+      .focus-item { grid-template-columns: 1fr; gap: .2rem; }
+      .focus-label { margin-bottom: .1rem; }
+
+      /* Stats */
+      .stats-row { gap: 2.25rem; }
+
+      /* Projects */
+      .proj-grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media(max-width:639px) {
+      /* Sections: tighter vertical rhythm */
+      .sec-hdr { padding: 1.75rem 0 .9rem; }
+      #about { padding-bottom: 1.75rem; }
+      #skills { padding-bottom: 1.75rem; }
+      #projects { padding-bottom: 1.75rem; }
+      #beyond { padding-bottom: 2rem; }
+
+      /* Currently bar: shorten text */
+      .currently-text { max-width: 48vw; font-size: .7rem; }
+
+      /* Hero */
+      #hero { padding: 5rem 0 0; }
+      h1.name { font-size: 2.2rem; }
+      .hero-tagline { font-size: .88rem; }
+      .hero-left { padding-bottom: 1.5rem; }
+
+      /* Stats */
+      .stat-num { font-size: 1.6rem; }
+
+      /* Skills: single col */
+      .skill-row { grid-template-columns: 1fr; gap: .35rem; }
+
+      /* Projects: single col */
+      .proj-grid-2 { grid-template-columns: 1fr; gap: 1rem; }
+      .proj-grid-3 { grid-template-columns: 1fr; }
+
+      /* Timeline: tighter */
+      .tl-item { grid-template-columns: 48px 1fr; gap: .75rem; padding: .75rem 0; }
+      .tl-logo { width: 36px; max-height: 24px; }
+
+      /* Modal: bottom sheet */
+      .proj-modal { align-items: flex-end; padding: 0; }
+      .proj-modal-panel {
+        max-width: 100%; max-height: 88vh;
+        border-radius: 14px 14px 0 0;
+        transform: translateY(40px) scale(1);
+      }
+      .proj-modal.open .proj-modal-panel { transform: none; }
+      .modal-imgs.two { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: .4rem; text-align: center; }
+
+      /* Connect */
+      #connect { padding: 2rem 0 1.5rem; }
+      .connect-heading { font-size: 1.25rem; }
+    }
   </style>
 </head>
 <body>
@@ -488,7 +569,7 @@
       </div>
     </div>
     <p class="about-bio"><strong>Building. Leading. Repeat.</strong> AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-    <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, at home in Toronto.</p>
+    <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy.</p>
     <div class="focus-block">
       <div class="focus-item">
         <span class="focus-label">AI Roadmap</span>
@@ -505,34 +586,28 @@
     </div>
     <div class="timeline">
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">2025 · Present <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div class="tl-event">Senior Manager, Customer Success · JAGGAER<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div>
+          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div><div class="tl-period">2025 · Present</div><div class="tl-event">Senior Manager, Customer Success · JAGGAER<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div></div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">2023 · 2025 <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div class="tl-event">Head of Customer Success, North America · JAGGAER<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div>
+          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div><div class="tl-period">2023 · 2025</div><div class="tl-event">Head of Customer Success, North America · JAGGAER<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div></div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">2021 · 2023 <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div class="tl-event">Customer Success Manager · JAGGAER<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div>
+          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div><div class="tl-period">2021 · 2023</div><div class="tl-event">Customer Success Manager · JAGGAER<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div></div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">2019 · 2021 <img class="tl-logo" src="https://logo.clearbit.com/fastsimoncorp.com" alt="Fast Simon" onerror="this.style.display='none'" /></div>
-          <div class="tl-event">Lead CSM · Fast Simon<span>Built post sales from zero · 100+ accounts · Initiated Klaviyo enterprise partnership</span></div>
+          <div class="tl-logo-col"><img class="tl-logo" src="images/fast-simon-logo.png" alt="Fast Simon" onerror="this.style.display='none'" /></div>
+          <div><div class="tl-period">2019 · 2021</div><div class="tl-event">Lead CSM · Fast Simon<span>Built post sales from zero · 100+ accounts · Initiated Klaviyo enterprise partnership</span></div></div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">2012 · 2015 <img class="tl-logo" src="https://logo.clearbit.com/mfa.gov.il" alt="MFA" onerror="this.style.display='none'" /></div>
-          <div class="tl-event">Research Assistant · Ministry of Foreign Affairs<span>Israel · Jerusalem · Proposed &amp; built automated document intelligence system · still in use today</span></div>
+          <div class="tl-logo-col"><img class="tl-logo" src="images/mfa-logo.jpg" alt="MFA" onerror="this.style.display='none'" /></div>
+          <div><div class="tl-period">2012 · 2015</div><div class="tl-event">Research Assistant · Ministry of Foreign Affairs<span>Israel · Jerusalem · Proposed &amp; built automated document intelligence system · still in use today</span></div></div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-period">Education</div>
-          <div class="tl-event">MA International Security · Hebrew University<span>BA International Relations · BA Music Education, Flute · Jerusalem Academy, Excellence</span></div>
+          <div class="tl-logo-col"><span class="tl-no-logo"></span></div>
+          <div><div class="tl-period">Education</div><div class="tl-event">MA International Security · Hebrew University<span>BA International Relations · BA Music Education, Flute · Jerusalem Academy, Excellence</span></div></div>
         </div>
       </div>
   </div>
