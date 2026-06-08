@@ -1,200 +1,471 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yaara Shvadron</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Caveat:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #F6F4EF; --fg: #141210; --muted: #7A7060;
-      --accent: #1AA39A; --accent-dim: rgba(26,163,154,0.09);
-      --border: #E0DAD0; --card: #FFFFFF; --bg-alt: #EEEAE2;
+      --bg: #FFFFFF;
+      --bg-alt: #F4F2EE;
+      --fg: #0F0E0D;
+      --muted: #6B6460;
+      --muted-lt: #9C9890;
+      --accent: #B5325E;
+      --accent-dim: rgba(181,50,94,.07);
+      --border: #E8E4DC;
+      --card: #FAFAF8;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Space Grotesk', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse 55% 35% at 2% 4%,  rgba(181,50,94,.09)  0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 96% 8%,  rgba(210,160,100,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 92% 92%, rgba(181,50,94,.07)  0%, transparent 60%),
+        radial-gradient(ellipse 60% 35% at 8%  88%, rgba(160,130,200,.06) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,248,244,.6)  0%, transparent 80%),
+        #FFFFFF;
+      background-attachment: fixed;
+      color: var(--fg);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
     /* LAYOUT */
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 4rem; }
+    @media(max-width:1199px){ .wrap { padding: 0 2.5rem; } }
     @media(max-width:639px){ .wrap { padding: 0 1.25rem; } }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 0; background: rgba(246,244,239,.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding .3s; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'DM Mono', monospace; font-size: .9rem; color: var(--accent); letter-spacing: .05em; }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; transition: color .2s; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links .nav-text-link { display: inline; }
-    @media(max-width:767px){ .nav-links .nav-text-link { display: none; } }
-
-    /* SECTION COUNTER */
-    .sec-counter { font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--accent); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .85rem; }
-    .sec-counter::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); flex-shrink: 0; }
-    .sec-counter span { color: var(--border); }
-
-    /* HERO */
-    #hero { display: flex; align-items: center; padding: 5.5rem 0 3rem; position: relative; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    @media(max-width:1023px){ .hero-grid { grid-template-columns: 1fr; } }
-    h1.name { font-size: clamp(3.5rem,6vw,5.5rem); font-weight: 700; line-height: .92; letter-spacing: -.03em; margin-bottom: 1.5rem; }
-    .name-first { display: block; color: var(--fg); }
-    .name-last { display: block; color: var(--accent); }
-    .hero-role { font-family: 'DM Mono', monospace; font-size: .82rem; color: var(--muted); letter-spacing: .06em; margin-bottom: 1.5rem; }
-    .hero-tagline { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 38rem; margin-bottom: 2.5rem; }
-    @media(max-width:639px){ .hero-tagline { font-size: .9rem; max-width: 100%; } }
-    .hero-cta { display: inline-flex; align-items: center; gap: .6rem; font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); border: 1px solid var(--accent); padding: .75rem 1.5rem; border-radius: 4px; transition: background .2s; }
-    .hero-cta:hover { background: var(--accent-dim); }
-    .portrait-side { display: flex; justify-content: center; }
-    .portrait-box { width: 26rem; position: relative; }
-    .portrait-box img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; -webkit-mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); mask-image: radial-gradient(ellipse 85% 88% at 50% 45%, black 55%, transparent 100%); }
-    @media(max-width:1023px){
-      .portrait-side { order: -1; margin-bottom: 1.25rem; }
-      .portrait-box { width: 6rem; }
-      .portrait-box img { aspect-ratio: 1/1; border-radius: 4px; -webkit-mask-image: none; mask-image: none; object-fit: cover; object-position: top; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.82); backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(232,228,220,.4);
+    }
+    .nav-inner {
+      max-width: 1440px; margin: 0 auto; padding: 0 4rem;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    /* Icon mark */
+    .nav-mark {
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .nav-mark svg { display: block; }
+    .nav-mark-label {
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+    }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-links a {
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+      transition: color .18s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-links .nav-cv {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; color: var(--accent);
+      border: 1px solid rgba(181,50,94,.4); padding: .22rem .65rem; border-radius: 3px;
+      transition: background .18s;
+    }
+    .nav-links .nav-cv:hover { background: var(--accent-dim); }
+    .nav-icon { display: flex; align-items: center; color: var(--muted-lt); transition: color .18s; }
+    .nav-icon:hover { color: var(--fg); }
+    @media(max-width:767px){
+      .nav-links .nav-hide { display: none; }
     }
 
-    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+    /* CURRENTLY BAR */
+    .currently-bar {
+      position: fixed; top: 52px; left: 0; right: 0; z-index: 99;
+      background: var(--fg); padding: .45rem 0;
+    }
+    .currently-inner {
+      max-width: 1440px; margin: 0 auto; padding: 0 4rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .currently-label {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--accent); letter-spacing: .12em; text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .currently-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+    .currently-text {
+      font-size: .78rem; color: rgba(250,250,248,.75);
+      font-weight: 400;
+    }
+    @media(max-width:639px){ .currently-text { font-size: .72rem; } }
+
+    /* HERO */
+    #hero {
+      padding: 8rem 0 0;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 4rem; align-items: end;
+    }
+    @media(max-width:767px){
+      .hero-grid { grid-template-columns: 1fr; }
+      .portrait-side { order: -1; }
+    }
+    .hero-left { max-width: 520px; padding-bottom: 3.5rem; align-self: center; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted-lt); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    h1.name {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700; line-height: .95; letter-spacing: -.035em;
+      margin-bottom: 1.25rem;
+    }
+    .name-first { display: block; color: var(--fg); }
+    .name-last { display: block; color: var(--accent); }
+    .hero-tagline {
+      font-size: .97rem; font-weight: 400;
+      color: var(--muted); line-height: 1.75;
+      margin-bottom: 2rem; max-width: 460px;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .78rem; font-weight: 500;
+      color: var(--fg); border-bottom: 1.5px solid var(--fg);
+      padding-bottom: 1px;
+      transition: color .18s, border-color .18s;
+    }
+    .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* Portrait */
+    .portrait-side { display: flex; align-items: flex-end; }
+    .portrait-box { width: 360px; position: relative; }
+    .portrait-box img {
+      width: 100%; height: 520px; aspect-ratio: unset;
+      object-fit: cover; object-position: top center;
+      display: block;
+      border-radius: 6px 6px 0 0;
+    }
+    @media(max-width:767px){
+      .portrait-box { width: 80px; }
+      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 50%; -webkit-mask-image: none; mask-image: none; }
+    }
+
+    hr.divider { display: none; }
+
+    /* SECTION HEADER */
+    .sec-hdr {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--muted-lt); letter-spacing: .2em; text-transform: uppercase;
+      padding: 2.5rem 0 1.25rem;
+    }
 
     /* ABOUT */
-    #about { padding: 2rem 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
-    @media(max-width:639px){ .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-    .stat-box { background: var(--card); padding: 1.5rem; }
-    .stat-num { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: .3rem; letter-spacing: -.02em; }
-    .stat-lbl { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .1em; }
-    .about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    @media(max-width:767px){ .about-cols { grid-template-columns: 1fr; } }
-    .about-bio { font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: .85rem; }
+    #about { padding-bottom: 2.5rem; }
+    .stats-row {
+      display: flex; gap: 3.5rem; margin-bottom: 2.25rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {}
+    .stat-num {
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--fg); line-height: 1; margin-bottom: .2rem;
+      letter-spacing: -.03em;
+    }
+    .stat-lbl {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--muted-lt); letter-spacing: .08em;
+    }
+    .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
+    .focus-block { margin: 1.75rem 0 2.5rem; }
+    .focus-item { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; padding: .85rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .focus-item:last-child { border-bottom: 1px solid var(--border); }
+    .focus-label { font-family: 'DM Mono', monospace; font-size: .62rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+    .focus-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
 
-    /* TIMELINE */
-    .timeline { position: relative; padding-left: 2.25rem; }
-    .timeline::before { content: ''; position: absolute; left: .6rem; top: .35rem; bottom: .35rem; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent); }
-    .tl-item { position: relative; margin-bottom: 1.35rem; }
-    .tl-dot { position: absolute; left: calc(-2.25rem + .6rem); top: .42rem; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); transform: translateX(-50%); }
-    .tl-period { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); letter-spacing: .15em; text-transform: uppercase; margin-bottom: .12rem; }
-    .tl-event { font-size: .87rem; font-weight: 600; line-height: 1.35; }
-    .tl-event span { display: block; font-size: .77rem; color: var(--muted); font-weight: 400; margin-top: .12rem; line-height: 1.5; }
+    /* TIMELINE — vertical with line + dots */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: .5rem; top: .4rem; bottom: .4rem;
+      width: 1px; background: linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 1.15rem; }
+    .tl-dot {
+      position: absolute; left: calc(-2rem + .5rem); top: .42rem;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); transform: translateX(-50%);
+    }
+    .tl-period {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: .12rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .tl-logo {
+      height: 16px; width: auto; max-width: 52px;
+      object-fit: contain; display: inline-block;
+      opacity: .75; filter: grayscale(15%);
+      flex-shrink: 0;
+    }
+    .tl-event { font-size: .82rem; font-weight: 600; line-height: 1.35; }
+    .tl-event span {
+      display: block; font-size: .76rem; color: var(--muted);
+      font-weight: 400; margin-top: .1rem; line-height: 1.5;
+    }
+
+    /* full-width span inside proj grid */
+    .proj-grid-full { grid-column: 1 / -1; }
 
     /* SKILLS */
-    #skills { padding: 2rem 0; background: var(--bg-alt); }
+    #skills { padding-bottom: 2.5rem; }
     .skill-table { display: flex; flex-direction: column; }
-    .skill-row { display: grid; grid-template-columns: 10rem 1fr; gap: 2.5rem; padding: 1.1rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .skill-row {
+      display: grid; grid-template-columns: 9rem 1fr;
+      gap: 2rem; padding: 1rem 0;
+      border-top: 1px solid var(--border); align-items: start;
+    }
     .skill-row:last-child { border-bottom: 1px solid var(--border); }
-    @media(max-width:639px){ .skill-row { grid-template-columns: 1fr; gap: .3rem; } }
-    .skill-row-cat { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; padding-top: .1rem; }
-    .skill-row:first-child .skill-row-cat { color: var(--accent); }
-    .skill-row-items { font-size: .88rem; color: var(--fg); line-height: 1.8; }
-    .skill-row-items .dot { color: var(--accent); margin: 0 .45rem; font-size: .75rem; opacity: .7; }
+    @media(max-width:639px){ .skill-row { grid-template-columns: 1fr; gap: .35rem; } }
+    .skill-row-cat {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 600; color: var(--fg);
+      letter-spacing: -.01em; padding-top: .2rem;
+    }
+    .skill-row-cat svg { color: var(--accent); flex-shrink: 0; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: .32rem; }
+    .skill-chip {
+      font-size: .75rem; color: var(--muted);
+      background: var(--bg-alt); border: 1px solid var(--border);
+      padding: .22rem .6rem; border-radius: 3px; line-height: 1.35;
+    }
 
     /* PROJECTS */
-    #projects { padding: 2rem 0 1rem; }
-    .proj-sep { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; margin-top: 2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); display: flex; gap: .6rem; }
-    .proj-sep::before { content: '//'; color: var(--border); }
+    #projects { padding-bottom: 2.5rem; }
+    .proj-sep {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--muted-lt); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .85rem; margin-top: 1.75rem; padding-bottom: .45rem;
+      border-bottom: 1px solid var(--border);
+    }
     .proj-sep:first-of-type { margin-top: 0; }
-    .proj-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+
+    .proj-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .proj-grid-3 { grid-template-columns: repeat(3, 1fr); }
     @media(max-width:1023px){ .proj-grid-3 { grid-template-columns: repeat(2, 1fr); } }
-    @media(max-width:639px){ .proj-grid-2 { grid-template-columns: 1fr; gap: 1.25rem; } }
-    .proj-card { background: transparent; display: flex; flex-direction: column; }
-    .proj-card[onclick] { cursor: pointer; }
-    .proj-card[onclick]:hover .proj-card-img { opacity: .82; transform: scale(1.015); }
-    .proj-card-img-wrap { overflow: hidden; border-radius: 10px; margin-bottom: .75rem; }
-    .proj-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: opacity .25s, transform .3s ease; }
-    .proj-card-svg { width: 100%; display: block; background: var(--bg-alt); aspect-ratio: 16/9; border-radius: 10px; margin-bottom: .75rem; }
-    .proj-card-body { flex: 1; display: flex; flex-direction: column; }
-    .proj-card-num { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); margin-bottom: .5rem; }
-    .proj-card-title { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; letter-spacing: -.01em; transition: color .2s; }
-    .proj-card[onclick]:hover .proj-card-title { color: var(--accent); }
-    .proj-card-desc { font-size: .83rem; color: var(--muted); line-height: 1.6; margin-bottom: .65rem; flex: 1; }
-    .proj-card-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .65rem; }
-    .proj-card-tag { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); border: 1px solid rgba(26,163,154,.3); padding: .18rem .5rem; border-radius: 2px; }
-    .proj-card-impact { font-family: 'DM Mono', monospace; font-size: .72rem; padding: .35rem 0 .35rem .6rem; margin-bottom: .6rem; border-left: 2px solid var(--accent); color: var(--muted); }
-    .proj-view { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); margin-top: auto; }
-    .proj-link-row { display: flex; flex-direction: column; gap: .35rem; margin-top: auto; }
-    .proj-ext-link { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--accent); display: inline-flex; align-items: center; gap: .3rem; }
+    @media(max-width:639px){ .proj-grid-2 { grid-template-columns: 1fr; gap: 1rem; } }
 
-    /* BEYOND WORK */
-    #beyond { padding: 1rem 0; }
-    .beyond-notes { display: flex; gap: 5rem; flex-wrap: wrap; }
-    .beyond-note { flex: 1; min-width: 180px; }
-    .beyond-note-label { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--muted); letter-spacing: .15em; text-transform: uppercase; margin-bottom: .75rem; }
-    .beyond-note-text { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--fg); line-height: 1.75; }
-    .beyond-note-text a { color: inherit; text-decoration: none; }
-    .beyond-note-text a::after { content: ' ↗'; font-family: 'DM Mono', monospace; font-size: .7em; color: var(--accent); vertical-align: super; }
+    .proj-card { display: flex; flex-direction: column; background: transparent; }
+    .proj-card[onclick] { cursor: pointer; }
+    .proj-card[onclick]:hover .proj-card-img { opacity: .82; transform: scale(1.012); }
+    .proj-card[onclick]:hover .proj-card-title { color: var(--accent); }
+
+    .proj-card-img-wrap { overflow: hidden; border-radius: 6px; margin-bottom: .6rem; }
+    .proj-card-img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+      transition: opacity .22s, transform .28s ease;
+    }
+
+    .proj-card-body { flex: 1; display: flex; flex-direction: column; }
+    .proj-card-num {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--muted-lt); margin-bottom: .3rem;
+    }
+    .proj-card-title {
+      font-size: .9rem; font-weight: 600; margin-bottom: .3rem;
+      letter-spacing: -.01em; line-height: 1.35; transition: color .18s;
+    }
+    .proj-card-desc { font-size: .8rem; color: var(--muted); line-height: 1.65; margin-bottom: .5rem; flex: 1; }
+    .proj-card-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .5rem; }
+    .proj-card-tag {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--muted); border: 1px solid var(--border);
+      padding: .15rem .45rem; border-radius: 2px;
+    }
+    .proj-card-impact {
+      font-family: 'DM Mono', monospace; font-size: .67rem;
+      padding: .3rem 0 .3rem .5rem; border-left: 1.5px solid var(--accent);
+      color: var(--muted); margin-bottom: .5rem;
+    }
+    .proj-view { font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--accent); margin-top: auto; }
+    .proj-link-row { display: flex; flex-direction: column; gap: .3rem; margin-top: auto; }
+    .proj-ext-link {
+      font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+
+    /* BEYOND */
+    #beyond { padding-bottom: 3rem; }
+    .beyond-text {
+      font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem;
+    }
+    .beyond-text a { color: var(--accent); }
+    .beyond-text a:hover { text-decoration: underline; }
 
     /* CONNECT */
-    #connect { padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; }
-    .connect-heading { font-family: 'Caveat', cursive; font-size: 2.4rem; color: var(--fg); margin-bottom: .35rem; font-weight: 600; }
-    .connect-sub { font-size: .83rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
-    .connect-links { display: flex; justify-content: center; gap: 2rem; }
-    .connect-link { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--accent); border-bottom: 1px solid rgba(26,163,154,.3); padding-bottom: 2px; transition: border-color .2s, color .2s; }
-    .connect-link:hover { border-color: var(--accent); color: var(--fg); }
+    #connect {
+      padding: 2.5rem 0 2rem;
+    }
+    .connect-heading {
+      font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+    }
+    .connect-email {
+      font-family: 'DM Mono', monospace; font-size: .88rem;
+      color: var(--fg);
+    }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
+    footer { padding: 1.25rem 0; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo { font-family: 'DM Mono', monospace; font-size: .82rem; color: var(--accent); }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--border); }
+    .footer-mark {
+      font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted-lt);
+    }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--border); }
 
     /* MODAL */
-    .proj-modal { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .proj-modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.4); display: flex;
+      align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
     .proj-modal.open { opacity: 1; pointer-events: all; }
-    .proj-modal-panel { width: 100%; max-width: 780px; max-height: 88vh; background: var(--card); border: 1px solid var(--border); border-radius: 8px; border-top: 3px solid var(--accent); overflow-y: auto; transform: translateY(20px) scale(.97); transition: transform .35s cubic-bezier(.25,.46,.45,.94); }
+    .proj-modal-panel {
+      width: 100%; max-width: 740px; max-height: 88vh;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; border-top: 2px solid var(--accent);
+      overflow-y: auto;
+      transform: translateY(16px) scale(.98);
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+    }
     .proj-modal.open .proj-modal-panel { transform: none; }
-    .modal-hdr { position: sticky; top: 0; display: flex; justify-content: flex-end; padding: .85rem; background: var(--card); border-bottom: 1px solid var(--border); z-index: 5; }
-    .modal-close { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); border: 1px solid var(--border); background: var(--bg); padding: .3rem .7rem; border-radius: 3px; cursor: pointer; transition: color .2s, border-color .2s; }
+    .modal-hdr {
+      position: sticky; top: 0;
+      display: flex; justify-content: flex-end;
+      padding: .65rem .85rem;
+      background: var(--card); border-bottom: 1px solid var(--border); z-index: 5;
+    }
+    .modal-close {
+      font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--muted);
+      border: 1px solid var(--border); background: var(--bg);
+      padding: .25rem .6rem; border-radius: 2px;
+      cursor: pointer; transition: color .18s, border-color .18s;
+    }
     .modal-close:hover { color: var(--accent); border-color: var(--accent); }
-    .modal-imgs { padding: 1.25rem 1.25rem 0; display: grid; gap: .65rem; }
+    .modal-imgs { padding: 1rem 1rem 0; display: grid; gap: .5rem; }
     .modal-imgs.two { grid-template-columns: 1fr 1fr; }
     @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } }
     .modal-img { width: 100%; border-radius: 4px; object-fit: cover; display: block; background: var(--bg-alt); }
-    .modal-body { padding: 1.5rem; }
-    .modal-mono { font-family: 'DM Mono', monospace; font-size: .62rem; color: var(--accent); letter-spacing: .15em; margin-bottom: .5rem; }
-    .modal-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .85rem; }
-    .modal-tag { font-family: 'DM Mono', monospace; font-size: .63rem; color: var(--accent); border: 1px solid rgba(26,163,154,.3); padding: .18rem .5rem; border-radius: 2px; }
-    .modal-title { font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .85rem; }
-    .modal-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; white-space: pre-line; }
-    .modal-impact { display: flex; gap: .5rem; padding: .6rem .85rem; background: var(--bg-alt); border-left: 2px solid var(--accent); font-family: 'DM Mono', monospace; font-size: .73rem; color: var(--muted); }
+    .modal-stack {
+      display: flex; align-items: center; flex-wrap: wrap; gap: .3rem;
+      padding: .7rem 1.25rem; background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-stack-label {
+      font-family: 'DM Mono', monospace; font-size: .56rem;
+      color: var(--muted-lt); letter-spacing: .14em; text-transform: uppercase;
+      margin-right: .2rem; flex-shrink: 0;
+    }
+    .modal-stack-pill {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--fg); background: var(--card);
+      border: 1px solid var(--border); padding: .14rem .45rem; border-radius: 2px;
+    }
+    .modal-body { padding: 1.25rem; }
+    .modal-mono {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--accent); letter-spacing: .14em; margin-bottom: .45rem;
+    }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .75rem; }
+    .modal-tag {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--muted); border: 1px solid var(--border);
+      padding: .14rem .45rem; border-radius: 2px;
+    }
+    .modal-title {
+      font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .75rem;
+    }
+    .modal-desc {
+      font-size: .85rem; color: var(--muted); line-height: 1.8;
+      margin-bottom: .9rem; white-space: pre-line;
+    }
+    .modal-impact {
+      display: flex; gap: .45rem;
+      padding: .55rem .75rem; background: var(--bg-alt);
+      border-left: 1.5px solid var(--accent);
+      font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted);
+    }
     .modal-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
-    .modal-stack { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem; padding: .85rem 1.5rem; background: var(--bg-alt); border-bottom: 1px solid var(--border); }
-    .modal-stack-label { font-family: 'DM Mono', monospace; font-size: .58rem; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; margin-right: .25rem; flex-shrink: 0; }
-    .modal-stack-pill { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--fg); background: var(--card); border: 1px solid var(--border); padding: .18rem .5rem; border-radius: 2px; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <span class="nav-logo">Yaara Shvadron</span>
+    <div class="nav-mark">
+      <span class="nav-mark-label">Yaara Shvadron</span>
+    </div>
     <div class="nav-links">
-      <a href="#about" class="nav-text-link">About</a>
-      <a href="#skills" class="nav-text-link">Skills</a>
-      <a href="#projects" class="nav-text-link">Projects</a>
-      <a href="#connect" class="nav-text-link">Connect</a>
-      <a href="public/Yaara Shvadron 2026.pdf" target="_blank" style="color:var(--accent);border:1px solid var(--accent);padding:.25rem .6rem;border-radius:3px;">CV</a>
+      <a href="#about" class="nav-hide">About</a>
+      <a href="#skills" class="nav-hide">Skills</a>
+      <a href="#projects" class="nav-hide">Projects</a>
+      <a href="#connect" class="nav-hide">Contact</a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener" class="nav-icon nav-hide" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener" class="nav-icon nav-hide" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <!-- SoundCloud -->
+      <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener" class="nav-icon nav-hide" title="SoundCloud">
+        <svg width="18" height="16" viewBox="0 0 24 16" fill="currentColor"><path d="M1.543 10.5C.69 10.5 0 11.19 0 12.043c0 .854.69 1.543 1.543 1.543.853 0 1.543-.69 1.543-1.543V8.414A1.54 1.54 0 0 0 1.543 8c-.853 0-1.543.69-1.543 1.543v.957zM4.629 7.457v5.129c0 .425.344.769.769.769s.769-.344.769-.769V6.686c0-.425-.344-.769-.769-.769a.77.77 0 0 0-.53.215 3.083 3.083 0 0 0-.239.325zM7.714 5.743v6.843c0 .425.344.769.769.769s.769-.344.769-.769V5.743c0-.425-.344-.769-.769-.769s-.769.344-.769.769zM10.8 4.8v7.786c0 .425.344.769.769.769s.769-.344.769-.769V4.8c0-.425-.344-.769-.769-.769S10.8 4.375 10.8 4.8zM14.4 4a6.4 6.4 0 0 0-1.286.133V13.4c0 .353.286.6.629.6H19.2A4.8 4.8 0 0 0 24 9.2 4.8 4.8 0 0 0 19.2 4.4c-.24 0-.474.02-.703.058A6.394 6.394 0 0 0 14.4 4z"/></svg>
+      </a>
+      <a href="public/Yaara Shvadron 2026.pdf" target="_blank" class="nav-cv">CV</a>
     </div>
   </div>
 </nav>
+
+<!-- CURRENTLY BAR -->
+<div class="currently-bar">
+  <div class="currently-inner">
+    <span class="currently-label">Currently</span>
+    <span class="currently-dot"></span>
+    <span class="currently-text">Senior Manager Customer Success · JAGGAER · Toronto</span>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="wrap">
     <div class="hero-grid">
-      <div>
-        <div class="sec-counter">AI Deployment and CS Executive <span>//</span> Toronto</div>
-        <h1 class="name"><span class="name-first">Yaara</span><span class="name-last">Shvadron</span></h1>
-        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.<br>I build the tools, lead the teams, and ship the results.</p>
-      </div>
       <div class="portrait-side">
         <div class="portrait-box">
           <img src="public/portrait-new.png" alt="Yaara Shvadron" />
         </div>
+      </div>
+      <div class="hero-left">
+        <div class="hero-eyebrow">AI Deployment · Customer Success Executive</div>
+        <h1 class="name">
+          <span class="name-first">Yaara</span>
+          <span class="name-last">Shvadron</span>
+        </h1>
+        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.</p>
+        <a href="#projects" class="hero-cta">See my work &darr;</a>
       </div>
     </div>
   </div>
@@ -205,82 +476,120 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-counter">About</div>
-    <div class="stats-grid">
-      <div class="stat-box"><div class="stat-num">$90M</div><div class="stat-lbl">ARR managed</div></div>
-      <div class="stat-box"><div class="stat-num">15</div><div class="stat-lbl">Person team led</div></div>
-      <div class="stat-box"><div class="stat-num">115%</div><div class="stat-lbl">Quota attainment</div></div>
-      <div class="stat-box"><div class="stat-num">215+</div><div class="stat-lbl">Enterprise Portfolio Customers</div></div>
-    </div>
-    <div class="about-cols">
-      <div>
-        <p class="about-bio"><strong>Building. Leading. Repeat.</strong> AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-        <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, at home in Toronto.</p>
+    <div class="sec-hdr">About</div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">$90M+</div>
+        <div class="stat-lbl">ARR Managed</div>
       </div>
-      <div class="timeline">
+      <div class="stat-item">
+        <div class="stat-num">15</div>
+        <div class="stat-lbl">Reports · incl. 1 manager</div>
+      </div>
+    </div>
+    <p class="about-bio"><strong>Building. Leading. Repeat.</strong> AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
+    <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy. Israeli, at home in Toronto.</p>
+    <div class="focus-block">
+      <div class="focus-item">
+        <span class="focus-label">AI Roadmap</span>
+        <span class="focus-desc">Building the AI operating layer for a $90M ARR enterprise org. Evaluating tools, designing agent architecture, phased rollout across Customer Success.</span>
+      </div>
+      <div class="focus-item">
+        <span class="focus-label">Strategic Planning</span>
+        <span class="focus-desc">Daily seat at executive decisions. Translating AI ambition into board-ready deliverables, ROI models, and implementation roadmaps that actually ship.</span>
+      </div>
+      <div class="focus-item">
+        <span class="focus-label">Enterprise Transformation</span>
+        <span class="focus-desc">Shifting Customer Success from reactive to AI-augmented. Smarter handoffs, automated intelligence layers, teams that scale without adding headcount.</span>
+      </div>
+    </div>
+    <div class="timeline">
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-period">2025 · Present</div>
-          <div class="tl-event">Senior Manager, Customer Success&nbsp;·&nbsp;JAGGAER<span>112% attainment&nbsp;·&nbsp;Won company AI showcase&nbsp;·&nbsp;Built RAG customer intelligence POC&nbsp;·&nbsp;$90M ARR</span></div>
+          <div class="tl-period">2025 · Present <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div class="tl-event">Senior Manager, Customer Success · JAGGAER<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-period">2023 · 2025</div>
-          <div class="tl-event">Head of Customer Success, North America&nbsp;·&nbsp;JAGGAER<span>115% targets&nbsp;·&nbsp;150+ enterprise accounts&nbsp;·&nbsp;3% GRR increase&nbsp;·&nbsp;$76M ARR</span></div>
+          <div class="tl-period">2023 · 2025 <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div class="tl-event">Head of Customer Success, North America · JAGGAER<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-period">2021 · 2023</div>
-          <div class="tl-event">Customer Success Manager&nbsp;·&nbsp;JAGGAER<span>$5.8M portfolio&nbsp;·&nbsp;Higher Ed, Public Sector, Fortune 500</span></div>
+          <div class="tl-period">2021 · 2023 <img class="tl-logo" src="https://logo.clearbit.com/jaggaer.com" alt="JAGGAER" onerror="this.style.display='none'" /></div>
+          <div class="tl-event">Customer Success Manager · JAGGAER<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-period">2019 · 2021</div>
-          <div class="tl-event">Lead CSM&nbsp;·&nbsp;Fast Simon<span>Built post sales from zero&nbsp;·&nbsp;100+ accounts&nbsp;·&nbsp;Initiated Klaviyo enterprise partnership</span></div>
+          <div class="tl-period">2019 · 2021 <img class="tl-logo" src="https://logo.clearbit.com/fastsimoncorp.com" alt="Fast Simon" onerror="this.style.display='none'" /></div>
+          <div class="tl-event">Lead CSM · Fast Simon<span>Built post sales from zero · 100+ accounts · Initiated Klaviyo enterprise partnership</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2012 · 2015 <img class="tl-logo" src="https://logo.clearbit.com/mfa.gov.il" alt="MFA" onerror="this.style.display='none'" /></div>
+          <div class="tl-event">Research Assistant · Ministry of Foreign Affairs<span>Israel · Jerusalem · Proposed &amp; built automated document intelligence system · still in use today</span></div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-period">Education</div>
-          <div class="tl-event">MA International Security&nbsp;·&nbsp;Hebrew University<span>BA International Relations&nbsp;·&nbsp;BA Music Education, Flute&nbsp;·&nbsp;Jerusalem Academy, Excellence</span></div>
+          <div class="tl-event">MA International Security · Hebrew University<span>BA International Relations · BA Music Education, Flute · Jerusalem Academy, Excellence</span></div>
         </div>
       </div>
-    </div>
   </div>
 </section>
+
+<hr class="divider" />
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-counter">Skills</div>
+    <div class="sec-hdr">Skills</div>
     <div class="skill-table">
       <div class="skill-row">
-        <div class="skill-row-cat">AI</div>
-        <div class="skill-row-items">AI Agent Development<span class="dot">·</span>RAG Architecture<span class="dot">·</span>AI Orchestration<span class="dot">·</span>Workflow Automation<span class="dot">·</span>Enterprise AI Deployment<span class="dot">·</span>Architecture</div>
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 5.5L13 7L8.5 8.5L7 13L5.5 8.5L1 7L5.5 5.5L7 1Z" fill="currentColor"/></svg>
+          AI
+        </div>
+        <div class="skill-chips"><span class="skill-chip">AI Agent Development</span><span class="skill-chip">RAG Architecture</span><span class="skill-chip">AI Orchestration</span><span class="skill-chip">Workflow Automation</span><span class="skill-chip">Enterprise AI Deployment</span><span class="skill-chip">Architecture</span></div>
       </div>
       <div class="skill-row">
-        <div class="skill-row-cat">Build</div>
-        <div class="skill-row-items">Vibe Coding<span class="dot">·</span>Prompt Engineering<span class="dot">·</span>Git &amp; GitHub<span class="dot">·</span>Markdown<span class="dot">·</span>HTML &amp; CSS<span class="dot">·</span>Claude Code</div>
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.5 4L1 7L4.5 10M9.5 4L13 7L9.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Build
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Vibe Coding</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">Git &amp; GitHub</span><span class="skill-chip">Markdown</span><span class="skill-chip">HTML &amp; CSS</span><span class="skill-chip">Claude Code</span></div>
       </div>
       <div class="skill-row">
-        <div class="skill-row-cat">Leadership</div>
-        <div class="skill-row-items">Customer Success Leadership<span class="dot">·</span>P&amp;L Ownership<span class="dot">·</span>Team Scaling<span class="dot">·</span>Executive Stakeholder Management<span class="dot">·</span>Organizational Design<span class="dot">·</span>Change Management<span class="dot">·</span>Product Plan Map</div>
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Leadership
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Customer Success Leadership</span><span class="skill-chip">P&amp;L Ownership</span><span class="skill-chip">Team Scaling</span><span class="skill-chip">Executive Stakeholder Mgmt</span><span class="skill-chip">Organizational Design</span><span class="skill-chip">Change Management</span></div>
       </div>
       <div class="skill-row">
-        <div class="skill-row-cat">Platforms</div>
-        <div class="skill-row-items">Salesforce<span class="dot">·</span>Gainsight<span class="dot">·</span>Pendo<span class="dot">·</span>Zendesk<span class="dot">·</span>JIRA<span class="dot">·</span>Staircase AI<span class="dot">·</span>Obsidian<span class="dot">·</span>AWS<span class="dot">·</span>ECS<span class="dot">·</span>S3<span class="dot">·</span>Nginx</div>
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="1" y="1" width="5" height="5" rx="1" opacity=".8"/><rect x="8" y="1" width="5" height="5" rx="1" opacity=".8"/><rect x="1" y="8" width="5" height="5" rx="1" opacity=".8"/><rect x="8" y="8" width="5" height="5" rx="1" opacity=".8"/></svg>
+          Platforms
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Salesforce</span><span class="skill-chip">Gainsight</span><span class="skill-chip">Pendo</span><span class="skill-chip">Zendesk</span><span class="skill-chip">JIRA</span><span class="skill-chip">Staircase AI</span><span class="skill-chip">Obsidian</span><span class="skill-chip">AWS</span><span class="skill-chip">ECS</span><span class="skill-chip">S3</span><span class="skill-chip">Nginx</span></div>
       </div>
       <div class="skill-row">
-        <div class="skill-row-cat">Data &amp; Analytics</div>
-        <div class="skill-row-items">Tableau<span class="dot">·</span>Looker<span class="dot">·</span>Snowflake<span class="dot">·</span>Excel</div>
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="1" y="8" width="2.5" height="5" rx=".5"/><rect x="5.5" y="5" width="2.5" height="8" rx=".5"/><rect x="10" y="2" width="2.5" height="11" rx=".5"/></svg>
+          Data
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Tableau</span><span class="skill-chip">Looker</span><span class="skill-chip">Snowflake</span><span class="skill-chip">Excel</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="divider" />
+
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="sec-counter">Projects</div>
+    <div class="sec-hdr">Projects</div>
 
     <div class="proj-sep">Work</div>
     <div class="proj-grid-2 proj-grid-3">
@@ -291,7 +600,7 @@
         <div class="proj-card-body">
           <div class="proj-card-num">01</div>
           <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
-          <p class="proj-card-desc">CS AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <p class="proj-card-desc">Customer Success AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">AI Strategy</span><span class="proj-card-tag">Board Deck</span></div>
           <div class="proj-card-impact">Presented at board level. Target: 30% efficiency gain.</div>
         </div>
@@ -304,10 +613,10 @@
             <div class="modal-mono">01 // AI Strategy</div>
             <div class="modal-tags"><span class="modal-tag">AI Strategy</span><span class="modal-tag">Board Presentation</span></div>
             <h2 class="modal-title">AI Roadmap: Tools, Agents &amp; Orchestration</h2>
-            <p class="modal-desc">Designed and presented a CS AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.
+            <p class="modal-desc">Designed and presented a Customer Success AI roadmap to executive leadership. Board ready materials quantifying ROI and strategic trajectory, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.
 
 Full scope initiative mapping AI opportunities from onboarding and health scoring to renewal intelligence. Included scenario planning, ROI modeling, and a phased implementation roadmap.</p>
-            <div class="modal-impact">Presented at board level. Target: 30% efficiency gain across the CS org.</div>
+            <div class="modal-impact">Presented at board level. Target: 30% efficiency gain across the Customer Success org.</div>
           </div>
         </template>
       </div>
@@ -318,7 +627,7 @@ Full scope initiative mapping AI opportunities from onboarding and health scorin
         <div class="proj-card-body">
           <div class="proj-card-num">02</div>
           <h3 class="proj-card-title">JAGGAER Elevator</h3>
-          <p class="proj-card-desc">A RAG per customer app that brings data from one floor to the next. Moving CS past chat prompts into true task delegation. All enterprise data queryable in one place.</p>
+          <p class="proj-card-desc">A RAG per customer app that brings data from one floor to the next. Moving Customer Success past chat prompts into true task delegation. All enterprise data queryable in one place.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">RAG Architecture</span><span class="proj-card-tag">AI Orchestration</span></div>
           <div class="proj-card-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
         </div>
@@ -331,7 +640,7 @@ Full scope initiative mapping AI opportunities from onboarding and health scorin
             <div class="modal-mono">02 // RAG Architecture</div>
             <div class="modal-tags"><span class="modal-tag">RAG Architecture</span><span class="modal-tag">AI Orchestration</span></div>
             <h2 class="modal-title">JAGGAER Elevator</h2>
-            <p class="modal-desc">Built to answer one question: what data layer moves us past simple chat prompts into true full task delegation? CS teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.
+            <p class="modal-desc">Built to answer one question: what data layer moves us past simple chat prompts into true full task delegation? Customer Success teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. Elevator fixes that.
 
 It's a RAG per customer app that brings data from one floor to the next. No stairs. Customer data plugs in and routes to the right floor. Salesforce, Snowflake, email threads, CSM notes, all queryable in one place.
 
@@ -347,12 +656,12 @@ The question driving it: how do we make AI work for us, instead of working along
         <div class="proj-card-body">
           <div class="proj-card-num">03</div>
           <h3 class="proj-card-title">CSM Capacity Model</h3>
-          <p class="proj-card-desc">A framework that estimates how many hours each CSM spends across their accounts, factoring in customer-facing time, account tier, CSM seniority, and active products. Pulls from Salesforce, visualized in Tableau. Guides hiring decisions and account assignments.</p>
+          <p class="proj-card-desc">A framework that estimates how many hours each CSM spends across their accounts, factoring in customer-facing time, account tier, CSM seniority, and active products. Pulls from Salesforce, visualized in Tableau.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">Workforce Planning</span><span class="proj-card-tag">Salesforce</span><span class="proj-card-tag">Tableau</span></div>
           <div class="proj-card-impact">Scaled from 6 to 16 CSMs. Drove a hire-behind-the-curve strategy.</div>
         </div>
         <template class="modal-tpl">
-          <div class="modal-imgs">
+          <div class="modal-imgs two">
             <img class="modal-img" src="images/capacity model preview.png" alt="CSM Capacity Model chart" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
             <img class="modal-img" src="images/capacity model details.svg" alt="CSM Capacity Model formula" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
           </div>
@@ -410,7 +719,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
           <h3 class="proj-card-title">CSM AI Tools Hub</h3>
-          <p class="proj-card-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. We architected it inside corporate AWS: ECS-hosted Nginx container, S3-backed static delivery, ALB for routing, all inside a private VPC.</p>
+          <p class="proj-card-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. Architected inside corporate AWS: ECS, S3, ALB, private VPC.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">Enterprise Infrastructure</span><span class="proj-card-tag">AWS</span><span class="proj-card-tag">Security</span></div>
           <div class="proj-card-impact">From scattered AI prompts to a governed internal platform.</div>
         </div>
@@ -439,36 +748,11 @@ The result: scattered AI experiments became a governed, centralized team resourc
         <div class="proj-card-body">
           <div class="proj-card-num">06</div>
           <h3 class="proj-card-title">Leadership Dashboard</h3>
-          <p class="proj-card-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Pulls everything into one place, giving my manager and the ELT a live, consolidated view without anyone having to chase it.</p>
+          <p class="proj-card-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Pulls everything into one place, giving leadership a live, consolidated view without anyone having to chase it.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">Data Integration</span><span class="proj-card-tag">Leadership</span><span class="proj-card-tag">Reporting</span></div>
           <div class="proj-card-impact">Weekly syncs eliminated. Single source of truth for ELT.</div>
         </div>
         <template class="modal-tpl">
-          <div class="modal-imgs">
-            <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
-              <rect width="480" height="160" fill="#EEEAE2"/>
-              <rect x="24" y="44" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="62" y="62" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 1</text>
-              <rect x="24" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="62" y="106" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Source 2</text>
-              <text x="62" y="134" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#C0BCB4">···</text>
-              <line x1="100" y1="60" x2="168" y2="80" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
-              <line x1="100" y1="104" x2="168" y2="88" stroke="#1AA39A" stroke-width="1.5" opacity=".5"/>
-              <polygon points="165,76 173,80 165,84" fill="#1AA39A" opacity=".5"/>
-              <polygon points="165,84 173,88 165,92" fill="#1AA39A" opacity=".5"/>
-              <rect x="172" y="48" width="136" height="64" rx="5" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1.5"/>
-              <text x="240" y="75" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Leadership</text>
-              <text x="240" y="89" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#1AA39A">Dashboard</text>
-              <line x1="308" y1="80" x2="352" y2="64" stroke="#E0DAD0" stroke-width="1.5"/>
-              <line x1="308" y1="80" x2="352" y2="96" stroke="#E0DAD0" stroke-width="1.5"/>
-              <polygon points="349,60 357,64 349,68" fill="#E0DAD0"/>
-              <polygon points="349,92 357,96 349,100" fill="#E0DAD0"/>
-              <rect x="356" y="48" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="394" y="68" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">Manager</text>
-              <rect x="356" y="88" width="76" height="32" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="394" y="108" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="#7A7060">ELT</text>
-            </svg>
-          </div>
           <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Claude Code</span><span class="modal-stack-pill">Staircase AI</span><span class="modal-stack-pill">Salesforce</span><span class="modal-stack-pill">Gainsight</span><span class="modal-stack-pill">Tableau</span></div>
           <div class="modal-body">
             <div class="modal-mono">06 // Data Integration · Leadership</div>
@@ -493,58 +777,27 @@ Audience: direct manager and Executive Leadership Team. More details coming.</p>
           <div class="proj-card-impact">Answer any team question in minutes. One day, a 1:1 while I'm on PTO.</div>
         </div>
         <template class="modal-tpl">
-          <div class="modal-imgs">
-            <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;background:#EEEAE2;border-radius:4px;">
-              <rect width="480" height="160" fill="#EEEAE2"/>
-              <rect x="178" y="38" width="124" height="84" rx="6" fill="#1AA39A" opacity=".12" stroke="#1AA39A" stroke-width="1.5"/>
-              <text x="240" y="72" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="#1AA39A">Obsidian Vault</text>
-              <text x="240" y="86" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">537 notes · 5,046 wikilinks</text>
-              <rect x="24" y="30" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="64" y="47" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">CSM Content</text>
-              <rect x="24" y="67" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="64" y="84" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">AI Transform</text>
-              <rect x="24" y="104" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="64" y="121" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Leadership</text>
-              <line x1="104" y1="43" x2="178" y2="68" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-              <line x1="104" y1="80" x2="178" y2="80" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-              <line x1="104" y1="117" x2="178" y2="96" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-              <rect x="376" y="30" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="416" y="47" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Meetings</text>
-              <rect x="376" y="67" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="416" y="84" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Customers</text>
-              <rect x="376" y="104" width="80" height="26" rx="3" fill="#FFFFFF" stroke="#E0DAD0" stroke-width="1"/>
-              <text x="416" y="121" text-anchor="middle" font-family="DM Mono,monospace" font-size="7" fill="#7A7060">Playbooks</text>
-              <line x1="302" y1="68" x2="376" y2="43" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-              <line x1="302" y1="80" x2="376" y2="80" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-              <line x1="302" y1="96" x2="376" y2="117" stroke="#1AA39A" stroke-width="1" opacity=".4"/>
-            </svg>
-          </div>
           <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Obsidian</span><span class="modal-stack-pill">Claude Code</span><span class="modal-stack-pill">Python</span><span class="modal-stack-pill">Git</span><span class="modal-stack-pill">MCP Servers</span><span class="modal-stack-pill">Markdown</span></div>
           <div class="modal-body">
             <div class="modal-mono">07 // Knowledge Management</div>
             <div class="modal-tags"><span class="modal-tag">Obsidian</span><span class="modal-tag">Knowledge Graph</span><span class="modal-tag">AI Integration</span><span class="modal-tag">Git</span></div>
             <h2 class="modal-title">My Second Brain</h2>
-            <p class="modal-desc">537 markdown files. 5,046 wikilinks. A living knowledge base I've built since joining JAGGAER, organized into a clear, role-based taxonomy around the work of a NA CS Manager.
+            <p class="modal-desc">537 markdown files. 5,046 wikilinks. A living knowledge base I've built since joining JAGGAER, organized into a clear, role-based taxonomy around the work of a NA Customer Success Manager.
 
 What's inside: every CSM playbook and operating model, all product content (eProcurement, Sourcing, Invoicing), meeting notes with structured follow-ups, 16 customer account profiles converted from OneNote, an AI transformation roadmap with active agent prototypes, weekly status summaries, and a 225-entry glossary of every person, tool, concept, and company we work with.
 
-How it was built: OneNote exports converted to markdown, document extraction via Claude Code (PPTX, DOCX, XLSX → indexed notes), meeting capture from Outlook and Teams via MCP integrations, a link-dictionary automation that generates wikilinks at scale. Version-controlled in git.
+How it was built: OneNote exports converted to markdown, document extraction via Claude Code (PPTX, DOCX, XLSX indexed notes), meeting capture from Outlook and Teams via MCP integrations, a link-dictionary automation that generates wikilinks at scale. Version-controlled in git.
 
 The goal: answer any question about team, customers, or product in minutes. One day, a 1:1 with it while I'm on PTO.</p>
-            <div class="modal-impact">Answer any team question in minutes. Single source of truth for the whole CS org.</div>
+            <div class="modal-impact">Answer any team question in minutes. Single source of truth for the whole Customer Success org.</div>
           </div>
         </template>
       </div>
 
-    </div><!-- /proj-grid work -->
-
-    <div class="proj-sep" style="margin-top:2.5rem;">Personal</div>
-    <div class="proj-grid-2" style="max-width:700px;">
-
       <div class="proj-card">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/wonder preview.png" alt="Wonder" style="aspect-ratio:1/1;object-fit:contain;background:var(--bg);" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/wonder preview.png" alt="Wonder" style="object-position: top;" /></div>
         <div class="proj-card-body">
-          <div class="proj-card-num">05</div>
+          <div class="proj-card-num">P1</div>
           <h3 class="proj-card-title">Wonder · Catchball Tool</h3>
           <p class="proj-card-desc">I started playing catchball and built an app using AI for my coach. Saving her time on game setting and more.</p>
           <div class="proj-link-row">
@@ -554,51 +807,50 @@ The goal: answer any question about team, customers, or product in minutes. One 
       </div>
 
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="aspect-ratio:1/1;" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom;" /></div>
         <div class="proj-card-body">
-          <div class="proj-card-num">06</div>
-          <h3 class="proj-card-title">Making Music</h3>
-          <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz. Making something out of structure is the only way I know how to work.</p>
+          <div class="proj-card-num">P2</div>
+          <h3 class="proj-card-title">Musician</h3>
+          <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz.</p>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs">
-            <img class="modal-img" src="images/jazz details.webp" alt="Making Music" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+            <img class="modal-img" src="images/jazz details.webp" alt="Musician" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
           </div>
           <div class="modal-body">
-            <div class="modal-mono">06 // Personal</div>
+            <div class="modal-mono">P2 // Personal</div>
             <div class="modal-tags"><span class="modal-tag">Music</span><span class="modal-tag">Flute</span><span class="modal-tag">Jazz</span></div>
-            <h2 class="modal-title">Making Music</h2>
+            <h2 class="modal-title">Musician</h2>
             <p class="modal-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras and chamber ensembles, and now improvise jazz. Making something out of structure is the only way I know how to work.</p>
-            <div class="modal-impact" style="display:flex;flex-direction:column;gap:.4rem;">
-              <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.72rem;">SoundCloud · yaarael →</a>
-              <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.72rem;">SoundCloud · yaara-lucas →</a>
+            <div class="modal-impact" style="display:flex;flex-direction:column;gap:.35rem;">
+              <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.67rem;">SoundCloud · yaarael →</a>
+              <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.67rem;">SoundCloud · yaara-lucas →</a>
             </div>
           </div>
         </template>
       </div>
 
-    </div>
+    </div><!-- /proj-grid -->
   </div>
 </section>
 
-<!-- BEYOND WORK -->
+<hr class="divider" />
+
+<!-- BEYOND -->
 <section id="beyond">
   <div class="wrap">
-    <div class="sec-counter">Beyond Work</div>
-    <div class="beyond-note-text">Jazz trio &nbsp;·&nbsp; Rock climbing, hiking, camping &nbsp;·&nbsp; <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">2 tandem bicycle tours</a> &nbsp;·&nbsp; Mother of two</div>
+    <div class="sec-hdr">Beyond Work</div>
+    <p class="beyond-text">Jazz trio · Rock climbing, hiking, camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">2 tandem bicycle tours</a> · Mother of two</p>
   </div>
 </section>
+
+<hr class="divider" />
 
 <!-- CONNECT -->
 <section id="connect">
   <div class="wrap">
-    <div style="font-family:'DM Mono',monospace; font-size:2.2rem; color:var(--accent); margin-bottom:.5rem;">∞</div>
-    <div class="connect-heading">Let's talk.</div>
-    <div class="connect-links">
-      <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" class="connect-link">LinkedIn</a>
-      <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" class="connect-link">Instagram</a>
-      <a href="mailto:yaaraelazari@gmail.com" class="connect-link">Email</a>
-    </div>
+    <h2 class="connect-heading">Reach out.</h2>
+    <p class="connect-email">yaaraelazari@gmail.com</p>
   </div>
 </section>
 
@@ -606,7 +858,7 @@ The goal: answer any question about team, customers, or product in minutes. One 
 <div class="proj-modal" id="projModal">
   <div class="proj-modal-panel">
     <div class="modal-hdr">
-      <button class="modal-close" id="modalClose">✕ close</button>
+      <button class="modal-close" id="modalClose">close</button>
     </div>
     <div id="modalBody"></div>
   </div>
@@ -615,11 +867,12 @@ The goal: answer any question about team, customers, or product in minutes. One 
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <span class="footer-logo">Yaara Shvadron</span>
-      <span class="footer-copy">© 2026</span>
+      <span class="footer-mark">Yaara Shvadron · 2026</span>
+      <span class="footer-copy">Built in Toronto</span>
     </div>
   </div>
 </footer>
+
 
 <script>
   function openModal(card) {
