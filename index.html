@@ -80,38 +80,10 @@
       .nav-links .nav-hide { display: none; }
     }
 
-    /* CURRENTLY BAR */
-    .currently-bar {
-      position: fixed; top: 52px; left: 0; right: 0; z-index: 99;
-      background: var(--fg); padding: .45rem 0;
-    }
-    .currently-inner {
-      max-width: 1440px; margin: 0 auto; padding: 0 4rem;
-      display: flex; align-items: center; gap: .75rem;
-    }
-    .currently-label {
-      font-family: 'DM Mono', monospace; font-size: .72rem; font-weight: 600;
-      color: #FFFFFF; letter-spacing: .12em; text-transform: uppercase;
-      flex-shrink: 0;
-    }
-    .currently-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
-    }
-    .currently-text {
-      font-size: .78rem; color: rgba(250,250,248,.9);
-      font-weight: 400;
-    }
-    @media(max-width:639px){ .currently-text { font-size: .72rem; } }
 
     /* HERO */
     #hero {
-      padding: 8rem 0 0;
+      padding: 5.5rem 0 0;
     }
     .hero-grid {
       display: grid; grid-template-columns: auto 1fr;
@@ -134,14 +106,9 @@
     }
     .name-first { display: block; color: var(--fg); }
     .name-last { display: block; color: var(--accent); }
-    .hero-tagline {
-      font-size: .97rem; font-weight: 400;
-      color: var(--muted); line-height: 1.75;
-      margin-bottom: 2rem; max-width: 460px;
-    }
     .bio-lead {
-      font-family: 'DM Mono', monospace; font-size: .63rem; color: var(--muted-lt);
-      letter-spacing: .08em; white-space: nowrap; margin-bottom: .5rem; display: block;
+      font-size: .8rem; font-weight: 600; color: var(--fg);
+      letter-spacing: .01em; margin-bottom: .4rem; display: block;
     }
     .hero-bio {
       font-size: .86rem; color: var(--muted); line-height: 1.75; margin-top: .6rem;
@@ -317,6 +284,21 @@
       display: inline-flex; align-items: center; gap: .3rem;
     }
 
+    /* CURRENTLY */
+    #currently { padding-bottom: 2.5rem; }
+    .currently-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: .75rem; max-width: 680px;
+    }
+    .currently-list li {
+      font-size: .88rem; color: var(--muted); line-height: 1.75;
+      padding-left: 1.1rem; position: relative;
+    }
+    .currently-list li::before {
+      content: '·'; position: absolute; left: 0;
+      color: var(--accent); font-weight: 700;
+    }
+
     /* BEYOND */
     #beyond { padding-bottom: 3rem; }
     .beyond-text {
@@ -324,6 +306,14 @@
     }
     .beyond-text a { color: var(--accent); }
     .beyond-text a:hover { text-decoration: underline; }
+    .beyond-built {
+      font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted-lt);
+      display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
+    }
+    .beyond-built-label { color: var(--muted-lt); }
+    .beyond-built-link { color: var(--accent); }
+    .beyond-built-link:hover { text-decoration: underline; }
+    .beyond-built-desc { color: var(--muted-lt); }
 
     /* CONNECT */
     #connect {
@@ -507,7 +497,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <div class="nav-mark">
-      <span class="nav-mark-label">Yaara Shvadron</span>
+      <span class="nav-mark-label">YS</span>
     </div>
     <div class="nav-links">
       <a href="#about" class="nav-hide">About</a>
@@ -531,14 +521,6 @@
   </div>
 </nav>
 
-<!-- CURRENTLY BAR -->
-<div class="currently-bar">
-  <div class="currently-inner">
-    <span class="currently-label">Currently</span>
-    <span class="currently-dot"></span>
-    <span class="currently-text">Senior Manager Customer Success · JAGGAER · Toronto</span>
-  </div>
-</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -550,12 +532,11 @@
         </div>
       </div>
       <div class="hero-left">
-        <div class="hero-eyebrow">AI Deployment · Customer Success Executive</div>
+        <div class="hero-eyebrow">Currently · Senior Manager, Customer Success · JAGGAER</div>
         <h1 class="name">
           <span class="name-first">Yaara</span>
           <span class="name-last">Shvadron</span>
         </h1>
-        <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.</p>
         <span class="bio-lead">Building. Leading. Repeat.</span>
         <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
       </div>
@@ -631,6 +612,21 @@
 
 <hr class="divider" />
 
+<!-- CURRENTLY -->
+<section id="currently">
+  <div class="wrap">
+    <div class="sec-hdr">Currently Working On</div>
+    <ul class="currently-list">
+      <li>Deep Research prompt library, created from my own second brain</li>
+      <li>Hiring our first CSM AI Engineer, who will report to me</li>
+      <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
+      <li>Coaching my team. That's my top priority, always. Coached one CSM on selling our AI in the education vertical, and we both created a customer-facing asset in that session.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
@@ -687,7 +683,7 @@
 
       <!-- AI ROADMAP -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/AI Roadmap Preview.png" alt="CSM AI Roadmap" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/ai-raodmap-new.png" alt="CSM AI Roadmap" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">01</div>
           <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
@@ -714,7 +710,7 @@ As of June, my team has decreased manual work by 6% thanks to AI tools, and our 
 
       <!-- ELEVATOR -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/elevator preview.gif" alt="JAGGAER Elevator" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/elevator-new.png" alt="JAGGAER Elevator" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">02</div>
           <h3 class="proj-card-title">JAGGAER Elevator</h3>
@@ -741,7 +737,7 @@ This allows us the infrastructure of learning our customer base at scale. This p
 
       <!-- CAPACITY MODEL -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/capacity model preview.png" alt="CSM Utilization" style="object-position:top;" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/capacity-new.png" alt="CSM Utilization" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">03</div>
           <h3 class="proj-card-title">CSM Utilization</h3>
@@ -767,7 +763,7 @@ The output guides account assignments and informs a deliberate hire-behind-the-c
 
       <!-- MFA -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/MFA preview.svg" alt="Ministry of Foreign Affairs" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/mfa-new.png" alt="Ministry of Foreign Affairs" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">04</div>
           <h3 class="proj-card-title">Ministry of Foreign Affairs · Document Intelligence</h3>
@@ -800,7 +796,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
 
       <!-- CSM HUB -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/csm hub preview.png" alt="CSM AI Tools Hub" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/csm-hub-new.png" alt="CSM AI Tools Hub" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
           <h3 class="proj-card-title">CSM AI Tools Hub</h3>
@@ -829,7 +825,7 @@ The result: scattered AI experiments became a governed, centralized team resourc
 
       <!-- LEADERSHIP DASHBOARD -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/Leadership dashboard preview.png" alt="Leadership Dashboard" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/leadership-dashboard-new.png" alt="Leadership Dashboard" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">06</div>
           <h3 class="proj-card-title">Leadership Dashboard</h3>
@@ -853,7 +849,7 @@ Audience: direct manager and Executive Leadership Team. More details coming.</p>
 
       <!-- SECOND BRAIN -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/second brain preview.gif" alt="My Second Brain" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/new designed images/second-brain-new.png" alt="My Second Brain" style="object-fit: contain; background: var(--bg);" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">07</div>
           <h3 class="proj-card-title">My Second Brain</h3>
@@ -867,32 +863,27 @@ Audience: direct manager and Executive Leadership Team. More details coming.</p>
             <div class="modal-mono">07 // Knowledge Management</div>
             <div class="modal-tags"><span class="modal-tag">Obsidian</span><span class="modal-tag">Knowledge Graph</span><span class="modal-tag">AI Integration</span><span class="modal-tag">Git</span></div>
             <h2 class="modal-title">My Second Brain</h2>
-            <p class="modal-desc">537 markdown files. 5,046 wikilinks. A living knowledge base I've built since joining JAGGAER, organized into a clear, role-based taxonomy around the work of a NA Customer Success Manager.
+            <p class="modal-desc">I built a second brain: an AI-powered corpus of my knowledge that I continuously update and use every day.
 
-What's inside: every CSM playbook and operating model, all product content (eProcurement, Sourcing, Invoicing), meeting notes with structured follow-ups, 16 customer account profiles converted from OneNote, an AI transformation roadmap with active agent prototypes, weekly status summaries, and a 225-entry glossary of every person, tool, concept, and company we work with.
+It's a living knowledge system built around my work as a NA Customer Success Manager at JAGGAER. It captures the context, decisions, processes, customer knowledge, product information, and operating models that I've built over time, organized into a clear structure that grows with the role.
 
-How it was built: OneNote exports converted to markdown, document extraction via Claude Code (PPTX, DOCX, XLSX indexed notes), meeting capture from Outlook and Teams via MCP integrations, a link-dictionary automation that generates wikilinks at scale. Version-controlled in git.
+I use it constantly: preparing for customer meetings, exploring strategic questions, finding patterns across accounts, improving processes, and turning ideas into repeatable tools. Recently, I've been building prompt libraries, CSM resources, and new workflows with it to help scale how the team works.
 
-The goal: answer any question about team, customers, or product in minutes. One day, a 1:1 with it while I'm on PTO.</p>
-            <div class="modal-impact">Answer any team question in minutes. Single source of truth for the whole Customer Success org.</div>
+Inside are CSM playbooks, operating models, product knowledge across eProcurement, Sourcing, and Invoicing, customer account profiles, meeting notes with structured follow-ups, AI transformation experiments, weekly operating summaries, and a growing glossary of the people, tools, concepts, and companies connected to the work.
+
+The system was built by converting existing knowledge into a structured markdown-based environment, extracting information from documents, connecting meeting insights, and automating relationships between concepts through linked knowledge.
+
+The goal is simple: make any question about customers, team processes, or products answerable in minutes.
+
+Over time, it becomes more than documentation. It becomes a working partner that helps me think, prepare, create, and operate at scale.</p>
+            <div class="modal-impact">Answer any question in minutes. A working partner that scales with the role.</div>
           </div>
         </template>
       </div>
 
-      <div class="proj-card">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/wonder preview.png" alt="Wonder" style="object-position: top;" /></div>
-        <div class="proj-card-body">
-          <div class="proj-card-num">P1</div>
-          <h3 class="proj-card-title">Wonder · Catchball Tool</h3>
-          <p class="proj-card-desc">I started playing catchball and built an app using AI for my coach. Saving her time on game setting and more.</p>
-          <div class="proj-link-row">
-            <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="proj-ext-link">Open tool →</a>
-          </div>
-        </div>
-      </div>
 
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom;" /></div>
+        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom; filter: grayscale(45%) sepia(20%);" /></div>
         <div class="proj-card-body">
           <div class="proj-card-num">P2</div>
           <h3 class="proj-card-title">Musician</h3>
@@ -926,6 +917,11 @@ The goal: answer any question about team, customers, or product in minutes. One 
   <div class="wrap">
     <div class="sec-hdr">Beyond Work</div>
     <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Mother of two</p>
+    <div class="beyond-built">
+      <span class="beyond-built-label">Also built →</span>
+      <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
+      <span class="beyond-built-desc">— an AI positioning tool built for coaches.</span>
+    </div>
   </div>
 </section>
 
