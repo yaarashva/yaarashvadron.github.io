@@ -189,6 +189,10 @@
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
     .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .about-tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: .5rem; }
+    @media(max-width:767px) { .about-tl-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .about-summary p { font-size: .88rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+    .about-summary p:last-child { margin-bottom: 0; }
     .focus-block { margin: 1.75rem 0 2.5rem; }
     .focus-item { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; padding: .85rem 0; border-top: 1px solid var(--border); align-items: baseline; }
     .focus-item:last-child { border-bottom: 1px solid var(--border); }
@@ -587,7 +591,8 @@
         <span class="focus-desc">Shifting Customer Success from reactive to AI-augmented. Smarter handoffs, automated intelligence layers, teams that scale without adding headcount.</span>
       </div>
     </div>
-    <div class="timeline">
+    <div class="about-tl-grid">
+      <div class="timeline">
         <div class="tl-item">
           <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
           <div class="tl-roles">
@@ -613,11 +618,13 @@
           <div class="tl-logo-col"><img class="tl-logo" src="images/mfa-logo.jpg" alt="MFA" onerror="this.style.display='none'" /></div>
           <div><div class="tl-period">2012 · 2015</div><div class="tl-event">Research Assistant · Ministry of Foreign Affairs<span>Israel · Jerusalem · Proposed &amp; built automated document intelligence system · still in use today</span></div></div>
         </div>
-        <div class="tl-item">
-          <div class="tl-logo-col"><span class="tl-no-logo"></span></div>
-          <div><div class="tl-period">Education</div><div class="tl-event">MA International Security · Hebrew University<span>BA International Relations · BA Music Education, Flute · Jerusalem Academy, Excellence</span></div></div>
-        </div>
       </div>
+      <div class="about-summary">
+        <p>My path here wasn't straight. Research background, a music career, some entrepreneurship — then a pivot into SaaS that stuck, and turned out to be an advantage.</p>
+        <p>For the past 8 years I've been in the middle of enterprise Customer Success: retaining customers, growing their usage, making sure product teams actually hear what customers are saying, and building the kind of relationships that translate into real growth.</p>
+        <p>I care about trust as much as I care about the numbers. I've led CS organizations across global SaaS companies, improved GRR, brought clarity to complex environments, and built teams that don't just hit their targets — they know why they're hitting them.</p>
+      </div>
+    </div>
   </div>
 </section>
 
