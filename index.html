@@ -298,32 +298,6 @@
       color: var(--accent); font-weight: 700;
     }
 
-    /* DANDELION BACKGROUND SEEDS */
-    .dand-seed {
-      position: fixed; pointer-events: none; z-index: 0;
-      mix-blend-mode: multiply; opacity: .18;
-      user-select: none;
-    }
-    .dand-seed img { display: block; }
-
-    /* DANDELION GIF · bottom of page */
-    .dand-gif-wrap {
-      position: relative; display: flex; justify-content: flex-start;
-      pointer-events: none; overflow: hidden;
-      height: 280px; margin-top: 1rem;
-    }
-    .dand-gif-wrap img {
-      height: 100%; width: auto;
-      mix-blend-mode: multiply; opacity: .55;
-      display: block;
-    }
-    /* cover the MyPostcard watermark */
-    .dand-gif-cover {
-      position: absolute; bottom: 0; right: 0;
-      width: 130px; height: 42px;
-      background: #FFFFFF;
-    }
-
     /* BEYOND */
     #beyond { padding-bottom: 3rem; }
     .beyond-text {
@@ -534,26 +508,6 @@
   </style>
 </head>
 <body>
-
-<!-- DANDELION BACKGROUND SEEDS -->
-<div class="dand-seed" style="top:6vh; right:5vw; width:120px; transform:rotate(18deg);">
-  <img src="images/dandelion-leaves.png" width="120" alt=""/>
-</div>
-<div class="dand-seed" style="top:28vh; left:2vw; width:80px; transform:rotate(-12deg); opacity:.12;">
-  <img src="images/dandelion-leaves.png" width="80" alt=""/>
-</div>
-<div class="dand-seed" style="top:52vh; right:1vw; width:65px; transform:rotate(35deg); opacity:.1;">
-  <img src="images/dandelion-leaves.png" width="65" alt=""/>
-</div>
-<div class="dand-seed" style="top:72vh; left:8vw; width:95px; transform:rotate(-28deg); opacity:.13;">
-  <img src="images/dandelion-leaves.png" width="95" alt=""/>
-</div>
-<div class="dand-seed" style="top:88vh; right:12vw; width:55px; transform:rotate(8deg); opacity:.09;">
-  <img src="images/dandelion-leaves.png" width="55" alt=""/>
-</div>
-<div class="dand-seed" style="top:40vh; right:18vw; width:45px; transform:rotate(-42deg); opacity:.08;">
-  <img src="images/dandelion-leaves.png" width="45" alt=""/>
-</div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -999,11 +953,6 @@ Over time, it becomes more than documentation. It becomes a working partner that
     </div>
     <div id="modalBody"></div>
   </div>
-</div>
-
-<div class="dand-gif-wrap">
-  <img src="images/I Miss You Dandelion GIF by MyPostcard.gif" alt="dandelion" />
-  <div class="dand-gif-cover"></div>
 </div>
 
 <footer>
