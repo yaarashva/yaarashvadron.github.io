@@ -139,14 +139,13 @@
       color: var(--muted); line-height: 1.75;
       margin-bottom: 2rem; max-width: 460px;
     }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .78rem; font-weight: 500;
-      color: var(--fg); border-bottom: 1.5px solid var(--fg);
-      padding-bottom: 1px;
-      transition: color .18s, border-color .18s;
+    .bio-lead {
+      font-family: 'DM Mono', monospace; font-size: .63rem; color: var(--muted-lt);
+      letter-spacing: .08em; white-space: nowrap; margin-bottom: .5rem; display: block;
     }
-    .hero-cta:hover { color: var(--accent); border-color: var(--accent); }
+    .hero-bio {
+      font-size: .86rem; color: var(--muted); line-height: 1.75; margin-top: .6rem;
+    }
 
     /* Portrait */
     .portrait-side { display: flex; align-items: flex-end; }
@@ -189,6 +188,7 @@
     }
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
+    .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
     .focus-block { margin: 1.75rem 0 2.5rem; }
     .focus-item { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; padding: .85rem 0; border-top: 1px solid var(--border); align-items: baseline; }
     .focus-item:last-child { border-bottom: 1px solid var(--border); }
@@ -209,9 +209,13 @@
       padding-top: .2rem;
     }
     .tl-logo {
-      width: 52px; height: auto; max-height: 32px;
+      width: 72px; height: auto; max-height: 44px;
       object-fit: contain; display: block;
     }
+    .tl-roles { display: flex; flex-direction: column; }
+    .tl-role { padding: .6rem 0; }
+    .tl-role:first-child { padding-top: 0; }
+    .tl-role + .tl-role { border-top: 1px dashed var(--border); }
     .tl-no-logo {
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--accent); margin-top: .4rem; flex-shrink: 0;
@@ -469,8 +473,8 @@
       .proj-grid-3 { grid-template-columns: 1fr; }
 
       /* Timeline: tighter */
-      .tl-item { grid-template-columns: 48px 1fr; gap: .75rem; padding: .75rem 0; }
-      .tl-logo { width: 36px; max-height: 24px; }
+      .tl-item { grid-template-columns: 56px 1fr; gap: .75rem; padding: .75rem 0; }
+      .tl-logo { width: 48px; max-height: 32px; }
 
       /* Modal: bottom sheet */
       .proj-modal { align-items: flex-end; padding: 0; }
@@ -546,7 +550,8 @@
           <span class="name-last">Shvadron</span>
         </h1>
         <p class="hero-tagline">Turning enterprise AI strategy into production outcomes.</p>
-        <a href="#projects" class="hero-cta">See my work &darr;</a>
+        <span class="bio-lead">Building. Leading. Repeat.</span>
+        <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
       </div>
     </div>
   </div>
@@ -557,7 +562,7 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-hdr">About</div>
+    <p class="about-intro">I currently lead a high-performing team of a manager and 15 Enterprise CSMs managing relationships with over $90M USD in ARR.</p>
     <div class="stats-row">
       <div class="stat-item">
         <div class="stat-num">$90M+</div>
@@ -568,16 +573,14 @@
         <div class="stat-lbl">Reports · incl. 1 manager</div>
       </div>
     </div>
-    <p class="about-bio"><strong>Building. Leading. Repeat.</strong> AI Deployment Leader and Customer Execution Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-    <p class="about-bio">MA International Relations, Hebrew University. BA Music Education, Jerusalem Academy.</p>
     <div class="focus-block">
       <div class="focus-item">
         <span class="focus-label">AI Roadmap</span>
-        <span class="focus-desc">Building the AI operating layer for a $90M ARR enterprise org. Evaluating tools, designing agent architecture, phased rollout across Customer Success.</span>
+        <span class="focus-desc">I am currently building and executing an AI operating layer for each tier. Evaluating tools, designing agent architecture, phased rollout across Customer Success.</span>
       </div>
       <div class="focus-item">
         <span class="focus-label">Strategic Planning</span>
-        <span class="focus-desc">Translating AI ambition into board-ready deliverables, ROI models, and implementation roadmaps that actually ship.</span>
+        <span class="focus-desc">Translating AI ambition into board-ready deliverables, ROI models, and implementation roadmaps that actually ship. My examples span across product feedback loop, speaking at customer events, and supporting sales in every deal.</span>
       </div>
       <div class="focus-item">
         <span class="focus-label">Enterprise Transformation</span>
@@ -587,15 +590,20 @@
     <div class="timeline">
         <div class="tl-item">
           <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div><div class="tl-period">2025 · Present</div><div class="tl-event">Senior Manager, Customer Success · JAGGAER<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div><div class="tl-period">2023 · 2025</div><div class="tl-event">Head of Customer Success, North America · JAGGAER<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div><div class="tl-period">2021 · 2023</div><div class="tl-event">Customer Success Manager · JAGGAER<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div></div>
+          <div class="tl-roles">
+            <div class="tl-role">
+              <div class="tl-period">2025 · Present</div>
+              <div class="tl-event">Senior Manager, Customer Success<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div>
+            </div>
+            <div class="tl-role">
+              <div class="tl-period">2023 · 2025</div>
+              <div class="tl-event">Head of Customer Success, North America<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div>
+            </div>
+            <div class="tl-role">
+              <div class="tl-period">2021 · 2023</div>
+              <div class="tl-event">Customer Success Manager<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div>
+            </div>
+          </div>
         </div>
         <div class="tl-item">
           <div class="tl-logo-col"><img class="tl-logo" src="images/fast-simon-logo.png" alt="Fast Simon" onerror="this.style.display='none'" /></div>
@@ -915,7 +923,7 @@ The goal: answer any question about team, customers, or product in minutes. One 
 <section id="beyond">
   <div class="wrap">
     <div class="sec-hdr">Beyond Work</div>
-    <p class="beyond-text">Jazz trio · Rock climbing, hiking, camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">tandem bicycle tours</a> · Mother of two</p>
+    <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Mother of two</p>
   </div>
 </section>
 
