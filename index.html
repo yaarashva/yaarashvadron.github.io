@@ -133,13 +133,14 @@
 
     /* SECTION HEADER */
     .sec-hdr {
-      font-family: 'DM Mono', monospace; font-size: .62rem;
-      color: var(--muted-lt); letter-spacing: .2em; text-transform: uppercase;
-      padding: 2.5rem 0 1.25rem;
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted); letter-spacing: .18em; text-transform: uppercase;
+      padding: 1.5rem 0 1rem .75rem;
+      border-left: 2px solid var(--accent);
     }
 
     /* ABOUT */
-    #about { padding-bottom: 2.5rem; }
+    #about { padding-bottom: 1.75rem; }
     .stats-row {
       display: flex; gap: 3.5rem; margin-bottom: 2.25rem;
       flex-wrap: wrap;
@@ -204,7 +205,7 @@
     .proj-grid-full { grid-column: 1 / -1; }
 
     /* SKILLS */
-    #skills { padding-bottom: 2.5rem; }
+    #skills { padding-bottom: 1.75rem; }
     .skill-table { display: flex; flex-direction: column; }
     .skill-row {
       display: grid; grid-template-columns: 9rem 1fr;
@@ -228,7 +229,7 @@
     }
 
     /* PROJECTS */
-    #projects { padding-bottom: 2.5rem; }
+    #projects { padding-bottom: 1.75rem; }
     .proj-sep {
       font-family: 'DM Mono', monospace; font-size: .6rem;
       color: var(--muted-lt); letter-spacing: .18em; text-transform: uppercase;
@@ -283,7 +284,7 @@
     }
 
     /* CURRENTLY */
-    #currently { padding-bottom: 2.5rem; }
+    #currently { padding-bottom: 1.75rem; }
     .currently-list {
       list-style: none; padding: 0; margin: 0;
       display: flex; flex-direction: column; gap: .75rem; max-width: 680px;
@@ -438,7 +439,7 @@
 
     @media(max-width:639px) {
       /* Sections: tighter vertical rhythm */
-      .sec-hdr { padding: 1.5rem 0 .75rem; font-size: .68rem; }
+      .sec-hdr { padding: 1.1rem 0 .75rem .65rem; font-size: .65rem; }
       #about { padding-bottom: 1.5rem; }
       #currently { padding-bottom: 1.5rem; }
       #skills { padding-bottom: 1.5rem; }
