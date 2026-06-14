@@ -293,23 +293,48 @@
       display: inline-flex; align-items: center; gap: .3rem;
     }
 
-    /* CURRENTLY */
-    #currently { padding-bottom: 1.75rem; }
-    .currently-list {
+
+    /* BEYOND + CURRENTLY */
+    #beyond { padding-bottom: 3rem; }
+    .beyond-currently-row {
+      display: flex; gap: 5rem; align-items: flex-start;
+    }
+    .beyond-col { flex: 0 0 auto; max-width: 420px; }
+
+    /* Sticky note */
+    .sticky-note {
+      flex: 1; max-width: 480px;
+      background: #FFFDF4;
+      border-top: 3px solid #B5325E;
+      padding: 1.25rem 1.5rem 1.5rem;
+      box-shadow: 2px 4px 14px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
+      transform: rotate(.6deg);
+      align-self: flex-start; margin-top: .5rem;
+    }
+    .sticky-note-hdr {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--accent); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .9rem;
+    }
+    .sticky-list {
       list-style: none; padding: 0; margin: 0;
-      display: flex; flex-direction: column; gap: .75rem; max-width: 680px;
+      display: flex; flex-direction: column; gap: .65rem;
     }
-    .currently-list li {
-      font-size: .88rem; color: var(--muted); line-height: 1.75;
-      padding-left: 1.1rem; position: relative;
+    .sticky-list li {
+      font-size: .83rem; color: var(--muted); line-height: 1.65;
+      padding-left: 1rem; position: relative;
+      padding-bottom: .55rem;
+      border-bottom: 1px solid rgba(180,165,140,.28);
     }
-    .currently-list li::before {
+    .sticky-list li::before {
       content: '·'; position: absolute; left: 0;
       color: var(--accent); font-weight: 700;
     }
-
-    /* BEYOND */
-    #beyond { padding-bottom: 3rem; }
+    @media(max-width:767px){
+      .beyond-currently-row { flex-direction: column; gap: 2rem; }
+      .beyond-col { max-width: 100%; }
+      .sticky-note { max-width: 100%; transform: none; }
+    }
     .beyond-text {
       font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;
     }
@@ -339,11 +364,18 @@
 
     /* FOOTER */
     footer { padding: 1.25rem 0; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-mark {
-      font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--muted-lt);
-    }
+    .footer-inner { display: flex; align-items: center; justify-content: flex-end; }
     .footer-copy { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--border); }
+
+    /* Corner watermark */
+    .corner-mark {
+      position: fixed; right: 1rem; bottom: 3rem;
+      writing-mode: vertical-lr; transform: rotate(180deg);
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--accent); letter-spacing: .22em; text-transform: uppercase;
+      white-space: nowrap; pointer-events: none; user-select: none; z-index: 0;
+    }
+    @media(max-width:639px){ .corner-mark { display: none; } }
 
     /* MODAL */
     .proj-modal {
@@ -456,7 +488,6 @@
       /* Sections: tighter vertical rhythm */
       .sec-hdr { padding: 1.1rem 0 .75rem .65rem; font-size: .65rem; }
       #about { padding-bottom: 1.5rem; }
-      #currently { padding-bottom: 1.5rem; }
       #skills { padding-bottom: 1.5rem; }
       #projects { padding-bottom: 1.5rem; }
       #beyond { padding-bottom: 1.75rem; }
@@ -503,8 +534,6 @@
       .tl-period { font-size: .68rem; }
       .tl-event { font-size: .8rem; }
 
-      /* Currently working on */
-      .currently-list li { font-size: .83rem; }
 
       /* Modal: bottom sheet */
       .proj-modal { align-items: flex-end; padding: 0; }
@@ -643,21 +672,6 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<hr class="divider" />
-
-<!-- CURRENTLY -->
-<section id="currently">
-  <div class="wrap">
-    <div class="sec-hdr">Currently Working On</div>
-    <ul class="currently-list">
-      <li>Deep Research prompt library, created from my own second brain</li>
-      <li>Hiring our first CSM AI Engineer, who will report to me</li>
-      <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
-      <li>Coaching my team · always the top priority</li>
-    </ul>
   </div>
 </section>
 
@@ -950,15 +964,33 @@ Over time, it becomes more than documentation. It becomes a working partner that
 
 <hr class="divider" />
 
-<!-- BEYOND -->
+<!-- BEYOND + CURRENTLY -->
 <section id="beyond">
   <div class="wrap">
-    <div class="sec-hdr">Beyond Work</div>
-    <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Married · Mother of two</p>
-    <div class="beyond-built">
-      <span class="beyond-built-label">Also built →</span>
-      <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
-      <span class="beyond-built-desc">· an AI positioning tool built for coaches.</span>
+    <div class="beyond-currently-row">
+
+      <!-- Beyond Work -->
+      <div class="beyond-col">
+        <div class="sec-hdr">Beyond Work</div>
+        <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Married · Mother of two</p>
+        <div class="beyond-built">
+          <span class="beyond-built-label">Also built →</span>
+          <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
+          <span class="beyond-built-desc">· an AI positioning tool for coaches.</span>
+        </div>
+      </div>
+
+      <!-- Currently Working On · sticky note -->
+      <div class="sticky-note">
+        <div class="sticky-note-hdr">Currently working on</div>
+        <ul class="sticky-list">
+          <li>Deep Research prompt library, created from my own second brain</li>
+          <li>Hiring our first CSM AI Engineer, who will report to me</li>
+          <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
+          <li>Coaching my team · always the top priority</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -986,8 +1018,6 @@ Over time, it becomes more than documentation. It becomes a working partner that
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <span class="footer-mark">Yaara Shvadron · 2026</span>
-      <span class="footer-copy">Built in Toronto</span>
     </div>
   </div>
 </footer>
@@ -1009,5 +1039,6 @@ Over time, it becomes more than documentation. It becomes a working partner that
   document.getElementById('projModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
+<div class="corner-mark">Yaara Shvadron · 2026</div>
 </body>
 </html>
