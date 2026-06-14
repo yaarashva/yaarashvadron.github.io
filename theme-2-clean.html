@@ -1,0 +1,1168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yaara Shvadron</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --bg-alt: #F4F2EE;
+      --fg: #0F0E0D;
+      --muted: #524E4B;
+      --muted-lt: #7A7672;
+      --accent: #B5325E;
+      --accent-dim: rgba(181,50,94,.07);
+      --border: #E8E4DC;
+      --card: #FAFAF8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background:
+        radial-gradient(ellipse 55% 35% at 2% 4%,  rgba(181,50,94,.09)  0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 96% 8%,  rgba(210,160,100,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 92% 92%, rgba(181,50,94,.07)  0%, transparent 60%),
+        radial-gradient(ellipse 60% 35% at 8%  88%, rgba(160,130,200,.06) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,248,244,.6)  0%, transparent 80%),
+        #FFFFFF;
+      background-attachment: fixed;
+      color: var(--fg);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* LAYOUT */
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 5.5rem; position: relative; z-index: 1; }
+    @media(max-width:1199px){ .wrap { padding: 0 3.5rem; } }
+    @media(max-width:639px){ .wrap { padding: 0 1.25rem; } }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.82); backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(232,228,220,.4);
+    }
+    .nav-inner {
+      max-width: 1440px; margin: 0 auto; padding: 0 5.5rem;
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    /* Icon mark */
+    .nav-mark {
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .nav-mark svg { display: block; }
+    .nav-mark-label {
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+    }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-links a {
+      font-size: .78rem; font-weight: 500; color: var(--muted);
+      transition: color .18s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-links .nav-cv {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem; color: var(--accent);
+      border: 1px solid rgba(181,50,94,.4); padding: .22rem .65rem; border-radius: 3px;
+      transition: background .18s;
+    }
+    .nav-links .nav-cv:hover { background: var(--accent-dim); }
+    .nav-icon { display: flex; align-items: center; color: var(--muted-lt); transition: color .18s; }
+    .nav-icon:hover { color: var(--fg); }
+    @media(max-width:767px){
+      .nav-links .nav-hide { display: none; }
+      .nav-links .nav-show-mobile { display: flex; }
+    }
+
+
+    /* HERO */
+    #hero {
+      padding: 5.5rem 0 0;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 4rem; align-items: start;
+    }
+    @media(max-width:767px){
+      .hero-grid { grid-template-columns: 1fr; }
+      .portrait-side { order: -1; }
+    }
+    .hero-left { max-width: 520px; padding-bottom: 3.5rem; }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted-lt); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    h1.name {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700; line-height: .95; letter-spacing: -.035em;
+      margin-bottom: 1.25rem;
+    }
+    .name-first { display: block; color: var(--fg); }
+    .name-last { display: block; color: var(--accent); }
+    .bio-lead {
+      font-size: .8rem; font-weight: 600; color: var(--fg);
+      letter-spacing: .01em; margin-bottom: .4rem; display: block;
+    }
+    .hero-bio {
+      font-size: .86rem; color: var(--muted); line-height: 1.75; margin-top: .6rem;
+    }
+
+    /* Portrait */
+    .portrait-side { display: flex; align-items: flex-start; }
+    .portrait-box { width: 360px; position: relative; }
+    .portrait-box img {
+      width: 100%; height: 520px; aspect-ratio: unset;
+      object-fit: cover; object-position: top center;
+      display: block;
+      border-radius: 6px 6px 0 0;
+    }
+    @media(max-width:767px){
+      .portrait-box { width: 80px; }
+      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 50%; -webkit-mask-image: none; mask-image: none; }
+    }
+
+    hr.divider { display: none; }
+
+    /* SECTION HEADER */
+    .sec-hdr {
+      font-family: 'DM Mono', monospace; font-size: .68rem;
+      color: var(--muted); letter-spacing: .18em; text-transform: uppercase;
+      padding: 1.5rem 0 1rem .75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* ABOUT */
+    #about { padding-bottom: 1.75rem; }
+    .stats-row {
+      display: flex; gap: 3.5rem; margin-top: 1.75rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {}
+    .stat-pre {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--accent); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
+    .stat-num {
+      font-size: 1.9rem; font-weight: 700;
+      color: var(--fg); line-height: 1; margin-bottom: .2rem;
+      letter-spacing: -.03em;
+    }
+    .stat-lbl {
+      font-family: 'DM Mono', monospace; font-size: .72rem;
+      color: var(--muted-lt); letter-spacing: .08em;
+    }
+    .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
+    .about-bio strong { color: var(--fg); font-weight: 600; }
+    .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    /* BG SIGNAL FLOW */
+    .bg-svg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    @keyframes hubPulse  { 0%,100%{opacity:.18;} 50%{opacity:.38;} }
+    @keyframes hubPulseB { 0%,100%{opacity:.14;} 50%{opacity:.30;} }
+    .hub   { animation: hubPulse  3.6s ease-in-out infinite; }
+    .hub-b { animation: hubPulse  4.4s ease-in-out infinite 1.5s; }
+    .hub-c { animation: hubPulseB 3.1s ease-in-out infinite .7s; }
+
+    /* WORK JOURNEY STRIP */
+    .work-strip { margin-top: 2rem; }
+    .work-layout { display: flex; align-items: flex-start; }
+    .company-block { display: flex; flex-direction: column; }
+    .company-label {
+      font-family: 'DM Mono', monospace; font-size: .55rem;
+      color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 1.6rem; opacity: .6;
+    }
+    .company-stops { display: flex; position: relative; }
+    .company-stops::before {
+      content: ''; position: absolute;
+      top: 2px; left: 2.5px; right: 1.75rem;
+      height: 1px; background: var(--border); z-index: 0;
+    }
+    .work-stop {
+      flex: 1; display: flex; flex-direction: column;
+      padding-right: 1.75rem; position: relative;
+    }
+    .stop-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--border); margin-bottom: .65rem;
+      flex-shrink: 0; position: relative; z-index: 1;
+      transition: background .18s, box-shadow .18s;
+    }
+    .work-stop.current .stop-dot {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(181,50,94,.14);
+    }
+    .stop-year {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--accent); letter-spacing: .14em; margin-bottom: .3rem;
+    }
+    .stop-role {
+      font-size: .82rem; font-weight: 600;
+      line-height: 1.25; color: var(--fg); margin-bottom: .25rem;
+    }
+    .work-stop.current .stop-role { color: var(--accent); }
+    .stop-words {
+      font-family: 'DM Mono', monospace; font-size: .56rem;
+      color: var(--muted-lt); letter-spacing: .04em; line-height: 1.55;
+    }
+    @media(max-width:900px){
+      .work-layout { flex-direction: column; gap: 2rem; }
+      .company-stops::before { right: 0; }
+    }
+    @media(max-width:639px){
+      .work-stop { padding-right: 1.25rem; }
+    }
+
+    .focus-block { margin: 1.75rem 0 2.5rem; }
+    .focus-item { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; padding: .85rem 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .focus-item:last-child { border-bottom: 1px solid var(--border); }
+    .focus-label { font-family: 'DM Mono', monospace; font-size: .62rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+    .focus-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* full-width span inside proj grid */
+    .proj-grid-full { grid-column: 1 / -1; }
+
+    /* SKILLS */
+    #skills { padding-bottom: 1.75rem; }
+    .skill-table { display: flex; flex-direction: column; }
+    .skill-row {
+      display: grid; grid-template-columns: 9rem 1fr;
+      gap: 2rem; padding: 1rem 0;
+      border-top: 1px solid var(--border); align-items: start;
+    }
+    .skill-row:last-child { border-bottom: 1px solid var(--border); }
+    @media(max-width:639px){
+      .skill-row { grid-template-columns: 1fr; gap: .2rem; padding: .6rem 0; }
+      .skill-chip { font-size: .68rem; padding: .16rem .45rem; }
+      .skill-row-cat { font-size: .68rem; }
+    }
+    .skill-row-cat {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 600; color: var(--fg);
+      letter-spacing: -.01em; padding-top: .2rem;
+    }
+    .skill-row-cat svg { color: var(--accent); flex-shrink: 0; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: .32rem; }
+    .skill-chip {
+      font-size: .75rem; color: var(--muted);
+      background: var(--bg-alt); border: 1px solid var(--border);
+      padding: .22rem .6rem; border-radius: 3px; line-height: 1.35;
+      transition: border-color .15s, color .15s;
+    }
+
+    /* PROJECTS */
+    #projects { padding-bottom: 1.75rem; }
+    .proj-sep {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--muted-lt); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .85rem; margin-top: 1.75rem; padding-bottom: .45rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .proj-sep:first-of-type { margin-top: 0; }
+
+    .proj-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    .proj-grid-3 { grid-template-columns: repeat(4, 1fr); }
+    @media(max-width:1199px){ .proj-grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media(max-width:767px){ .proj-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:639px){ .proj-grid-2 { grid-template-columns: 1fr; gap: 1rem; } }
+
+    .proj-card { display: flex; flex-direction: column; background: transparent; }
+    .proj-card[onclick] { cursor: pointer; }
+    .proj-card[onclick]:hover .proj-card-img { opacity: .82; transform: scale(1.012); }
+    .proj-card[onclick]:hover .proj-card-title { color: var(--accent); }
+
+    .proj-card-img-wrap { overflow: hidden; border-radius: 6px; margin-bottom: .6rem; }
+    .proj-card-img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+      transition: opacity .22s, transform .28s ease;
+    }
+
+    .proj-card-body { flex: 1; display: flex; flex-direction: column; }
+    .proj-card-num {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--muted-lt); margin-bottom: .3rem;
+    }
+    .proj-card-title {
+      font-size: .9rem; font-weight: 600; margin-bottom: .3rem;
+      letter-spacing: -.01em; line-height: 1.35; transition: color .18s;
+    }
+    .proj-card-desc { font-size: .8rem; color: var(--muted); line-height: 1.65; margin-bottom: .5rem; flex: 1; }
+    .proj-card-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .5rem; }
+    .proj-card-tag {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--muted); border: 1px solid var(--border);
+      padding: .15rem .45rem; border-radius: 2px;
+    }
+    .proj-card-impact {
+      font-family: 'DM Mono', monospace; font-size: .67rem;
+      padding: .3rem 0 .3rem .5rem; border-left: 1.5px solid var(--accent);
+      color: var(--muted); margin-bottom: .5rem;
+    }
+    .proj-view { font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--accent); margin-top: auto; }
+    .proj-link-row { display: flex; flex-direction: column; gap: .3rem; margin-top: auto; }
+    .proj-ext-link {
+      font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+
+
+    /* BEYOND + CURRENTLY */
+    #beyond { padding-bottom: 3rem; }
+    .beyond-currently-row {
+      display: flex; gap: 5rem; align-items: flex-start;
+    }
+    .beyond-col { flex: 0 0 auto; max-width: 420px; }
+
+    /* Sticky note */
+    .sticky-note {
+      flex: 1; max-width: 480px;
+      background: #FFFDF4;
+      border-top: 3px solid #B5325E;
+      padding: 1.25rem 1.5rem 1.5rem;
+      box-shadow: 2px 4px 14px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
+      transform: rotate(.6deg);
+      align-self: flex-start; margin-top: .5rem;
+    }
+    .sticky-note-hdr {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--accent); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .9rem;
+    }
+    .sticky-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: .65rem;
+    }
+    .sticky-list li {
+      font-size: .83rem; color: var(--muted); line-height: 1.65;
+      padding-left: 1rem; position: relative;
+      padding-bottom: .55rem;
+      border-bottom: 1px solid rgba(180,165,140,.28);
+    }
+    .sticky-list li::before {
+      content: '·'; position: absolute; left: 0;
+      color: var(--accent); font-weight: 700;
+    }
+    @media(max-width:767px){
+      .beyond-currently-row { flex-direction: column; gap: 2rem; }
+      .beyond-col { max-width: 100%; }
+      .sticky-note { max-width: 100%; transform: none; }
+    }
+    .beyond-text {
+      font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;
+    }
+    .beyond-text a { color: var(--accent); }
+    .beyond-text a:hover { text-decoration: underline; }
+    .beyond-built {
+      font-size: .88rem; color: var(--muted-lt);
+      display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
+    }
+    .beyond-built-label { color: var(--muted-lt); }
+    .beyond-built-link { color: var(--accent); }
+    .beyond-built-link:hover { text-decoration: underline; }
+    .beyond-built-desc { color: var(--muted-lt); }
+
+    /* CONNECT */
+    #connect {
+      padding: 2.5rem 0 2rem;
+    }
+    .connect-heading {
+      font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+    }
+    .connect-email {
+      font-family: 'DM Mono', monospace; font-size: .88rem;
+      color: var(--fg);
+    }
+
+    /* FOOTER */
+    footer { padding: 1.25rem 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: flex-end; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: .65rem; color: var(--border); }
+
+    /* Corner watermark */
+    .corner-mark {
+      position: fixed; right: 1rem; bottom: 3rem;
+      writing-mode: vertical-lr; transform: rotate(180deg);
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--accent); letter-spacing: .22em; text-transform: uppercase;
+      white-space: nowrap; pointer-events: none; user-select: none; z-index: 0;
+    }
+    @media(max-width:639px){ .corner-mark { display: none; } }
+
+    /* MODAL */
+    .proj-modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.4); display: flex;
+      align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .proj-modal.open { opacity: 1; pointer-events: all; }
+    .proj-modal-panel {
+      width: 100%; max-width: 740px; max-height: 88vh;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; border-top: 2px solid var(--accent);
+      overflow-y: auto;
+      transform: translateY(16px) scale(.98);
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94);
+    }
+    .proj-modal.open .proj-modal-panel { transform: none; }
+    .modal-hdr {
+      position: sticky; top: 0;
+      display: flex; justify-content: flex-end;
+      padding: .65rem .85rem;
+      background: var(--card); border-bottom: 1px solid var(--border); z-index: 5;
+    }
+    .modal-close {
+      font-family: 'DM Mono', monospace; font-size: .67rem; color: var(--muted);
+      border: 1px solid var(--border); background: var(--bg);
+      padding: .25rem .6rem; border-radius: 2px;
+      cursor: pointer; transition: color .18s, border-color .18s;
+    }
+    .modal-close:hover { color: var(--accent); border-color: var(--accent); }
+    .modal-imgs { padding: 1rem 1rem 0; display: grid; gap: .5rem; }
+    .modal-imgs.two { grid-template-columns: 1fr 1fr; }
+    .modal-imgs-musician { grid-template-columns: 1fr 1fr 1fr; }
+    .musician-card-img { filter: grayscale(45%) sepia(20%); }
+    @media(max-width:639px){ .musician-card-img { filter: sepia(1) hue-rotate(305deg) saturate(3.5) brightness(.72); } }
+    @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } .modal-imgs-musician { grid-template-columns: 1fr 1fr; } }
+    .modal-img { width: 100%; border-radius: 4px; object-fit: cover; display: block; background: var(--bg-alt); }
+    .modal-stack {
+      display: flex; align-items: center; flex-wrap: wrap; gap: .3rem;
+      padding: .7rem 1.25rem; background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-stack-label {
+      font-family: 'DM Mono', monospace; font-size: .56rem;
+      color: var(--muted-lt); letter-spacing: .14em; text-transform: uppercase;
+      margin-right: .2rem; flex-shrink: 0;
+    }
+    .modal-stack-pill {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      color: var(--fg); background: var(--card);
+      border: 1px solid var(--border); padding: .14rem .45rem; border-radius: 2px;
+    }
+    .modal-body { padding: 1.25rem; }
+    .modal-mono {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--accent); letter-spacing: .14em; margin-bottom: .45rem;
+    }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .75rem; }
+    .modal-tag {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--muted); border: 1px solid var(--border);
+      padding: .14rem .45rem; border-radius: 2px;
+    }
+    .modal-title {
+      font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .75rem;
+    }
+    .modal-desc {
+      font-size: .85rem; color: var(--muted); line-height: 1.8;
+      margin-bottom: .9rem; white-space: pre-line;
+    }
+    .modal-impact {
+      display: flex; gap: .45rem;
+      padding: .55rem .75rem; background: var(--bg-alt);
+      border-left: 1.5px solid var(--accent);
+      font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted);
+    }
+    .modal-impact::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+    /* ===== MOBILE ===== */
+    @media(max-width:767px) {
+      /* Nav */
+      .nav-inner { padding: 0 1.25rem; }
+      .nav-links { gap: .7rem; }
+
+      /* Hero: name → image → text */
+      #hero { padding: 4rem 0 0; }
+      .hero-grid { display: flex; flex-direction: column; }
+      .hero-left { display: contents; padding-bottom: 0; max-width: 100%; }
+      .hero-eyebrow { display: none; }
+      h1.name { order: 1; font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: 1rem; }
+      .portrait-side { order: 2; margin-bottom: 1.25rem; justify-content: flex-start; }
+      .bio-lead { order: 3; }
+      .hero-bio { order: 4; }
+      .stats-row { order: 5; }
+      .portrait-box { width: min(340px, 88vw); }
+      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 6px; object-position: top center; }
+
+      /* About focus block: stack label + desc */
+      .focus-item { grid-template-columns: 1fr; gap: .2rem; }
+      .focus-label { margin-bottom: .1rem; }
+
+      /* Stats */
+      .stats-row { gap: 2.25rem; }
+
+      /* Projects: 2 cols on tablet */
+      .proj-grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media(max-width:639px) {
+      /* Sections: tighter vertical rhythm */
+      .sec-hdr { padding: 1.1rem 0 .75rem .65rem; font-size: .65rem; }
+      #about { padding-bottom: 1.5rem; }
+      #skills { padding-bottom: 1.5rem; }
+      #projects { padding-bottom: 1.5rem; }
+      #beyond { padding-bottom: 1.75rem; }
+
+      /* Hero */
+      #hero { padding: 3.75rem 0 0; }
+      h1.name { font-size: 2.1rem; }
+      .hero-left { padding-bottom: 1.25rem; }
+      .hero-bio { font-size: .82rem; }
+      .portrait-box { width: min(220px, 60vw); }
+      .hero-eyebrow { font-size: .52rem; letter-spacing: .04em; }
+
+      /* Stats */
+      .stat-num { font-size: 1.6rem; }
+      .stats-row { gap: 1.75rem; margin-bottom: 1.5rem; }
+
+      /* About summary tighter */
+      .about-summary p { font-size: .83rem; }
+
+
+      /* Projects: single col, stacked card layout */
+      .proj-no-mobile-img { display: none; }
+      .proj-grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+      .proj-grid-3 { grid-template-columns: 1fr; }
+      .proj-card { flex-direction: column; gap: 0; }
+      .proj-card-img-wrap { width: 100%; margin-bottom: .6rem; }
+      .proj-card-img { aspect-ratio: 16/9; object-fit: cover; }
+      .proj-card-desc { font-size: .78rem; }
+      .proj-card[onclick] { cursor: pointer; }
+      .proj-card-body::after {
+        content: 'Tap to open →';
+        display: block;
+        font-family: 'DM Mono', monospace;
+        font-size: .56rem; color: var(--accent);
+        letter-spacing: .07em; margin-top: .3rem; opacity: .7;
+      }
+
+      /* Modal: bottom sheet */
+      .proj-modal { align-items: flex-end; padding: 0; }
+      .proj-modal-panel {
+        max-width: 100%; max-height: 90vh;
+        border-radius: 14px 14px 0 0;
+        transform: translateY(40px) scale(1);
+      }
+      .proj-modal.open .proj-modal-panel { transform: none; }
+      .modal-imgs.two { grid-template-columns: 1fr; }
+      .modal-title { font-size: 1.1rem; }
+      .modal-desc { font-size: .8rem; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: .4rem; text-align: center; }
+
+      /* Connect */
+      #connect { padding: 2rem 0 1.5rem; }
+      .connect-heading { font-size: 1.2rem; }
+      .connect-email { font-size: .85rem; }
+
+      /* Beyond */
+      .beyond-text { font-size: .83rem; }
+      .beyond-built { font-size: .83rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIGNAL FLOW BACKGROUND -->
+<svg class="bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
+     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.89">
+
+  <!-- LEFT SIDE · smooth twin-curl flow -->
+  <path id="lu1" d="M 62,65 C 62,108 4,148 8,188 C 12,228 78,252 72,295" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="lt-a" d="M 72,295 C 2,328 -8,378 10,418 C 30,458 88,476 62,512" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="lt-b" d="M 72,295 C 88,316 92,362 70,404 C 48,446 4,466 62,512" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="ll1" d="M 62,512 C 62,550 4,578 12,618" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="ll2" d="M 12,618 C 20,658 78,696 52,735" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="ll3" d="M 52,735 C 26,772 2,810 22,855" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
+
+  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.9s" repeatCount="indefinite" begin="3.7s"><mpath href="#lu1"/></animateMotion></circle>
+  <circle r="1.4" fill="#B5325E" opacity=".29"><animateMotion dur="17.3s" repeatCount="indefinite" begin="7.2s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lu1"/></animateMotion></circle>
+  <circle r="2.2" fill="#B5325E" opacity=".71"><animateMotion dur="4.7s" repeatCount="indefinite" begin="0.5s"><mpath href="#lt-a"/></animateMotion></circle>
+  <circle r="1.3" fill="#B5325E" opacity=".26"><animateMotion dur="22.1s" repeatCount="indefinite" begin="13.6s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-a"/></animateMotion></circle>
+  <circle r="1.8" fill="#9C9890" opacity=".54"><animateMotion dur="11.3s" repeatCount="indefinite" begin="1.9s"><mpath href="#lt-b"/></animateMotion></circle>
+  <circle r="1.2" fill="#9C9890" opacity=".35"><animateMotion dur="19.8s" repeatCount="indefinite" begin="9.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-b"/></animateMotion></circle>
+  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="6.3s" repeatCount="indefinite" begin="5.1s"><mpath href="#ll1"/></animateMotion></circle>
+  <circle r="2.3" fill="#B5325E" opacity=".73"><animateMotion dur="1.3s" repeatCount="indefinite" begin="9.8s"><mpath href="#ll2"/></animateMotion></circle>
+  <circle r="1.7" fill="#9C9890" opacity=".51"><animateMotion dur="8.9s" repeatCount="indefinite" begin="2.4s"><mpath href="#ll3"/></animateMotion></circle>
+
+  <circle cx="62" cy="65" r="8" fill="#B5325E" class="hub"/>
+  <circle cx="62" cy="65" r="3.5" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(62,65) scale(1.25)" opacity=".92"><circle cx="0" cy="-1.3" r="1.1" fill="#FFFFFF"/><path d="M-1.8,2 Q-1.8,.3 0,.3 Q1.8,.3 1.8,2" stroke="#FFFFFF" stroke-width=".8" stroke-linecap="round" fill="none"/></g>
+  <circle cx="8" cy="188" r="4" fill="#9C9890" opacity=".2"/>
+  <circle cx="8" cy="188" r="2" fill="#9C9890" opacity=".52"/>
+  <circle cx="72" cy="295" r="7" fill="#B5325E" class="hub-c"/>
+  <circle cx="72" cy="295" r="3" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(72,295) scale(1.25)" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" opacity=".92" fill="none"><line x1="-1.8" y1="1.8" x2="1.8" y2="-1.8"/><polyline points=".3,-1.8 1.8,-1.8 1.8,-.3"/></g>
+  <circle cx="62" cy="512" r="9" fill="#B5325E" class="hub-b"/>
+  <circle cx="62" cy="512" r="3.8" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(62,512) scale(1.25)" fill="none" stroke="#FFFFFF" stroke-width=".75" opacity=".92"><circle cx="0" cy="0" r="1.3"/><circle cx="0" cy="0" r="2.8"/></g>
+  <circle cx="12" cy="618" r="3.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="12" cy="618" r="1.8" fill="#9C9890" opacity=".5"/>
+  <circle cx="52" cy="735" r="5.5" fill="#B5325E" opacity=".18"/>
+  <circle cx="52" cy="735" r="2.8" fill="#B5325E" opacity=".55"/>
+  <g transform="translate(52,735) scale(1.25)" opacity=".88"><line x1="-1.2" y1="-.8" x2="1.2" y2="-.8" stroke="#FFFFFF" stroke-width=".5"/><line x1="-1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><line x1="1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><circle cx="-1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="0" cy="1.2" r=".55" fill="#FFFFFF"/></g>
+  <circle cx="22" cy="855" r="3.5" fill="#9C9890" opacity=".18"/>
+  <circle cx="22" cy="855" r="1.8" fill="#9C9890" opacity=".5"/>
+
+  <!-- RIGHT SIDE · branching network -->
+  <path id="rp12" d="M1382,88  Q1428,140 1418,190" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp23" d="M1418,190 Q1362,238 1370,285" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="rp24" d="M1418,190 Q1428,270 1408,350" stroke="#B5325E" stroke-width=".85" fill="none" opacity=".16"/>
+  <path id="rp36" d="M1370,285 Q1350,406 1385,528" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
+  <path id="rp45" d="M1408,350 Q1438,392 1435,432" stroke="#B5325E" stroke-width=".8" fill="none" opacity=".16"/>
+  <path id="rp56" d="M1435,432 Q1422,480 1385,528" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp67" d="M1385,528 Q1430,578 1420,628" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="rp78" d="M1420,628 Q1360,674 1372,718" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp68" d="M1385,528 Q1345,622 1372,718" stroke="#B5325E" stroke-width=".7" fill="none" opacity=".13"/>
+  <path id="rp89" d="M1372,718 Q1418,778 1412,835" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+
+  <circle r="1.8" fill="#9C9890" opacity=".51"><animateMotion dur="14.2s" repeatCount="indefinite" begin="0.7s"><mpath href="#rp12"/></animateMotion></circle>
+  <circle r="2.2" fill="#B5325E" opacity=".73"><animateMotion dur="8.8s" repeatCount="indefinite" begin="6.3s"><mpath href="#rp23"/></animateMotion></circle>
+  <circle r="1.5" fill="#B5325E" opacity=".38"><animateMotion dur="9.7s" repeatCount="indefinite" begin="16.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp23"/></animateMotion></circle>
+  <circle r="2.0" fill="#B5325E" opacity=".62"><animateMotion dur="3.9s" repeatCount="indefinite" begin="1.3s"><mpath href="#rp24"/></animateMotion></circle>
+  <circle r="1.6" fill="#9C9890" opacity=".43"><animateMotion dur="24.1s" repeatCount="indefinite" begin="5.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp36"/></animateMotion></circle>
+  <circle r="1.3" fill="#9C9890" opacity=".36"><animateMotion dur="11.3s" repeatCount="indefinite" begin="19.7s"><mpath href="#rp36"/></animateMotion></circle>
+  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.8s" repeatCount="indefinite" begin="12.1s"><mpath href="#rp45"/></animateMotion></circle>
+  <circle r="1.5" fill="#B5325E" opacity=".33"><animateMotion dur="7.6s" repeatCount="indefinite" begin="3.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp45"/></animateMotion></circle>
+  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="5.3s" repeatCount="indefinite" begin="0.4s"><mpath href="#rp56"/></animateMotion></circle>
+  <circle r="1.7" fill="#B5325E" opacity=".44"><animateMotion dur="2.3s" repeatCount="indefinite" begin="21.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp56"/></animateMotion></circle>
+  <circle r="2.3" fill="#B5325E" opacity=".74"><animateMotion dur="1.7s" repeatCount="indefinite" begin="4.6s"><mpath href="#rp67"/></animateMotion></circle>
+  <circle r="1.7" fill="#9C9890" opacity=".53"><animateMotion dur="18.6s" repeatCount="indefinite" begin="8.9s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp78"/></animateMotion></circle>
+  <circle r="1.9" fill="#B5325E" opacity=".49"><animateMotion dur="7.4s" repeatCount="indefinite" begin="14.2s"><mpath href="#rp68"/></animateMotion></circle>
+  <circle r="2.0" fill="#9C9890" opacity=".59"><animateMotion dur="6.7s" repeatCount="indefinite" begin="2.6s"><mpath href="#rp89"/></animateMotion></circle>
+
+  <circle cx="1382" cy="88" r="4" fill="#9C9890" opacity=".2"/>
+  <circle cx="1382" cy="88" r="2" fill="#9C9890" opacity=".52"/>
+  <circle cx="1418" cy="190" r="10" fill="#B5325E" class="hub"/>
+  <circle cx="1418" cy="190" r="3.8" fill="#B5325E" opacity=".62"/>
+  <g transform="translate(1418,190) scale(1.25)" fill="#FFFFFF" opacity=".9"><path d="M .7,-2.8 L -1,.2 L .2,.2 L -.7,2.8 L 1,-.2 L -.2,-.2 Z"/></g>
+  <circle cx="1370" cy="285" r="4.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="1370" cy="285" r="2.2" fill="#9C9890" opacity=".52"/>
+  <circle cx="1408" cy="350" r="6" fill="#B5325E" opacity=".18"/>
+  <circle cx="1408" cy="350" r="3" fill="#B5325E" opacity=".58"/>
+  <circle cx="1435" cy="432" r="3.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="1435" cy="432" r="1.8" fill="#9C9890" opacity=".5"/>
+  <circle cx="1385" cy="528" r="11" fill="#B5325E" class="hub-b"/>
+  <circle cx="1385" cy="528" r="4" fill="#B5325E" opacity=".62"/>
+  <g transform="translate(1385,528) scale(1.25)" fill="#FFFFFF" opacity=".88"><rect x="-2.5" y=".3" width="1.2" height="1.7"/><rect x="-.8" y="-1" width="1.2" height="3"/><rect x=".9" y="-2.5" width="1.2" height="4.5"/></g>
+  <circle cx="1420" cy="628" r="5" fill="#B5325E" opacity=".18"/>
+  <circle cx="1420" cy="628" r="2.5" fill="#B5325E" opacity=".55"/>
+  <circle cx="1372" cy="718" r="7" fill="#9C9890" class="hub-c"/>
+  <circle cx="1372" cy="718" r="3" fill="#9C9890" opacity=".55"/>
+  <g transform="translate(1372,718) scale(1.25)" fill="#FFFFFF" opacity=".85"><circle cx="-1" cy="-1.6" r=".75"/><path d="M-2.2,1.8 Q-2.2,.2 -1,.2 Q0,.2 0,1.8" fill="#FFFFFF"/><circle cx="1" cy="-1.9" r=".65"/><path d="M0,1.8 Q0,.2 1,.2 Q2.2,.2 2.2,1.8" fill="#FFFFFF"/></g>
+  <circle cx="1412" cy="835" r="4" fill="#9C9890" opacity=".18"/>
+  <circle cx="1412" cy="835" r="2" fill="#9C9890" opacity=".5"/>
+
+</svg>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-mark"></div>
+    <div class="nav-links">
+      <a href="#about" class="nav-hide">About</a>
+      <a href="#skills" class="nav-hide">Skills</a>
+      <a href="#projects" class="nav-hide">Projects</a>
+      <a href="#connect" class="nav-hide">Contact</a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/yaarashvadron/" target="_blank" rel="noopener" class="nav-icon" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/yaya_coco_jambo/" target="_blank" rel="noopener" class="nav-icon" title="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <!-- SoundCloud -->
+      <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener" class="nav-icon" title="SoundCloud">
+        <svg width="18" height="16" viewBox="0 0 24 16" fill="currentColor"><path d="M1.543 10.5C.69 10.5 0 11.19 0 12.043c0 .854.69 1.543 1.543 1.543.853 0 1.543-.69 1.543-1.543V8.414A1.54 1.54 0 0 0 1.543 8c-.853 0-1.543.69-1.543 1.543v.957zM4.629 7.457v5.129c0 .425.344.769.769.769s.769-.344.769-.769V6.686c0-.425-.344-.769-.769-.769a.77.77 0 0 0-.53.215 3.083 3.083 0 0 0-.239.325zM7.714 5.743v6.843c0 .425.344.769.769.769s.769-.344.769-.769V5.743c0-.425-.344-.769-.769-.769s-.769.344-.769.769zM10.8 4.8v7.786c0 .425.344.769.769.769s.769-.344.769-.769V4.8c0-.425-.344-.769-.769-.769S10.8 4.375 10.8 4.8zM14.4 4a6.4 6.4 0 0 0-1.286.133V13.4c0 .353.286.6.629.6H19.2A4.8 4.8 0 0 0 24 9.2 4.8 4.8 0 0 0 19.2 4.4c-.24 0-.474.02-.703.058A6.394 6.394 0 0 0 14.4 4z"/></svg>
+      </a>
+      <a href="public/Yaara Shvadron 2026.pdf" target="_blank" class="nav-cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="portrait-side">
+        <div class="portrait-box">
+          <img src="public/portrait-new.png" alt="Yaara Shvadron" />
+        </div>
+      </div>
+      <div class="hero-left">
+        <div class="hero-eyebrow">Currently · Senior Manager, Customer Success · JAGGAER</div>
+        <h1 class="name">
+          <span class="name-first">Yaara</span>
+          <span class="name-last">Shvadron</span>
+        </h1>
+        <span class="bio-lead">Building. Leading. Repeat.</span>
+        <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-pre">Portfolio</div>
+            <div class="stat-num">$90M+</div>
+            <div class="stat-lbl">ARR under management</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-pre">Team</div>
+            <div class="stat-num">15</div>
+            <div class="stat-lbl">Leading a mid-level manager and 14 team members</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="focus-block">
+      <div class="focus-item">
+        <span class="focus-label">AI Roadmap</span>
+        <span class="focus-desc">Building and executing an AI operating layer across all CSM tiers; evaluating tools, designing agents, and driving phased rollout.</span>
+      </div>
+      <div class="focus-item">
+        <span class="focus-label">Strategic Planning</span>
+        <span class="focus-desc">Translating AI ambition into board-ready deliverables, ROI models, and implementation roadmaps that actually ship. My examples span across product feedback loop, speaking at customer events, and supporting sales in every deal.</span>
+      </div>
+      <div class="focus-item">
+        <span class="focus-label">Enterprise Transformation</span>
+        <span class="focus-desc">Shifting Customer Success from reactive to AI-augmented. Smarter handoffs, automated intelligence layers, teams that scale without adding headcount.</span>
+      </div>
+    </div>
+    <div class="work-strip">
+      <div class="sec-hdr">Journey</div>
+      <div class="work-layout">
+        <div class="company-block">
+          <div class="company-label">JAGGAER · 2021 → present</div>
+          <div class="company-stops">
+            <div class="work-stop current">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2025 · present</div>
+              <div class="stop-role">Senior Manager, CS</div>
+              <div class="stop-words">112% attainment · AI showcase win<br/>$90M ARR · 15 team</div>
+            </div>
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2023 · 2025</div>
+              <div class="stop-role">Head of CS, North America</div>
+              <div class="stop-words">115% targets · 150+ accounts<br/>3% GRR · $76M ARR</div>
+            </div>
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2021 · 2023</div>
+              <div class="stop-role">Customer Success Manager</div>
+              <div class="stop-words">$5.8M portfolio · solo<br/>Higher Ed · Fortune 500</div>
+            </div>
+          </div>
+        </div>
+        <div class="company-block">
+          <div class="company-label">Fast Simon · 2019 → 2021</div>
+          <div class="company-stops">
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2019 · 2021</div>
+              <div class="stop-role">Lead CSM</div>
+              <div class="stop-words">100+ accounts · built from zero<br/>Klaviyo partnership</div>
+            </div>
+          </div>
+        </div>
+        <div class="company-block">
+          <div class="company-label">MFA · Ministry of Foreign Affairs · 2014 → 2018</div>
+          <div class="company-stops">
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2014 · 2018</div>
+              <div class="stop-role">Research Assistant</div>
+              <div class="stop-words">75% manual effort eliminated<br/>system still runs today</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-hdr">Skills</div>
+    <div class="skill-table">
+      <div class="skill-row">
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.5 5.5L13 7L8.5 8.5L7 13L5.5 8.5L1 7L5.5 5.5L7 1Z" fill="currentColor"/></svg>
+          AI
+        </div>
+        <div class="skill-chips"><span class="skill-chip">AI Agent Development</span><span class="skill-chip">RAG Architecture</span><span class="skill-chip">AI Orchestration</span><span class="skill-chip">Workflow Automation</span><span class="skill-chip">Enterprise AI Deployment</span><span class="skill-chip">Architecture</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.5 4L1 7L4.5 10M9.5 4L13 7L9.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Build
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Vibe Coding</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">Git &amp; GitHub</span><span class="skill-chip">Markdown</span><span class="skill-chip">HTML &amp; CSS</span><span class="skill-chip">Claude Code</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Leadership
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Customer Success Leadership</span><span class="skill-chip">P&amp;L Ownership</span><span class="skill-chip">Team Scaling</span><span class="skill-chip">Executive Stakeholder Mgmt</span><span class="skill-chip">Organizational Design</span><span class="skill-chip">Change Management</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="1" y="1" width="5" height="5" rx="1" opacity=".8"/><rect x="8" y="1" width="5" height="5" rx="1" opacity=".8"/><rect x="1" y="8" width="5" height="5" rx="1" opacity=".8"/><rect x="8" y="8" width="5" height="5" rx="1" opacity=".8"/></svg>
+          Platforms
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Salesforce</span><span class="skill-chip">Pendo</span><span class="skill-chip">Zendesk</span><span class="skill-chip">JIRA</span><span class="skill-chip">Staircase AI</span><span class="skill-chip">Obsidian</span><span class="skill-chip">AWS</span><span class="skill-chip">ECS</span><span class="skill-chip">S3</span><span class="skill-chip">Nginx</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-row-cat">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="1" y="8" width="2.5" height="5" rx=".5"/><rect x="5.5" y="5" width="2.5" height="8" rx=".5"/><rect x="10" y="2" width="2.5" height="11" rx=".5"/></svg>
+          Data
+        </div>
+        <div class="skill-chips"><span class="skill-chip">Tableau</span><span class="skill-chip">Looker</span><span class="skill-chip">Snowflake</span><span class="skill-chip">Excel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-hdr">Projects</div>
+
+    <div class="proj-sep">Work</div>
+    <div class="proj-grid-2 proj-grid-3">
+
+      <!-- AI ROADMAP -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/ai-roadmap-mobile.png"/><img class="proj-card-img" src="images/cards/ai-roadmap-desktop.png" alt="CSM AI Roadmap" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">01</div>
+          <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
+          <p class="proj-card-desc">CSM AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">AI Strategy</span><span class="proj-card-tag">Board Deck</span></div>
+          <div class="proj-card-impact">Presented at board level. Target: 30% efficiency gain.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <img class="modal-img" src="images/CSM Roadmap details.png" alt="CSM AI Roadmap" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+          </div>
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Claude AI</span><span class="modal-stack-pill">Miro</span><span class="modal-stack-pill">PowerPoint</span><span class="modal-stack-pill">Notion</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">01 // AI Strategy</div>
+            <div class="modal-tags"><span class="modal-tag">AI Strategy</span><span class="modal-tag">Board Presentation</span></div>
+            <h2 class="modal-title">AI Roadmap: Tools, Agents &amp; Orchestration</h2>
+            <p class="modal-desc">In early 2026, I analyzed task by task the CSM workflows and designed JAGGAER's Customer Success Managers AI roadmap, consisting of 27+ tools that will interconnect to agents.
+
+As of June, my team has decreased manual work by 6% thanks to AI tools, and our goal is much higher.</p>
+            <div class="modal-impact">6% reduction in manual work as of June 2026. 27+ tools mapped across the CSM lifecycle.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- ELEVATOR -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/elevator-mobile.png"/><img class="proj-card-img" src="images/cards/elevator-desktop.png" alt="JAGGAER Elevator" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">02</div>
+          <h3 class="proj-card-title">JAGGAER Elevator</h3>
+          <p class="proj-card-desc">A RAG per customer app that brings data from one floor to the next. Moving Customer Success past chat prompts into true task delegation. All enterprise data queryable in one place.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">RAG Architecture</span><span class="proj-card-tag">AI Orchestration</span></div>
+          <div class="proj-card-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <img class="modal-img" src="images/elevator details.png" alt="JAGGAER Elevator" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+          </div>
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Claude API</span><span class="modal-stack-pill">RAG</span><span class="modal-stack-pill">Salesforce</span><span class="modal-stack-pill">Snowflake</span><span class="modal-stack-pill">Python</span><span class="modal-stack-pill">Claude Code</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">02 // RAG Architecture</div>
+            <div class="modal-tags"><span class="modal-tag">RAG Architecture</span><span class="modal-tag">AI Orchestration</span></div>
+            <h2 class="modal-title">JAGGAER Elevator</h2>
+            <p class="modal-desc">Customer facing teams waste immense energy manually pulling threads, emails, and tickets just to get a clear picture. I designed and built a POC for Elevator, a RAG per customer app that brings data to one place. Customer data plugs in and routes to a central location, from Salesforce, Snowflake, email threads, CSM notes, all searchable in one place.
+
+This allows us the infrastructure of learning our customer base at scale. This project is still being built.</p>
+            <div class="modal-impact">Won JAGGAER's first AI Showcase. 60+ competing ideas.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- CAPACITY MODEL -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/utilization-mobile.png"/><img class="proj-card-img" src="images/cards/utilization-desktop.png" alt="CSM Utilization" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">03</div>
+          <h3 class="proj-card-title">CSM Utilization</h3>
+          <p class="proj-card-desc">A framework that estimates how many hours each CSM spends across their accounts, factoring in customer-facing time, account tier, CSM seniority, and active products. Pulls from Salesforce, visualized in Tableau.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Workforce Planning</span><span class="proj-card-tag">Salesforce</span><span class="proj-card-tag">Tableau</span></div>
+          <div class="proj-card-impact">Scaled from 6 to 16 CSMs. Drove a hire-behind-the-curve strategy.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Excel</span><span class="modal-stack-pill">Tableau</span><span class="modal-stack-pill">Salesforce</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">03 // Workforce Planning</div>
+            <div class="modal-tags"><span class="modal-tag">Workforce Planning</span><span class="modal-tag">Salesforce</span><span class="modal-tag">Tableau</span></div>
+            <h2 class="modal-title">CSM Utilization</h2>
+            <p class="modal-desc">A framework built to estimate how many hours each CSM spends across their assigned accounts, so leadership can plan hiring with precision.
+
+Four variables drive the model: customer-facing time (meetings, prep, follow-ups), account tier, CSM seniority, and the number of active products a customer uses. Data is pulled from Salesforce and visualized in Tableau. Most calculations are automated, with light manual input from CSM managers every two months.
+
+The output guides account assignments and informs a deliberate hire-behind-the-curve strategy: grow the team intentionally, without outpacing what revenue can support.</p>
+            <div class="modal-impact">Scaled from 6 to 16 CSMs. Delivered at board level. Drove hiring strategy for 2 years.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- MFA -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/mfa-mobile.png"/><img class="proj-card-img" src="images/cards/mfa-desktop.png" alt="Ministry of Foreign Affairs" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">04</div>
+          <h3 class="proj-card-title">MFA · Document Intelligence</h3>
+          <p class="proj-card-desc">As a student, proposed and built a system with IT to automate the tagging and routing of hundreds of classified documents arriving from security agencies worldwide, flagging sensitive ones for human review. Still in use today.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Automation</span><span class="proj-card-tag">Early Career</span></div>
+          <div class="proj-card-impact">75% reduction in manual document processing.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <img class="modal-img" src="images/cards/mfa-desktop.png" alt="Ministry of Foreign Affairs" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+          </div>
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Excel</span><span class="modal-stack-pill">VBA</span><span class="modal-stack-pill">Scripting</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">04 // Automation · Early Career</div>
+            <div class="modal-tags"><span class="modal-tag">Automation</span><span class="modal-tag">Early Career</span></div>
+            <h2 class="modal-title">Ministry of Foreign Affairs · Document Intelligence</h2>
+            <p class="modal-desc">Research Assistant · Israel's Ministry of Foreign Affairs · Jerusalem · 2014 · 2018
+
+We received classified documents from security agencies around the globe. Dozens, sometimes hundreds, arriving on a rolling basis. Every document needed to be read, reviewed, tagged by topic and urgency, and routed to the relevant department. It was entirely manual. It took hours.
+
+As a student, I proposed to my manager that we work with IT to build a system that would automate the tagging logic and routing workflow where possible, and flag documents requiring human review due to sensitivity. After design and QA, we shipped it.
+
+That system is still in use today.
+
+An early signal of what I'd keep doing: find the manual work, understand the system, build the fix.</p>
+            <div class="modal-impact">75% reduction in manual processing time. Hundreds of documents routed automatically.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- CSM HUB -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap proj-no-mobile-img"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-fit:contain;background:var(--bg-alt);" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">05</div>
+          <h3 class="proj-card-title">CSM AI Hub</h3>
+          <p class="proj-card-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. Architected inside corporate AWS: ECS, S3, ALB, private VPC.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Enterprise Infrastructure</span><span class="proj-card-tag">AWS</span><span class="proj-card-tag">Security</span></div>
+          <div class="proj-card-impact">From scattered AI prompts to a governed internal platform.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs">
+            <img class="modal-img" src="images/CSM Hub details.png" alt="CSM AI Tools Hub" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+          </div>
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">AWS ECS</span><span class="modal-stack-pill">S3</span><span class="modal-stack-pill">ALB</span><span class="modal-stack-pill">Nginx</span><span class="modal-stack-pill">Private VPC</span><span class="modal-stack-pill">Claude AI</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">05 // Enterprise Infrastructure</div>
+            <div class="modal-tags"><span class="modal-tag">AWS</span><span class="modal-tag">ECS</span><span class="modal-tag">S3</span><span class="modal-tag">Security &amp; Compliance</span></div>
+            <h2 class="modal-title">CSM AI Hub</h2>
+            <p class="modal-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. So we architected it inside the corporate AWS environment.
+
+Stack: ECS-hosted Nginx container serving the application, static content delivered from a connected S3 bucket, fronted by an Application Load Balancer, hosted inside a private VPC/subnet in the corporate AWS account.
+
+The result: scattered AI experiments became a governed, centralized team resource, with enterprise-grade security baked in from day one.</p>
+            <div class="modal-impact">From scattered AI prompts to a governed internal platform.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- LEADERSHIP DASHBOARD -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/leadership-dashboard-mobile.png"/><img class="proj-card-img" src="images/cards/leadership-dashboard-desktop.png" alt="Leadership Dashboard" style="object-position: top;" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">06</div>
+          <h3 class="proj-card-title">Leadership Dashboard</h3>
+          <p class="proj-card-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Pulls everything into one place, giving leadership a live, consolidated view without anyone having to chase it.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Data Integration</span><span class="proj-card-tag">Leadership</span><span class="proj-card-tag">Reporting</span></div>
+          <div class="proj-card-impact">Weekly syncs eliminated. Single source of truth for ELT.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Claude Code</span><span class="modal-stack-pill">Staircase AI</span><span class="modal-stack-pill">Salesforce</span><span class="modal-stack-pill">Gainsight</span><span class="modal-stack-pill">Tableau</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">06 // Data Integration · Leadership</div>
+            <div class="modal-tags"><span class="modal-tag">Data Integration</span><span class="modal-tag">Reporting</span><span class="modal-tag">Leadership</span></div>
+            <h2 class="modal-title">Leadership Dashboard</h2>
+            <p class="modal-desc">Built an internal dashboard that eliminated the need for weekly manual syncs across multiple data sources. Instead of chasing updates across systems, everything flows into one consolidated view, giving leadership what they need without anyone having to pull it together manually.
+
+Audience: direct manager and Executive Leadership Team. More details coming.</p>
+            <div class="modal-impact">Weekly syncs eliminated. Single source of truth for ELT.</div>
+          </div>
+        </template>
+      </div>
+
+      <!-- SECOND BRAIN -->
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/brain-mobile.png"/><img class="proj-card-img" src="images/cards/brain-desktop.png" alt="My Second Brain" style="object-fit: contain; background: var(--bg);" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">07</div>
+          <h3 class="proj-card-title">My Second Brain</h3>
+          <p class="proj-card-desc">537 markdown notes. 5,046 wikilinks. Every CSM playbook, customer template, meeting summary, and AI experiment I've accumulated at JAGGAER, organized, tagged, and queryable. Built in Obsidian, connected to AI tools, version-controlled in git.</p>
+          <div class="proj-card-tags"><span class="proj-card-tag">Knowledge Management</span><span class="proj-card-tag">Obsidian</span><span class="proj-card-tag">AI Integration</span></div>
+          <div class="proj-card-impact">Answer any team question in minutes. One day, a 1:1 while I'm on PTO.</div>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Obsidian</span><span class="modal-stack-pill">Claude Code</span><span class="modal-stack-pill">Python</span><span class="modal-stack-pill">Git</span><span class="modal-stack-pill">MCP Servers</span><span class="modal-stack-pill">Markdown</span></div>
+          <div class="modal-body">
+            <div class="modal-mono">07 // Knowledge Management</div>
+            <div class="modal-tags"><span class="modal-tag">Obsidian</span><span class="modal-tag">Knowledge Graph</span><span class="modal-tag">AI Integration</span><span class="modal-tag">Git</span></div>
+            <h2 class="modal-title">My Second Brain</h2>
+            <p class="modal-desc">I built a second brain: an AI-powered corpus of my knowledge that I continuously update and use every day.
+
+It's a living knowledge system built around my work as a NA Customer Success Manager at JAGGAER. It captures the context, decisions, processes, customer knowledge, product information, and operating models that I've built over time, organized into a clear structure that grows with the role.
+
+I use it constantly: preparing for customer meetings, exploring strategic questions, finding patterns across accounts, improving processes, and turning ideas into repeatable tools. Recently, I've been building prompt libraries, CSM resources, and new workflows with it to help scale how the team works.
+
+Inside are CSM playbooks, operating models, product knowledge across eProcurement, Sourcing, and Invoicing, customer account profiles, meeting notes with structured follow-ups, AI transformation experiments, weekly operating summaries, and a growing glossary of the people, tools, concepts, and companies connected to the work.
+
+The system was built by converting existing knowledge into a structured markdown-based environment, extracting information from documents, connecting meeting insights, and automating relationships between concepts through linked knowledge.
+
+The goal is simple: make any question about customers, team processes, or products answerable in minutes.
+
+Over time, it becomes more than documentation. It becomes a working partner that helps me think, prepare, create, and operate at scale.</p>
+            <div class="modal-impact">Answer any question in minutes. A working partner that scales with the role.</div>
+          </div>
+        </template>
+      </div>
+
+
+      <div class="proj-card" onclick="openModal(this)">
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/musician/behind.jpg"/><img class="proj-card-img musician-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom;" /></picture></div>
+        <div class="proj-card-body">
+          <div class="proj-card-num">P1</div>
+          <h3 class="proj-card-title">Musician</h3>
+          <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz.</p>
+        </div>
+        <template class="modal-tpl">
+          <div class="modal-imgs modal-imgs-musician">
+            <img class="modal-img" src="images/musician/jazz details.webp" alt="Jazz session" style="object-fit:cover;aspect-ratio:4/3;" />
+            <img class="modal-img" src="images/musician/1536-1024 (1).jpg" alt="Performance" style="object-fit:cover;aspect-ratio:4/3;" />
+            <img class="modal-img" src="images/musician/WhatsApp Image 2024-04-01 at 10.08.59 PM.jpeg" alt="Music" style="object-fit:cover;aspect-ratio:4/3;" />
+          </div>
+          <div class="modal-body">
+            <div class="modal-mono">P1 // Personal</div>
+            <div class="modal-tags"><span class="modal-tag">Music</span><span class="modal-tag">Flute</span><span class="modal-tag">Jazz</span></div>
+            <h2 class="modal-title">Musician</h2>
+            <p class="modal-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras and chamber ensembles, and now improvise jazz. Making something out of structure is the only way I know how to work.</p>
+            <div class="modal-impact" style="display:flex;flex-direction:column;gap:.35rem;">
+              <a href="https://soundcloud.com/yaarael" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.67rem;">SoundCloud · yaarael →</a>
+              <a href="https://soundcloud.com/yaara-lucas" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-family:'DM Mono',monospace;font-size:.67rem;">SoundCloud · yaara-lucas →</a>
+            </div>
+          </div>
+        </template>
+      </div>
+
+    </div><!-- /proj-grid -->
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- BEYOND + CURRENTLY -->
+<section id="beyond">
+  <div class="wrap">
+    <div class="beyond-currently-row">
+
+      <!-- Beyond Work -->
+      <div class="beyond-col">
+        <div class="sec-hdr">Beyond Work</div>
+        <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Married · Mother of two</p>
+        <div class="beyond-built">
+          <span class="beyond-built-label">Also built →</span>
+          <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
+          <span class="beyond-built-desc">· an AI positioning tool for coaches.</span>
+        </div>
+      </div>
+
+      <!-- Currently Working On · sticky note -->
+      <div class="sticky-note">
+        <div class="sticky-note-hdr">Currently working on</div>
+        <ul class="sticky-list">
+          <li>Deep Research prompt library, created from my own second brain</li>
+          <li>Hiring our first CSM AI Engineer, who will report to me</li>
+          <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
+          <li>Coaching my team · always the top priority</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="wrap">
+    <h2 class="connect-heading">Reach out.</h2>
+    <p class="connect-email">yaaraelazari@gmail.com</p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="proj-modal" id="projModal">
+  <div class="proj-modal-panel">
+    <div class="modal-hdr">
+      <button class="modal-close" id="modalClose">close</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  function openModal(card) {
+    const tpl = card.querySelector('.modal-tpl');
+    if (!tpl) return;
+    document.getElementById('modalBody').innerHTML = tpl.innerHTML;
+    document.getElementById('projModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('projModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').onclick = closeModal;
+  document.getElementById('projModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+<div class="corner-mark">Yaara Shvadron · 2026</div>
+</body>
+</html>
