@@ -38,7 +38,7 @@
     button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
     /* LAYOUT */
-    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 5.5rem; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 5.5rem; position: relative; z-index: 1; }
     @media(max-width:1199px){ .wrap { padding: 0 3.5rem; } }
     @media(max-width:639px){ .wrap { padding: 0 1.25rem; } }
 
@@ -163,49 +163,69 @@
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
     .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-    .about-tl-grid { margin-top: .5rem; }
+    /* BG SIGNAL FLOW */
+    .bg-svg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    @keyframes hubPulse  { 0%,100%{opacity:.18;} 50%{opacity:.38;} }
+    @keyframes hubPulseB { 0%,100%{opacity:.14;} 50%{opacity:.30;} }
+    .hub   { animation: hubPulse  3.6s ease-in-out infinite; }
+    .hub-b { animation: hubPulse  4.4s ease-in-out infinite 1.5s; }
+    .hub-c { animation: hubPulseB 3.1s ease-in-out infinite .7s; }
+
+    /* WORK JOURNEY STRIP */
+    .work-strip { margin-top: 2rem; }
+    .work-layout { display: flex; align-items: flex-start; }
+    .company-block { display: flex; flex-direction: column; }
+    .company-label {
+      font-family: 'DM Mono', monospace; font-size: .55rem;
+      color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 1.6rem; opacity: .6;
+    }
+    .company-stops { display: flex; position: relative; }
+    .company-stops::before {
+      content: ''; position: absolute;
+      top: 2px; left: 2.5px; right: 1.75rem;
+      height: 1px; background: var(--border); z-index: 0;
+    }
+    .work-stop {
+      flex: 1; display: flex; flex-direction: column;
+      padding-right: 1.75rem; position: relative;
+    }
+    .stop-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--border); margin-bottom: .65rem;
+      flex-shrink: 0; position: relative; z-index: 1;
+      transition: background .18s, box-shadow .18s;
+    }
+    .work-stop.current .stop-dot {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(181,50,94,.14);
+    }
+    .stop-year {
+      font-family: 'DM Mono', monospace; font-size: .58rem;
+      color: var(--accent); letter-spacing: .14em; margin-bottom: .3rem;
+    }
+    .stop-role {
+      font-size: .82rem; font-weight: 600;
+      line-height: 1.25; color: var(--fg); margin-bottom: .25rem;
+    }
+    .work-stop.current .stop-role { color: var(--accent); }
+    .stop-words {
+      font-family: 'DM Mono', monospace; font-size: .56rem;
+      color: var(--muted-lt); letter-spacing: .04em; line-height: 1.55;
+    }
+    @media(max-width:900px){
+      .work-layout { flex-direction: column; gap: 2rem; }
+      .company-stops::before { right: 0; }
+    }
+    @media(max-width:639px){
+      .work-stop { padding-right: 1.25rem; }
+    }
+
     .focus-block { margin: 1.75rem 0 2.5rem; }
     .focus-item { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; padding: .85rem 0; border-top: 1px solid var(--border); align-items: baseline; }
     .focus-item:last-child { border-bottom: 1px solid var(--border); }
     .focus-label { font-family: 'DM Mono', monospace; font-size: .62rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
     .focus-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; }
-
-    /* TIMELINE */
-    .timeline { }
-    .tl-dot { display: none; }
-    .tl-item {
-      display: grid; grid-template-columns: 72px 1fr;
-      gap: 1.25rem; padding: 1rem 0;
-      border-top: 1px solid var(--border); align-items: start;
-    }
-    .tl-item:last-child { border-bottom: 1px solid var(--border); }
-    .tl-logo-col {
-      display: flex; align-items: flex-start; justify-content: center;
-      padding-top: .2rem;
-    }
-    .tl-logo {
-      width: 72px; height: auto; max-height: 44px;
-      filter: grayscale(100%) contrast(1.1);
-      object-fit: contain; display: block;
-    }
-    .tl-roles { display: flex; flex-direction: column; }
-    .tl-role { padding: .6rem 0; }
-    .tl-role:first-child { padding-top: 0; }
-    .tl-role + .tl-role { border-top: 1px dashed var(--border); }
-    .tl-no-logo {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); margin-top: .4rem; flex-shrink: 0;
-    }
-    .tl-period {
-      font-family: 'DM Mono', monospace; font-size: .58rem;
-      color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
-      margin-bottom: .12rem;
-    }
-    .tl-event { font-size: .82rem; font-weight: 600; line-height: 1.35; }
-    .tl-event span {
-      display: block; font-size: .76rem; color: var(--muted);
-      font-weight: 400; margin-top: .1rem; line-height: 1.5;
-    }
 
     /* full-width span inside proj grid */
     .proj-grid-full { grid-column: 1 / -1; }
@@ -465,11 +485,12 @@
       #hero { padding: 4rem 0 0; }
       .hero-grid { display: flex; flex-direction: column; }
       .hero-left { display: contents; padding-bottom: 0; max-width: 100%; }
-      .hero-eyebrow { order: 1; margin-bottom: .5rem; font-size: .58rem; letter-spacing: .07em; }
-      h1.name { order: 2; font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: 1rem; }
-      .portrait-side { order: 3; margin-bottom: 1.25rem; justify-content: flex-start; }
-      .bio-lead { order: 4; }
-      .hero-bio { order: 5; }
+      .hero-eyebrow { display: none; }
+      h1.name { order: 1; font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: 1rem; }
+      .portrait-side { order: 2; margin-bottom: 1.25rem; justify-content: flex-start; }
+      .bio-lead { order: 3; }
+      .hero-bio { order: 4; }
+      .stats-row { order: 5; }
       .portrait-box { width: min(340px, 88vw); }
       .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 6px; object-position: top center; }
 
@@ -508,18 +529,15 @@
       .about-summary p { font-size: .83rem; }
 
 
-      /* Projects: single col, horizontal card layout */
-      .proj-grid-2 { grid-template-columns: 1fr; gap: .85rem; }
+      /* Projects: single col, stacked card layout */
+      .proj-no-mobile-img { display: none; }
+      .proj-grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
       .proj-grid-3 { grid-template-columns: 1fr; }
-      .proj-card { flex-direction: row; align-items: flex-start; gap: .75rem; }
-      .proj-card-img-wrap { width: 100px; flex-shrink: 0; margin-bottom: 0; }
-      .proj-card-img { aspect-ratio: 1/1; }
-      .proj-card-desc { -webkit-line-clamp: 3; -webkit-box-orient: vertical; display: -webkit-box; overflow: hidden; }
-      .proj-card[onclick] {
-        border: 1px solid var(--border); border-radius: 6px;
-        padding: .55rem; background: var(--card);
-      }
-      .proj-card[onclick] .proj-card-img-wrap { border-radius: 4px; }
+      .proj-card { flex-direction: column; gap: 0; }
+      .proj-card-img-wrap { width: 100%; margin-bottom: .6rem; }
+      .proj-card-img { aspect-ratio: 16/9; object-fit: cover; }
+      .proj-card-desc { font-size: .78rem; }
+      .proj-card[onclick] { cursor: pointer; }
       .proj-card-body::after {
         content: 'Tap to open →';
         display: block;
@@ -527,13 +545,6 @@
         font-size: .56rem; color: var(--accent);
         letter-spacing: .07em; margin-top: .3rem; opacity: .7;
       }
-
-      /* Timeline: tighter */
-      .tl-item { grid-template-columns: 52px 1fr; gap: .65rem; padding: .75rem 0; }
-      .tl-logo { width: 44px; max-height: 30px; }
-      .tl-period { font-size: .68rem; }
-      .tl-event { font-size: .8rem; }
-
 
       /* Modal: bottom sheet */
       .proj-modal { align-items: flex-end; padding: 0; }
@@ -562,6 +573,98 @@
   </style>
 </head>
 <body>
+
+<!-- SIGNAL FLOW BACKGROUND -->
+<svg class="bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
+     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.89">
+
+  <!-- LEFT SIDE · smooth twin-curl flow -->
+  <path id="lu1" d="M 62,65 C 62,108 4,148 8,188 C 12,228 78,252 72,295" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="lt-a" d="M 72,295 C 2,328 -8,378 10,418 C 30,458 88,476 62,512" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="lt-b" d="M 72,295 C 88,316 92,362 70,404 C 48,446 4,466 62,512" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="ll1" d="M 62,512 C 62,550 4,578 12,618" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="ll2" d="M 12,618 C 20,658 78,696 52,735" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="ll3" d="M 52,735 C 26,772 2,810 22,855" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
+
+  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.9s" repeatCount="indefinite" begin="3.7s"><mpath href="#lu1"/></animateMotion></circle>
+  <circle r="1.4" fill="#B5325E" opacity=".29"><animateMotion dur="17.3s" repeatCount="indefinite" begin="7.2s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lu1"/></animateMotion></circle>
+  <circle r="2.2" fill="#B5325E" opacity=".71"><animateMotion dur="4.7s" repeatCount="indefinite" begin="0.5s"><mpath href="#lt-a"/></animateMotion></circle>
+  <circle r="1.3" fill="#B5325E" opacity=".26"><animateMotion dur="22.1s" repeatCount="indefinite" begin="13.6s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-a"/></animateMotion></circle>
+  <circle r="1.8" fill="#9C9890" opacity=".54"><animateMotion dur="11.3s" repeatCount="indefinite" begin="1.9s"><mpath href="#lt-b"/></animateMotion></circle>
+  <circle r="1.2" fill="#9C9890" opacity=".35"><animateMotion dur="19.8s" repeatCount="indefinite" begin="9.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-b"/></animateMotion></circle>
+  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="6.3s" repeatCount="indefinite" begin="5.1s"><mpath href="#ll1"/></animateMotion></circle>
+  <circle r="2.3" fill="#B5325E" opacity=".73"><animateMotion dur="1.3s" repeatCount="indefinite" begin="9.8s"><mpath href="#ll2"/></animateMotion></circle>
+  <circle r="1.7" fill="#9C9890" opacity=".51"><animateMotion dur="8.9s" repeatCount="indefinite" begin="2.4s"><mpath href="#ll3"/></animateMotion></circle>
+
+  <circle cx="62" cy="65" r="8" fill="#B5325E" class="hub"/>
+  <circle cx="62" cy="65" r="3.5" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(62,65) scale(1.25)" opacity=".92"><circle cx="0" cy="-1.3" r="1.1" fill="#FFFFFF"/><path d="M-1.8,2 Q-1.8,.3 0,.3 Q1.8,.3 1.8,2" stroke="#FFFFFF" stroke-width=".8" stroke-linecap="round" fill="none"/></g>
+  <circle cx="8" cy="188" r="4" fill="#9C9890" opacity=".2"/>
+  <circle cx="8" cy="188" r="2" fill="#9C9890" opacity=".52"/>
+  <circle cx="72" cy="295" r="7" fill="#B5325E" class="hub-c"/>
+  <circle cx="72" cy="295" r="3" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(72,295) scale(1.25)" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" opacity=".92" fill="none"><line x1="-1.8" y1="1.8" x2="1.8" y2="-1.8"/><polyline points=".3,-1.8 1.8,-1.8 1.8,-.3"/></g>
+  <circle cx="62" cy="512" r="9" fill="#B5325E" class="hub-b"/>
+  <circle cx="62" cy="512" r="3.8" fill="#B5325E" opacity=".6"/>
+  <g transform="translate(62,512) scale(1.25)" fill="none" stroke="#FFFFFF" stroke-width=".75" opacity=".92"><circle cx="0" cy="0" r="1.3"/><circle cx="0" cy="0" r="2.8"/></g>
+  <circle cx="12" cy="618" r="3.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="12" cy="618" r="1.8" fill="#9C9890" opacity=".5"/>
+  <circle cx="52" cy="735" r="5.5" fill="#B5325E" opacity=".18"/>
+  <circle cx="52" cy="735" r="2.8" fill="#B5325E" opacity=".55"/>
+  <g transform="translate(52,735) scale(1.25)" opacity=".88"><line x1="-1.2" y1="-.8" x2="1.2" y2="-.8" stroke="#FFFFFF" stroke-width=".5"/><line x1="-1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><line x1="1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><circle cx="-1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="0" cy="1.2" r=".55" fill="#FFFFFF"/></g>
+  <circle cx="22" cy="855" r="3.5" fill="#9C9890" opacity=".18"/>
+  <circle cx="22" cy="855" r="1.8" fill="#9C9890" opacity=".5"/>
+
+  <!-- RIGHT SIDE · branching network -->
+  <path id="rp12" d="M1382,88  Q1428,140 1418,190" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp23" d="M1418,190 Q1362,238 1370,285" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="rp24" d="M1418,190 Q1428,270 1408,350" stroke="#B5325E" stroke-width=".85" fill="none" opacity=".16"/>
+  <path id="rp36" d="M1370,285 Q1350,406 1385,528" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
+  <path id="rp45" d="M1408,350 Q1438,392 1435,432" stroke="#B5325E" stroke-width=".8" fill="none" opacity=".16"/>
+  <path id="rp56" d="M1435,432 Q1422,480 1385,528" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp67" d="M1385,528 Q1430,578 1420,628" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
+  <path id="rp78" d="M1420,628 Q1360,674 1372,718" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+  <path id="rp68" d="M1385,528 Q1345,622 1372,718" stroke="#B5325E" stroke-width=".7" fill="none" opacity=".13"/>
+  <path id="rp89" d="M1372,718 Q1418,778 1412,835" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
+
+  <circle r="1.8" fill="#9C9890" opacity=".51"><animateMotion dur="14.2s" repeatCount="indefinite" begin="0.7s"><mpath href="#rp12"/></animateMotion></circle>
+  <circle r="2.2" fill="#B5325E" opacity=".73"><animateMotion dur="8.8s" repeatCount="indefinite" begin="6.3s"><mpath href="#rp23"/></animateMotion></circle>
+  <circle r="1.5" fill="#B5325E" opacity=".38"><animateMotion dur="9.7s" repeatCount="indefinite" begin="16.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp23"/></animateMotion></circle>
+  <circle r="2.0" fill="#B5325E" opacity=".62"><animateMotion dur="3.9s" repeatCount="indefinite" begin="1.3s"><mpath href="#rp24"/></animateMotion></circle>
+  <circle r="1.6" fill="#9C9890" opacity=".43"><animateMotion dur="24.1s" repeatCount="indefinite" begin="5.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp36"/></animateMotion></circle>
+  <circle r="1.3" fill="#9C9890" opacity=".36"><animateMotion dur="11.3s" repeatCount="indefinite" begin="19.7s"><mpath href="#rp36"/></animateMotion></circle>
+  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.8s" repeatCount="indefinite" begin="12.1s"><mpath href="#rp45"/></animateMotion></circle>
+  <circle r="1.5" fill="#B5325E" opacity=".33"><animateMotion dur="7.6s" repeatCount="indefinite" begin="3.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp45"/></animateMotion></circle>
+  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="5.3s" repeatCount="indefinite" begin="0.4s"><mpath href="#rp56"/></animateMotion></circle>
+  <circle r="1.7" fill="#B5325E" opacity=".44"><animateMotion dur="2.3s" repeatCount="indefinite" begin="21.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp56"/></animateMotion></circle>
+  <circle r="2.3" fill="#B5325E" opacity=".74"><animateMotion dur="1.7s" repeatCount="indefinite" begin="4.6s"><mpath href="#rp67"/></animateMotion></circle>
+  <circle r="1.7" fill="#9C9890" opacity=".53"><animateMotion dur="18.6s" repeatCount="indefinite" begin="8.9s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp78"/></animateMotion></circle>
+  <circle r="1.9" fill="#B5325E" opacity=".49"><animateMotion dur="7.4s" repeatCount="indefinite" begin="14.2s"><mpath href="#rp68"/></animateMotion></circle>
+  <circle r="2.0" fill="#9C9890" opacity=".59"><animateMotion dur="6.7s" repeatCount="indefinite" begin="2.6s"><mpath href="#rp89"/></animateMotion></circle>
+
+  <circle cx="1382" cy="88" r="4" fill="#9C9890" opacity=".2"/>
+  <circle cx="1382" cy="88" r="2" fill="#9C9890" opacity=".52"/>
+  <circle cx="1418" cy="190" r="10" fill="#B5325E" class="hub"/>
+  <circle cx="1418" cy="190" r="3.8" fill="#B5325E" opacity=".62"/>
+  <g transform="translate(1418,190) scale(1.25)" fill="#FFFFFF" opacity=".9"><path d="M .7,-2.8 L -1,.2 L .2,.2 L -.7,2.8 L 1,-.2 L -.2,-.2 Z"/></g>
+  <circle cx="1370" cy="285" r="4.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="1370" cy="285" r="2.2" fill="#9C9890" opacity=".52"/>
+  <circle cx="1408" cy="350" r="6" fill="#B5325E" opacity=".18"/>
+  <circle cx="1408" cy="350" r="3" fill="#B5325E" opacity=".58"/>
+  <circle cx="1435" cy="432" r="3.5" fill="#9C9890" opacity=".2"/>
+  <circle cx="1435" cy="432" r="1.8" fill="#9C9890" opacity=".5"/>
+  <circle cx="1385" cy="528" r="11" fill="#B5325E" class="hub-b"/>
+  <circle cx="1385" cy="528" r="4" fill="#B5325E" opacity=".62"/>
+  <g transform="translate(1385,528) scale(1.25)" fill="#FFFFFF" opacity=".88"><rect x="-2.5" y=".3" width="1.2" height="1.7"/><rect x="-.8" y="-1" width="1.2" height="3"/><rect x=".9" y="-2.5" width="1.2" height="4.5"/></g>
+  <circle cx="1420" cy="628" r="5" fill="#B5325E" opacity=".18"/>
+  <circle cx="1420" cy="628" r="2.5" fill="#B5325E" opacity=".55"/>
+  <circle cx="1372" cy="718" r="7" fill="#9C9890" class="hub-c"/>
+  <circle cx="1372" cy="718" r="3" fill="#9C9890" opacity=".55"/>
+  <g transform="translate(1372,718) scale(1.25)" fill="#FFFFFF" opacity=".85"><circle cx="-1" cy="-1.6" r=".75"/><path d="M-2.2,1.8 Q-2.2,.2 -1,.2 Q0,.2 0,1.8" fill="#FFFFFF"/><circle cx="1" cy="-1.9" r=".65"/><path d="M0,1.8 Q0,.2 1,.2 Q2.2,.2 2.2,1.8" fill="#FFFFFF"/></g>
+  <circle cx="1412" cy="835" r="4" fill="#9C9890" opacity=".18"/>
+  <circle cx="1412" cy="835" r="2" fill="#9C9890" opacity=".5"/>
+
+</svg>
 
 <!-- NAV -->
 <nav id="nav">
@@ -643,32 +746,53 @@
         <span class="focus-desc">Shifting Customer Success from reactive to AI-augmented. Smarter handoffs, automated intelligence layers, teams that scale without adding headcount.</span>
       </div>
     </div>
-    <div class="about-tl-grid">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-logo-col"><img class="tl-logo" src="images/Jaggaer_Logo-Red.jpg" alt="JAGGAER" onerror="this.style.display='none'" /></div>
-          <div class="tl-roles">
-            <div class="tl-role">
-              <div class="tl-period">2025 · Present</div>
-              <div class="tl-event">Senior Manager, Customer Success<span>112% attainment · Won company AI showcase · Built RAG customer intelligence POC · $90M ARR</span></div>
+    <div class="work-strip">
+      <div class="sec-hdr">Journey</div>
+      <div class="work-layout">
+        <div class="company-block">
+          <div class="company-label">JAGGAER · 2021 → present</div>
+          <div class="company-stops">
+            <div class="work-stop current">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2025 · present</div>
+              <div class="stop-role">Senior Manager, CS</div>
+              <div class="stop-words">112% attainment · AI showcase win<br/>$90M ARR · 15 team</div>
             </div>
-            <div class="tl-role">
-              <div class="tl-period">2023 · 2025</div>
-              <div class="tl-event">Head of Customer Success, North America<span>115% targets · 150+ enterprise accounts · 3% GRR increase · $76M ARR</span></div>
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2023 · 2025</div>
+              <div class="stop-role">Head of CS, North America</div>
+              <div class="stop-words">115% targets · 150+ accounts<br/>3% GRR · $76M ARR</div>
             </div>
-            <div class="tl-role">
-              <div class="tl-period">2021 · 2023</div>
-              <div class="tl-event">Customer Success Manager<span>$5.8M portfolio · Higher Ed, Public Sector, Fortune 500</span></div>
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2021 · 2023</div>
+              <div class="stop-role">Customer Success Manager</div>
+              <div class="stop-words">$5.8M portfolio · solo<br/>Higher Ed · Fortune 500</div>
             </div>
           </div>
         </div>
-        <div class="tl-item">
-          <div class="tl-logo-col"><img class="tl-logo" src="images/fast-simon-logo.png" alt="Fast Simon" onerror="this.style.display='none'" /></div>
-          <div><div class="tl-period">2019 · 2021</div><div class="tl-event">Lead CSM · Fast Simon<span>Built post sales from zero · 100+ accounts · Initiated Klaviyo enterprise partnership</span></div></div>
+        <div class="company-block">
+          <div class="company-label">Fast Simon · 2019 → 2021</div>
+          <div class="company-stops">
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2019 · 2021</div>
+              <div class="stop-role">Lead CSM</div>
+              <div class="stop-words">100+ accounts · built from zero<br/>Klaviyo partnership</div>
+            </div>
+          </div>
         </div>
-        <div class="tl-item">
-          <div class="tl-logo-col"><img class="tl-logo" src="images/mfa-logo.jpg" alt="MFA" onerror="this.style.display='none'" /></div>
-          <div><div class="tl-period">2012 · 2015</div><div class="tl-event">Research Assistant · Ministry of Foreign Affairs<span>Israel · Jerusalem · Proposed &amp; built automated document intelligence system · still in use today</span></div></div>
+        <div class="company-block">
+          <div class="company-label">MFA · Ministry of Foreign Affairs · 2014 → 2018</div>
+          <div class="company-stops">
+            <div class="work-stop">
+              <div class="stop-dot"></div>
+              <div class="stop-year">2014 · 2018</div>
+              <div class="stop-role">Research Assistant</div>
+              <div class="stop-words">75% manual effort eliminated<br/>system still runs today</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -733,7 +857,7 @@
 
       <!-- AI ROADMAP -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/ai-roadmap-mobile.png"/><img class="proj-card-img" src="images/cards/ai-raodmap-desktop.png" alt="CSM AI Roadmap" /></picture></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/ai-roadmap-mobile.png"/><img class="proj-card-img" src="images/cards/ai-roadmap-desktop.png" alt="CSM AI Roadmap" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">01</div>
           <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
@@ -830,7 +954,7 @@ The output guides account assignments and informs a deliberate hire-behind-the-c
             <div class="modal-mono">04 // Automation · Early Career</div>
             <div class="modal-tags"><span class="modal-tag">Automation</span><span class="modal-tag">Early Career</span></div>
             <h2 class="modal-title">Ministry of Foreign Affairs · Document Intelligence</h2>
-            <p class="modal-desc">Research Assistant · Israel's Ministry of Foreign Affairs · Jerusalem · 2014
+            <p class="modal-desc">Research Assistant · Israel's Ministry of Foreign Affairs · Jerusalem · 2014 · 2018
 
 We received classified documents from security agencies around the globe. Dozens, sometimes hundreds, arriving on a rolling basis. Every document needed to be read, reviewed, tagged by topic and urgency, and routed to the relevant department. It was entirely manual. It took hours.
 
@@ -846,7 +970,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
 
       <!-- CSM HUB -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-position: top;" /></picture></div>
+        <div class="proj-card-img-wrap proj-no-mobile-img"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-fit:contain;background:var(--bg-alt);" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
           <h3 class="proj-card-title">CSM AI Hub</h3>
@@ -935,7 +1059,7 @@ Over time, it becomes more than documentation. It becomes a working partner that
       <div class="proj-card" onclick="openModal(this)">
         <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/musician/behind.jpg"/><img class="proj-card-img musician-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom;" /></picture></div>
         <div class="proj-card-body">
-          <div class="proj-card-num">P2</div>
+          <div class="proj-card-num">P1</div>
           <h3 class="proj-card-title">Musician</h3>
           <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz.</p>
         </div>
@@ -946,7 +1070,7 @@ Over time, it becomes more than documentation. It becomes a working partner that
             <img class="modal-img" src="images/musician/WhatsApp Image 2024-04-01 at 10.08.59 PM.jpeg" alt="Music" style="object-fit:cover;aspect-ratio:4/3;" />
           </div>
           <div class="modal-body">
-            <div class="modal-mono">P2 // Personal</div>
+            <div class="modal-mono">P1 // Personal</div>
             <div class="modal-tags"><span class="modal-tag">Music</span><span class="modal-tag">Flute</span><span class="modal-tag">Jazz</span></div>
             <h2 class="modal-title">Musician</h2>
             <p class="modal-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras and chamber ensembles, and now improvise jazz. Making something out of structure is the only way I know how to work.</p>
