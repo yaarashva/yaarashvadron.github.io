@@ -305,12 +305,12 @@
     /* BEYOND */
     #beyond { padding-bottom: 3rem; }
     .beyond-text {
-      font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem;
+      font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;
     }
     .beyond-text a { color: var(--accent); }
     .beyond-text a:hover { text-decoration: underline; }
     .beyond-built {
-      font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted-lt);
+      font-size: .88rem; color: var(--muted-lt);
       display: flex; align-items: center; gap: .4rem; flex-wrap: wrap;
     }
     .beyond-built-label { color: var(--muted-lt); }
@@ -522,7 +522,7 @@
 
       /* Beyond */
       .beyond-text { font-size: .83rem; }
-      .beyond-built { font-size: .68rem; }
+      .beyond-built { font-size: .83rem; }
     }
   </style>
 </head>
@@ -572,7 +572,7 @@
         </h1>
         <span class="bio-lead">Building. Leading. Repeat.</span>
         <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-        <p class="hero-bio" style="margin-top:.85rem;">I currently lead a high-performing global Customer Success organization at JAGGAER.</p>
+
       </div>
     </div>
   </div>
@@ -795,14 +795,14 @@ The output guides account assignments and informs a deliberate hire-behind-the-c
         <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/mfa-mobile.png"/><img class="proj-card-img" src="images/cards/mfa-desktop.png" alt="Ministry of Foreign Affairs" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">04</div>
-          <h3 class="proj-card-title">Ministry of Foreign Affairs · Document Intelligence</h3>
+          <h3 class="proj-card-title">MFA · Document Intelligence</h3>
           <p class="proj-card-desc">As a student, proposed and built a system with IT to automate the tagging and routing of hundreds of classified documents arriving from security agencies worldwide, flagging sensitive ones for human review. Still in use today.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">Automation</span><span class="proj-card-tag">Early Career</span></div>
           <div class="proj-card-impact">75% reduction in manual document processing.</div>
         </div>
         <template class="modal-tpl">
           <div class="modal-imgs">
-            <img class="modal-img" src="images/MFA details.svg" alt="Ministry of Foreign Affairs" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+            <img class="modal-img" src="images/cards/mfa-desktop.png" alt="Ministry of Foreign Affairs" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
           </div>
           <div class="modal-stack"><span class="modal-stack-label">Stack</span><span class="modal-stack-pill">Excel</span><span class="modal-stack-pill">VBA</span><span class="modal-stack-pill">Scripting</span></div>
           <div class="modal-body">
@@ -825,10 +825,10 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
 
       <!-- CSM HUB -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Tools Hub" /></picture></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-position: top;" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
-          <h3 class="proj-card-title">CSM AI Tools Hub</h3>
+          <h3 class="proj-card-title">CSM AI Hub</h3>
           <p class="proj-card-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. Architected inside corporate AWS: ECS, S3, ALB, private VPC.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">Enterprise Infrastructure</span><span class="proj-card-tag">AWS</span><span class="proj-card-tag">Security</span></div>
           <div class="proj-card-impact">From scattered AI prompts to a governed internal platform.</div>
@@ -841,7 +841,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
           <div class="modal-body">
             <div class="modal-mono">05 // Enterprise Infrastructure</div>
             <div class="modal-tags"><span class="modal-tag">AWS</span><span class="modal-tag">ECS</span><span class="modal-tag">S3</span><span class="modal-tag">Security &amp; Compliance</span></div>
-            <h2 class="modal-title">CSM AI Tools Hub</h2>
+            <h2 class="modal-title">CSM AI Hub</h2>
             <p class="modal-desc">Built a secure internal AI platform for the Customer Success team. Sensitive customer data meant a public deployment wasn't an option. So we architected it inside the corporate AWS environment.
 
 Stack: ECS-hosted Nginx container serving the application, static content delivered from a connected S3 bucket, fronted by an Application Load Balancer, hosted inside a private VPC/subnet in the corporate AWS account.
@@ -854,7 +854,7 @@ The result: scattered AI experiments became a governed, centralized team resourc
 
       <!-- LEADERSHIP DASHBOARD -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/leadership-dashboard-mobile.png"/><img class="proj-card-img" src="images/cards/leadership-dashboard-desktop.png" alt="Leadership Dashboard" /></picture></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/leadership-dashboard-mobile.png"/><img class="proj-card-img" src="images/cards/leadership-dashboard-desktop.png" alt="Leadership Dashboard" style="object-position: top;" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">06</div>
           <h3 class="proj-card-title">Leadership Dashboard</h3>
