@@ -10,8 +10,8 @@
       --bg: #FFFFFF;
       --bg-alt: #F4F2EE;
       --fg: #0F0E0D;
-      --muted: #6B6460;
-      --muted-lt: #9C9890;
+      --muted: #524E4B;
+      --muted-lt: #7A7672;
       --accent: #B5325E;
       --accent-dim: rgba(181,50,94,.07);
       --border: #E8E4DC;
@@ -88,13 +88,13 @@
     }
     .hero-grid {
       display: grid; grid-template-columns: auto 1fr;
-      gap: 4rem; align-items: end;
+      gap: 4rem; align-items: start;
     }
     @media(max-width:767px){
       .hero-grid { grid-template-columns: 1fr; }
       .portrait-side { order: -1; }
     }
-    .hero-left { max-width: 520px; padding-bottom: 3.5rem; align-self: center; }
+    .hero-left { max-width: 520px; padding-bottom: 3.5rem; }
     .hero-eyebrow {
       font-family: 'DM Mono', monospace; font-size: .68rem;
       color: var(--muted-lt); letter-spacing: .14em; text-transform: uppercase;
@@ -116,7 +116,7 @@
     }
 
     /* Portrait */
-    .portrait-side { display: flex; align-items: flex-end; }
+    .portrait-side { display: flex; align-items: flex-start; }
     .portrait-box { width: 360px; position: relative; }
     .portrait-box img {
       width: 100%; height: 520px; aspect-ratio: unset;
@@ -142,17 +142,22 @@
     /* ABOUT */
     #about { padding-bottom: 1.75rem; }
     .stats-row {
-      display: flex; gap: 3.5rem; margin-bottom: 2.25rem;
+      display: flex; gap: 3.5rem; margin-top: 1.75rem;
       flex-wrap: wrap;
     }
     .stat-item {}
+    .stat-pre {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      color: var(--accent); letter-spacing: .18em; text-transform: uppercase;
+      margin-bottom: .25rem;
+    }
     .stat-num {
       font-size: 1.9rem; font-weight: 700;
       color: var(--fg); line-height: 1; margin-bottom: .2rem;
       letter-spacing: -.03em;
     }
     .stat-lbl {
-      font-family: 'DM Mono', monospace; font-size: .62rem;
+      font-family: 'DM Mono', monospace; font-size: .72rem;
       color: var(--muted-lt); letter-spacing: .08em;
     }
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
@@ -180,6 +185,7 @@
     }
     .tl-logo {
       width: 72px; height: auto; max-height: 44px;
+      filter: grayscale(100%) contrast(1.1);
       object-fit: contain; display: block;
     }
     .tl-roles { display: flex; flex-direction: column; }
@@ -572,7 +578,18 @@
         </h1>
         <span class="bio-lead">Building. Leading. Repeat.</span>
         <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-pre">Portfolio</div>
+            <div class="stat-num">$90M+</div>
+            <div class="stat-lbl">ARR under management</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-pre">Team</div>
+            <div class="stat-num">15</div>
+            <div class="stat-lbl">Leading a mid-level manager and 14 team members</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -583,20 +600,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">$90M+</div>
-        <div class="stat-lbl">ARR Managed</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">15</div>
-        <div class="stat-lbl">Reports · incl. 1 manager</div>
-      </div>
-    </div>
     <div class="focus-block">
       <div class="focus-item">
         <span class="focus-label">AI Roadmap</span>
-        <span class="focus-desc">I am currently building and executing an AI operating layer for each tier. Evaluating tools, designing agent architecture, phased rollout across Customer Success.</span>
+        <span class="focus-desc">Building and executing an AI operating layer across all CSM tiers; evaluating tools, designing agents, and driving phased rollout.</span>
       </div>
       <div class="focus-item">
         <span class="focus-label">Strategic Planning</span>
@@ -649,7 +656,7 @@
       <li>Deep Research prompt library, created from my own second brain</li>
       <li>Hiring our first CSM AI Engineer, who will report to me</li>
       <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
-      <li>Coaching my team. That's my top priority, always. Coached one CSM on selling our AI in the education vertical, and we both created a customer-facing asset in that session.</li>
+      <li>Coaching my team · always the top priority</li>
     </ul>
   </div>
 </section>
@@ -716,7 +723,7 @@
         <div class="proj-card-body">
           <div class="proj-card-num">01</div>
           <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
-          <p class="proj-card-desc">Customer Success AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
+          <p class="proj-card-desc">CSM AI roadmap presented to executive leadership, mapping interconnected tools, agents, and an orchestration layer across the full CSM lifecycle.</p>
           <div class="proj-card-tags"><span class="proj-card-tag">AI Strategy</span><span class="proj-card-tag">Board Deck</span></div>
           <div class="proj-card-impact">Presented at board level. Target: 30% efficiency gain.</div>
         </div>
@@ -951,7 +958,7 @@ Over time, it becomes more than documentation. It becomes a working partner that
     <div class="beyond-built">
       <span class="beyond-built-label">Also built →</span>
       <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
-      <span class="beyond-built-desc">— an AI positioning tool built for coaches.</span>
+      <span class="beyond-built-desc">· an AI positioning tool built for coaches.</span>
     </div>
   </div>
 </section>
