@@ -213,7 +213,11 @@
       border-top: 1px solid var(--border); align-items: start;
     }
     .skill-row:last-child { border-bottom: 1px solid var(--border); }
-    @media(max-width:639px){ .skill-row { grid-template-columns: 1fr; gap: .35rem; } }
+    @media(max-width:639px){
+      .skill-row { grid-template-columns: 1fr; gap: .2rem; padding: .6rem 0; }
+      .skill-chip { font-size: .68rem; padding: .16rem .45rem; }
+      .skill-row-cat { font-size: .68rem; }
+    }
     .skill-row-cat {
       display: flex; align-items: center; gap: .4rem;
       font-size: .75rem; font-weight: 600; color: var(--fg);
@@ -367,7 +371,10 @@
     .modal-close:hover { color: var(--accent); border-color: var(--accent); }
     .modal-imgs { padding: 1rem 1rem 0; display: grid; gap: .5rem; }
     .modal-imgs.two { grid-template-columns: 1fr 1fr; }
-    @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } }
+    .modal-imgs-musician { grid-template-columns: 1fr 1fr 1fr; }
+    .musician-card-img { filter: grayscale(45%) sepia(20%); }
+    @media(max-width:639px){ .musician-card-img { filter: sepia(1) hue-rotate(305deg) saturate(3.5) brightness(.72); } }
+    @media(max-width:540px){ .modal-imgs.two { grid-template-columns: 1fr; } .modal-imgs-musician { grid-template-columns: 1fr 1fr; } }
     .modal-img { width: 100%; border-radius: 4px; object-fit: cover; display: block; background: var(--bg-alt); }
     .modal-stack {
       display: flex; align-items: center; flex-wrap: wrap; gap: .3rem;
@@ -416,15 +423,17 @@
       .nav-inner { padding: 0 1.25rem; }
       .nav-links { gap: .7rem; }
 
-      /* Hero: stack portrait above text */
+      /* Hero: name → image → text */
       #hero { padding: 4rem 0 0; }
-      .hero-grid { display: block; }
-      .portrait-side { margin-bottom: 1.25rem; justify-content: flex-start; }
-      .portrait-box { width: min(260px, 68vw); }
-      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 50%; object-position: top center; }
-      .hero-left { padding-bottom: 2rem; max-width: 100%; }
-      h1.name { font-size: clamp(2.2rem, 9vw, 3rem); }
-      .hero-eyebrow { font-size: .58rem; letter-spacing: .07em; }
+      .hero-grid { display: flex; flex-direction: column; }
+      .hero-left { display: contents; padding-bottom: 0; max-width: 100%; }
+      .hero-eyebrow { order: 1; margin-bottom: .5rem; font-size: .58rem; letter-spacing: .07em; }
+      h1.name { order: 2; font-size: clamp(2.2rem, 9vw, 3rem); margin-bottom: 1rem; }
+      .portrait-side { order: 3; margin-bottom: 1.25rem; justify-content: flex-start; }
+      .bio-lead { order: 4; }
+      .hero-bio { order: 5; }
+      .portrait-box { width: min(340px, 88vw); }
+      .portrait-box img { height: auto; aspect-ratio: 1/1; border-radius: 6px; object-position: top center; }
 
       /* About focus block: stack label + desc */
       .focus-item { grid-template-columns: 1fr; gap: .2rem; }
@@ -461,8 +470,6 @@
       /* About summary tighter */
       .about-summary p { font-size: .83rem; }
 
-      /* Skills: single col */
-      .skill-row { grid-template-columns: 1fr; gap: .35rem; }
 
       /* Projects: single col, horizontal card layout */
       .proj-grid-2 { grid-template-columns: 1fr; gap: .85rem; }
@@ -471,6 +478,18 @@
       .proj-card-img-wrap { width: 100px; flex-shrink: 0; margin-bottom: 0; }
       .proj-card-img { aspect-ratio: 1/1; }
       .proj-card-desc { -webkit-line-clamp: 3; -webkit-box-orient: vertical; display: -webkit-box; overflow: hidden; }
+      .proj-card[onclick] {
+        border: 1px solid var(--border); border-radius: 6px;
+        padding: .55rem; background: var(--card);
+      }
+      .proj-card[onclick] .proj-card-img-wrap { border-radius: 4px; }
+      .proj-card-body::after {
+        content: 'Tap to open →';
+        display: block;
+        font-family: 'DM Mono', monospace;
+        font-size: .56rem; color: var(--accent);
+        letter-spacing: .07em; margin-top: .3rem; opacity: .7;
+      }
 
       /* Timeline: tighter */
       .tl-item { grid-template-columns: 52px 1fr; gap: .65rem; padding: .75rem 0; }
@@ -553,7 +572,7 @@
         </h1>
         <span class="bio-lead">Building. Leading. Repeat.</span>
         <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
-        <p class="hero-bio" style="margin-top:.85rem;">I currently lead a high-performing team of a manager and 15 Enterprise CSMs managing relationships with over $90M USD in ARR.</p>
+        <p class="hero-bio" style="margin-top:.85rem;">I currently lead a high-performing global Customer Success organization at JAGGAER.</p>
       </div>
     </div>
   </div>
@@ -693,7 +712,7 @@
 
       <!-- AI ROADMAP -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/ai-raodmap-new.png" alt="CSM AI Roadmap" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/ai-roadmap-mobile.png"/><img class="proj-card-img" src="images/cards/ai-raodmap-desktop.png" alt="CSM AI Roadmap" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">01</div>
           <h3 class="proj-card-title">AI Roadmap: Tools, Agents &amp; Orchestration</h3>
@@ -720,7 +739,7 @@ As of June, my team has decreased manual work by 6% thanks to AI tools, and our 
 
       <!-- ELEVATOR -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/elevator-new.png" alt="JAGGAER Elevator" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/elevator-mobile.png"/><img class="proj-card-img" src="images/cards/elevator-desktop.png" alt="JAGGAER Elevator" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">02</div>
           <h3 class="proj-card-title">JAGGAER Elevator</h3>
@@ -747,7 +766,7 @@ This allows us the infrastructure of learning our customer base at scale. This p
 
       <!-- CAPACITY MODEL -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/capacity-new.png" alt="CSM Utilization" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/utilization-mobile.png"/><img class="proj-card-img" src="images/cards/utilization-desktop.png" alt="CSM Utilization" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">03</div>
           <h3 class="proj-card-title">CSM Utilization</h3>
@@ -773,7 +792,7 @@ The output guides account assignments and informs a deliberate hire-behind-the-c
 
       <!-- MFA -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/mfa-new.png" alt="Ministry of Foreign Affairs" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/mfa-mobile.png"/><img class="proj-card-img" src="images/cards/mfa-desktop.png" alt="Ministry of Foreign Affairs" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">04</div>
           <h3 class="proj-card-title">Ministry of Foreign Affairs · Document Intelligence</h3>
@@ -806,7 +825,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
 
       <!-- CSM HUB -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/csm-hub-new.png" alt="CSM AI Tools Hub" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Tools Hub" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
           <h3 class="proj-card-title">CSM AI Tools Hub</h3>
@@ -835,7 +854,7 @@ The result: scattered AI experiments became a governed, centralized team resourc
 
       <!-- LEADERSHIP DASHBOARD -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/leadership-dashboard-new.png" alt="Leadership Dashboard" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/leadership-dashboard-mobile.png"/><img class="proj-card-img" src="images/cards/leadership-dashboard-desktop.png" alt="Leadership Dashboard" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">06</div>
           <h3 class="proj-card-title">Leadership Dashboard</h3>
@@ -859,7 +878,7 @@ Audience: direct manager and Executive Leadership Team. More details coming.</p>
 
       <!-- SECOND BRAIN -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/cards/second-brain-new.png" alt="My Second Brain" style="object-fit: contain; background: var(--bg);" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/brain-mobile.png"/><img class="proj-card-img" src="images/cards/brain-desktop.png" alt="My Second Brain" style="object-fit: contain; background: var(--bg);" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">07</div>
           <h3 class="proj-card-title">My Second Brain</h3>
@@ -893,15 +912,17 @@ Over time, it becomes more than documentation. It becomes a working partner that
 
 
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap"><img class="proj-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom; filter: grayscale(45%) sepia(20%);" /></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/musician/behind.jpg"/><img class="proj-card-img musician-card-img" src="images/jazz-trio preview.jpg" alt="Jazz" style="object-position: bottom;" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">P2</div>
           <h3 class="proj-card-title">Musician</h3>
           <p class="proj-card-desc">Music and code come from the same place: a system with rules you learn to break. I trained in classical flute, played in orchestras, now improvise jazz.</p>
         </div>
         <template class="modal-tpl">
-          <div class="modal-imgs">
-            <img class="modal-img" src="images/jazz details.webp" alt="Musician" style="width:100%;object-fit:contain;background:var(--bg-alt);border-radius:4px;" />
+          <div class="modal-imgs modal-imgs-musician">
+            <img class="modal-img" src="images/musician/jazz details.webp" alt="Jazz session" style="object-fit:cover;aspect-ratio:4/3;" />
+            <img class="modal-img" src="images/musician/1536-1024 (1).jpg" alt="Performance" style="object-fit:cover;aspect-ratio:4/3;" />
+            <img class="modal-img" src="images/musician/WhatsApp Image 2024-04-01 at 10.08.59 PM.jpeg" alt="Music" style="object-fit:cover;aspect-ratio:4/3;" />
           </div>
           <div class="modal-body">
             <div class="modal-mono">P2 // Personal</div>
@@ -926,7 +947,7 @@ Over time, it becomes more than documentation. It becomes a working partner that
 <section id="beyond">
   <div class="wrap">
     <div class="sec-hdr">Beyond Work</div>
-    <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Mother of two</p>
+    <p class="beyond-text">Jazz flute · Rock climbing · Hiking &amp; camping · <a href="https://youtu.be/MqNZ4mFYKFs?si=sS5asZB2MixpG2Vk" target="_blank" rel="noopener noreferrer">Tandem touring</a> · Married · Mother of two</p>
     <div class="beyond-built">
       <span class="beyond-built-label">Also built →</span>
       <a href="https://jaggaer-yshvadron.github.io/wonder.github.io/" target="_blank" rel="noopener noreferrer" class="beyond-built-link">Wonder · Catchball Tool</a>
