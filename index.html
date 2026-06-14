@@ -317,19 +317,21 @@
     /* BEYOND + CURRENTLY */
     #beyond { padding-bottom: 3rem; }
     .beyond-currently-row {
-      display: flex; gap: 5rem; align-items: flex-start;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 4rem;
+      align-items: start;
     }
-    .beyond-col { flex: 0 0 auto; max-width: 420px; }
+    .beyond-col { min-width: 0; }
 
     /* Sticky note */
     .sticky-note {
-      flex: 1; max-width: 480px;
       background: #FFFDF4;
       border-top: 3px solid #B5325E;
       padding: 1.25rem 1.5rem 1.5rem;
       box-shadow: 2px 4px 14px rgba(0,0,0,.07), 0 1px 3px rgba(0,0,0,.05);
       transform: rotate(.6deg);
-      align-self: flex-start; margin-top: .5rem;
+      margin-top: .5rem;
     }
     .sticky-note-hdr {
       font-family: 'DM Mono', monospace; font-size: .62rem;
@@ -351,9 +353,8 @@
       color: var(--accent); font-weight: 700;
     }
     @media(max-width:767px){
-      .beyond-currently-row { flex-direction: column; gap: 2rem; }
-      .beyond-col { max-width: 100%; }
-      .sticky-note { max-width: 100%; transform: none; }
+      .beyond-currently-row { grid-template-columns: 1fr; gap: 2rem; }
+      .sticky-note { transform: none; }
     }
     .beyond-text {
       font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .5rem;
