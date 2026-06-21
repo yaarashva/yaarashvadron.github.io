@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yaara Shvadron</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HV0K4C2S08"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HV0K4C2S08');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -122,7 +130,7 @@
       width: 100%; height: 520px; aspect-ratio: unset;
       object-fit: cover; object-position: top center;
       display: block;
-      border-radius: 6px 6px 0 0;
+      border-radius: 6px;
     }
     @media(max-width:767px){
       .portrait-box { width: 80px; }
@@ -163,14 +171,6 @@
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
     .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-    /* BG SIGNAL FLOW */
-    .bg-svg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-    @keyframes hubPulse  { 0%,100%{opacity:.18;} 50%{opacity:.38;} }
-    @keyframes hubPulseB { 0%,100%{opacity:.14;} 50%{opacity:.30;} }
-    .hub   { animation: hubPulse  3.6s ease-in-out infinite; }
-    .hub-b { animation: hubPulse  4.4s ease-in-out infinite 1.5s; }
-    .hub-c { animation: hubPulseB 3.1s ease-in-out infinite .7s; }
-
     /* WORK JOURNEY STRIP */
     .work-strip { margin-top: 2rem; }
     .work-layout { display: flex; align-items: flex-start; }
@@ -657,97 +657,6 @@
 </head>
 <body>
 
-<!-- SIGNAL FLOW BACKGROUND -->
-<svg class="bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
-     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.89">
-
-  <!-- LEFT SIDE · smooth twin-curl flow -->
-  <path id="lu1" d="M 62,65 C 62,108 4,148 8,188 C 12,228 78,252 72,295" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
-  <path id="lt-a" d="M 72,295 C 2,328 -8,378 10,418 C 30,458 88,476 62,512" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
-  <path id="lt-b" d="M 72,295 C 88,316 92,362 70,404 C 48,446 4,466 62,512" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-  <path id="ll1" d="M 62,512 C 62,550 4,578 12,618" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-  <path id="ll2" d="M 12,618 C 20,658 78,696 52,735" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
-  <path id="ll3" d="M 52,735 C 26,772 2,810 22,855" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
-
-  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.9s" repeatCount="indefinite" begin="3.7s"><mpath href="#lu1"/></animateMotion></circle>
-  <circle r="1.4" fill="#B5325E" opacity=".29"><animateMotion dur="17.3s" repeatCount="indefinite" begin="7.2s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lu1"/></animateMotion></circle>
-  <circle r="2.2" fill="#B5325E" opacity=".71"><animateMotion dur="4.7s" repeatCount="indefinite" begin="0.5s"><mpath href="#lt-a"/></animateMotion></circle>
-  <circle r="1.3" fill="#B5325E" opacity=".26"><animateMotion dur="22.1s" repeatCount="indefinite" begin="13.6s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-a"/></animateMotion></circle>
-  <circle r="1.8" fill="#9C9890" opacity=".54"><animateMotion dur="11.3s" repeatCount="indefinite" begin="1.9s"><mpath href="#lt-b"/></animateMotion></circle>
-  <circle r="1.2" fill="#9C9890" opacity=".35"><animateMotion dur="19.8s" repeatCount="indefinite" begin="9.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#lt-b"/></animateMotion></circle>
-  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="6.3s" repeatCount="indefinite" begin="5.1s"><mpath href="#ll1"/></animateMotion></circle>
-  <circle r="2.3" fill="#B5325E" opacity=".73"><animateMotion dur="1.3s" repeatCount="indefinite" begin="9.8s"><mpath href="#ll2"/></animateMotion></circle>
-  <circle r="1.7" fill="#9C9890" opacity=".51"><animateMotion dur="8.9s" repeatCount="indefinite" begin="2.4s"><mpath href="#ll3"/></animateMotion></circle>
-
-  <circle cx="62" cy="65" r="8" fill="#B5325E" class="hub"/>
-  <circle cx="62" cy="65" r="3.5" fill="#B5325E" opacity=".6"/>
-  <g transform="translate(62,65) scale(1.25)" opacity=".92"><circle cx="0" cy="-1.3" r="1.1" fill="#FFFFFF"/><path d="M-1.8,2 Q-1.8,.3 0,.3 Q1.8,.3 1.8,2" stroke="#FFFFFF" stroke-width=".8" stroke-linecap="round" fill="none"/></g>
-  <circle cx="8" cy="188" r="4" fill="#9C9890" opacity=".2"/>
-  <circle cx="8" cy="188" r="2" fill="#9C9890" opacity=".52"/>
-  <circle cx="72" cy="295" r="7" fill="#B5325E" class="hub-c"/>
-  <circle cx="72" cy="295" r="3" fill="#B5325E" opacity=".6"/>
-  <g transform="translate(72,295) scale(1.25)" stroke="#FFFFFF" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" opacity=".92" fill="none"><line x1="-1.8" y1="1.8" x2="1.8" y2="-1.8"/><polyline points=".3,-1.8 1.8,-1.8 1.8,-.3"/></g>
-  <circle cx="62" cy="512" r="9" fill="#B5325E" class="hub-b"/>
-  <circle cx="62" cy="512" r="3.8" fill="#B5325E" opacity=".6"/>
-  <g transform="translate(62,512) scale(1.25)" fill="none" stroke="#FFFFFF" stroke-width=".75" opacity=".92"><circle cx="0" cy="0" r="1.3"/><circle cx="0" cy="0" r="2.8"/></g>
-  <circle cx="12" cy="618" r="3.5" fill="#9C9890" opacity=".2"/>
-  <circle cx="12" cy="618" r="1.8" fill="#9C9890" opacity=".5"/>
-  <circle cx="52" cy="735" r="5.5" fill="#B5325E" opacity=".18"/>
-  <circle cx="52" cy="735" r="2.8" fill="#B5325E" opacity=".55"/>
-  <g transform="translate(52,735) scale(1.25)" opacity=".88"><line x1="-1.2" y1="-.8" x2="1.2" y2="-.8" stroke="#FFFFFF" stroke-width=".5"/><line x1="-1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><line x1="1.2" y1="-.8" x2="0" y2="1.2" stroke="#FFFFFF" stroke-width=".5"/><circle cx="-1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="1.2" cy="-.8" r=".55" fill="#FFFFFF"/><circle cx="0" cy="1.2" r=".55" fill="#FFFFFF"/></g>
-  <circle cx="22" cy="855" r="3.5" fill="#9C9890" opacity=".18"/>
-  <circle cx="22" cy="855" r="1.8" fill="#9C9890" opacity=".5"/>
-
-  <!-- RIGHT SIDE · branching network -->
-  <path id="rp12" d="M1382,88  Q1428,140 1418,190" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-  <path id="rp23" d="M1418,190 Q1362,238 1370,285" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
-  <path id="rp24" d="M1418,190 Q1428,270 1408,350" stroke="#B5325E" stroke-width=".85" fill="none" opacity=".16"/>
-  <path id="rp36" d="M1370,285 Q1350,406 1385,528" stroke="#9C9890" stroke-width=".75" fill="none" opacity=".13"/>
-  <path id="rp45" d="M1408,350 Q1438,392 1435,432" stroke="#B5325E" stroke-width=".8" fill="none" opacity=".16"/>
-  <path id="rp56" d="M1435,432 Q1422,480 1385,528" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-  <path id="rp67" d="M1385,528 Q1430,578 1420,628" stroke="#B5325E" stroke-width=".9" fill="none" opacity=".18"/>
-  <path id="rp78" d="M1420,628 Q1360,674 1372,718" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-  <path id="rp68" d="M1385,528 Q1345,622 1372,718" stroke="#B5325E" stroke-width=".7" fill="none" opacity=".13"/>
-  <path id="rp89" d="M1372,718 Q1418,778 1412,835" stroke="#9C9890" stroke-width=".8" fill="none" opacity=".15"/>
-
-  <circle r="1.8" fill="#9C9890" opacity=".51"><animateMotion dur="14.2s" repeatCount="indefinite" begin="0.7s"><mpath href="#rp12"/></animateMotion></circle>
-  <circle r="2.2" fill="#B5325E" opacity=".73"><animateMotion dur="8.8s" repeatCount="indefinite" begin="6.3s"><mpath href="#rp23"/></animateMotion></circle>
-  <circle r="1.5" fill="#B5325E" opacity=".38"><animateMotion dur="9.7s" repeatCount="indefinite" begin="16.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp23"/></animateMotion></circle>
-  <circle r="2.0" fill="#B5325E" opacity=".62"><animateMotion dur="3.9s" repeatCount="indefinite" begin="1.3s"><mpath href="#rp24"/></animateMotion></circle>
-  <circle r="1.6" fill="#9C9890" opacity=".43"><animateMotion dur="24.1s" repeatCount="indefinite" begin="5.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp36"/></animateMotion></circle>
-  <circle r="1.3" fill="#9C9890" opacity=".36"><animateMotion dur="11.3s" repeatCount="indefinite" begin="19.7s"><mpath href="#rp36"/></animateMotion></circle>
-  <circle r="2.1" fill="#B5325E" opacity=".68"><animateMotion dur="0.8s" repeatCount="indefinite" begin="12.1s"><mpath href="#rp45"/></animateMotion></circle>
-  <circle r="1.5" fill="#B5325E" opacity=".33"><animateMotion dur="7.6s" repeatCount="indefinite" begin="3.4s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp45"/></animateMotion></circle>
-  <circle r="1.9" fill="#9C9890" opacity=".57"><animateMotion dur="5.3s" repeatCount="indefinite" begin="0.4s"><mpath href="#rp56"/></animateMotion></circle>
-  <circle r="1.7" fill="#B5325E" opacity=".44"><animateMotion dur="2.3s" repeatCount="indefinite" begin="21.8s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp56"/></animateMotion></circle>
-  <circle r="2.3" fill="#B5325E" opacity=".74"><animateMotion dur="1.7s" repeatCount="indefinite" begin="4.6s"><mpath href="#rp67"/></animateMotion></circle>
-  <circle r="1.7" fill="#9C9890" opacity=".53"><animateMotion dur="18.6s" repeatCount="indefinite" begin="8.9s" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#rp78"/></animateMotion></circle>
-  <circle r="1.9" fill="#B5325E" opacity=".49"><animateMotion dur="7.4s" repeatCount="indefinite" begin="14.2s"><mpath href="#rp68"/></animateMotion></circle>
-  <circle r="2.0" fill="#9C9890" opacity=".59"><animateMotion dur="6.7s" repeatCount="indefinite" begin="2.6s"><mpath href="#rp89"/></animateMotion></circle>
-
-  <circle cx="1382" cy="88" r="4" fill="#9C9890" opacity=".2"/>
-  <circle cx="1382" cy="88" r="2" fill="#9C9890" opacity=".52"/>
-  <circle cx="1418" cy="190" r="10" fill="#B5325E" class="hub"/>
-  <circle cx="1418" cy="190" r="3.8" fill="#B5325E" opacity=".62"/>
-  <g transform="translate(1418,190) scale(1.25)" fill="#FFFFFF" opacity=".9"><path d="M .7,-2.8 L -1,.2 L .2,.2 L -.7,2.8 L 1,-.2 L -.2,-.2 Z"/></g>
-  <circle cx="1370" cy="285" r="4.5" fill="#9C9890" opacity=".2"/>
-  <circle cx="1370" cy="285" r="2.2" fill="#9C9890" opacity=".52"/>
-  <circle cx="1408" cy="350" r="6" fill="#B5325E" opacity=".18"/>
-  <circle cx="1408" cy="350" r="3" fill="#B5325E" opacity=".58"/>
-  <circle cx="1435" cy="432" r="3.5" fill="#9C9890" opacity=".2"/>
-  <circle cx="1435" cy="432" r="1.8" fill="#9C9890" opacity=".5"/>
-  <circle cx="1385" cy="528" r="11" fill="#B5325E" class="hub-b"/>
-  <circle cx="1385" cy="528" r="4" fill="#B5325E" opacity=".62"/>
-  <g transform="translate(1385,528) scale(1.25)" fill="#FFFFFF" opacity=".88"><rect x="-2.5" y=".3" width="1.2" height="1.7"/><rect x="-.8" y="-1" width="1.2" height="3"/><rect x=".9" y="-2.5" width="1.2" height="4.5"/></g>
-  <circle cx="1420" cy="628" r="5" fill="#B5325E" opacity=".18"/>
-  <circle cx="1420" cy="628" r="2.5" fill="#B5325E" opacity=".55"/>
-  <circle cx="1372" cy="718" r="7" fill="#9C9890" class="hub-c"/>
-  <circle cx="1372" cy="718" r="3" fill="#9C9890" opacity=".55"/>
-  <g transform="translate(1372,718) scale(1.25)" fill="#FFFFFF" opacity=".85"><circle cx="-1" cy="-1.6" r=".75"/><path d="M-2.2,1.8 Q-2.2,.2 -1,.2 Q0,.2 0,1.8" fill="#FFFFFF"/><circle cx="1" cy="-1.9" r=".65"/><path d="M0,1.8 Q0,.2 1,.2 Q2.2,.2 2.2,1.8" fill="#FFFFFF"/></g>
-  <circle cx="1412" cy="835" r="4" fill="#9C9890" opacity=".18"/>
-  <circle cx="1412" cy="835" r="2" fill="#9C9890" opacity=".5"/>
-
-</svg>
 
 <!-- NAV -->
 <nav id="nav">
@@ -782,7 +691,7 @@
     <div class="hero-grid">
       <div class="portrait-side">
         <div class="portrait-box">
-          <img src="public/portrait-new.png" alt="Yaara Shvadron" />
+          <img src="images/new-portrait2.png" alt="Yaara Shvadron" />
         </div>
       </div>
       <div class="hero-left">
@@ -1053,7 +962,7 @@ An early signal of what I'd keep doing: find the manual work, understand the sys
 
       <!-- CSM HUB -->
       <div class="proj-card" onclick="openModal(this)">
-        <div class="proj-card-img-wrap proj-hide-img"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-fit:contain;background:var(--bg-alt);" /></picture></div>
+        <div class="proj-card-img-wrap"><picture><source media="(max-width:639px)" srcset="images/cards/hub-mobile.png"/><img class="proj-card-img" src="images/cards/hub-desktop.png" alt="CSM AI Hub" style="object-fit:contain;background:var(--bg-alt);" /></picture></div>
         <div class="proj-card-body">
           <div class="proj-card-num">05</div>
           <h3 class="proj-card-title">CSM AI Hub</h3>
