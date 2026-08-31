@@ -27,6 +27,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    section { scroll-margin-top: 52px; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background:
@@ -143,8 +144,7 @@
     .sec-hdr {
       font-family: 'DM Mono', monospace; font-size: .68rem;
       color: var(--muted); letter-spacing: .18em; text-transform: uppercase;
-      padding: 1.5rem 0 1rem .75rem;
-      border-left: 2px solid var(--accent);
+      padding: 1.5rem 0 1rem 0;
     }
 
     /* ABOUT */
@@ -168,6 +168,11 @@
       font-family: 'DM Mono', monospace; font-size: .72rem;
       color: var(--muted-lt); letter-spacing: .08em;
     }
+    .now-block { margin-top: 1.5rem; }
+    .now-label { font-family: 'DM Mono', monospace; font-size: .6rem; color: var(--accent); letter-spacing: .18em; text-transform: uppercase; margin-bottom: .55rem; }
+    .now-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .35rem; }
+    .now-list li { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--muted); letter-spacing: .04em; padding-left: .9rem; position: relative; }
+    .now-list li::before { content: '·'; position: absolute; left: 0; color: var(--accent); }
     .about-bio { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: .8rem; }
     .about-bio strong { color: var(--fg); font-weight: 600; }
     .about-intro { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
@@ -181,11 +186,7 @@
       margin-bottom: 1.6rem; opacity: .6;
     }
     .company-stops { display: flex; position: relative; }
-    .company-stops::before {
-      content: ''; position: absolute;
-      top: 2px; left: 2.5px; right: 1.75rem;
-      height: 1px; background: var(--border); z-index: 0;
-    }
+    .company-stops::before { display: none; }
     .work-stop {
       flex: 1; display: flex; flex-direction: column;
       padding-right: 1.75rem; position: relative;
@@ -207,6 +208,7 @@
     .stop-role {
       font-size: .82rem; font-weight: 600;
       line-height: 1.25; color: var(--fg); margin-bottom: .25rem;
+      white-space: nowrap;
     }
     .work-stop.current .stop-role { color: var(--accent); }
     .stop-words {
@@ -695,25 +697,26 @@
         </div>
       </div>
       <div class="hero-left">
-        <div class="hero-eyebrow">Currently · Senior Manager, Customer Success · JAGGAER</div>
+        <div class="hero-eyebrow">Currently · Director, Applied AI · JAGGAER</div>
         <h1 class="name">
           <span class="name-first">Yaara</span>
           <span class="name-last">Shvadron</span>
         </h1>
         <span class="bio-lead">Building. Leading. Repeat.</span>
-        <p class="hero-bio">AI Deployment Leader and Customer Success Executive. I operate end to end: identifying the problem, building the solution, scaling adoption across the organization. From RAG pipelines to board decks, closing the gap between AI ambition and operating reality.</p>
+        <p class="hero-bio">After scaling global CS organizations, building strong partnerships, and helping customers get real value out of complex Enterprise SaaS products, I pivoted to the intersection of customer use cases and AI, building solutions that are sustainable, scalable, and actually work.</p>
         <div class="stats-row">
           <div class="stat-item">
-            <div class="stat-pre">Portfolio</div>
+            <div class="stat-pre">Customer Base</div>
             <div class="stat-num">$90M+</div>
-            <div class="stat-lbl">ARR under management</div>
+            <div class="stat-lbl">ARR across enterprise accounts</div>
           </div>
           <div class="stat-item">
-            <div class="stat-pre">Team</div>
-            <div class="stat-num">15</div>
-            <div class="stat-lbl">Leading a mid-level manager and 14 team members</div>
+            <div class="stat-pre">Focus</div>
+            <div class="stat-num">AI</div>
+            <div class="stat-lbl">Product · Customer Journey</div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -726,63 +729,61 @@
   <div class="wrap">
     <div class="focus-block">
       <div class="focus-item">
-        <span class="focus-label">AI Roadmap</span>
-        <span class="focus-desc">Building and executing an AI operating layer across all CSM tiers; evaluating tools, designing agents, and driving phased rollout.</span>
+        <span class="focus-label">AI Product Roadmap</span>
+        <span class="focus-desc">Managing JAGGAER Deep Research's AI roadmap, closing the loop between customer needs and product direction.</span>
       </div>
       <div class="focus-item">
-        <span class="focus-label">Strategic Planning</span>
-        <span class="focus-desc">Translating AI ambition into board-ready deliverables, ROI models, and implementation roadmaps that actually ship. My examples span across product feedback loop, speaking at customer events, and supporting sales in every deal.</span>
+        <span class="focus-label">Customer Bridge</span>
+        <span class="focus-desc">Bridging JAGGAER's AI products and the customers who use them, enabling sales and CS teams to drive adoption.</span>
       </div>
       <div class="focus-item">
-        <span class="focus-label">Enterprise Transformation</span>
-        <span class="focus-desc">Shifting Customer Success from reactive to AI-augmented. Smarter handoffs, automated intelligence layers, teams that scale without adding headcount.</span>
+        <span class="focus-label">Applied Prototyping</span>
+        <span class="focus-desc">Building prototypes that demonstrate AI value on customers' own data, making the business case credible.</span>
       </div>
     </div>
     <div class="work-strip">
       <div class="sec-hdr">Journey</div>
       <div class="work-layout">
         <div class="company-block">
-          <div class="company-label">JAGGAER · 2021 → present</div>
           <div class="company-stops">
             <div class="work-stop current">
-              <div class="stop-dot"></div>
-              <div class="stop-year">2025 · present</div>
-              <div class="stop-role">Senior Manager, CS</div>
-              <div class="stop-words">112% attainment · AI showcase win<br/>$90M ARR · 15 team</div>
+              <div class="stop-year">2026 · present</div>
+              <div class="stop-role">Director, Applied AI</div>
+              <div class="stop-words">AI product roadmap<br/>prototypes<br/>sales enablement</div>
             </div>
             <div class="work-stop">
-              <div class="stop-dot"></div>
+              <div class="stop-year">2025 · 2026</div>
+              <div class="stop-role">Senior Manager, CS</div>
+              <div class="stop-words">112% attainment<br/>AI showcase win<br/>$90M ARR · 15 team</div>
+            </div>
+            <div class="work-stop">
               <div class="stop-year">2023 · 2025</div>
               <div class="stop-role">Head of CS, North America</div>
-              <div class="stop-words">115% targets · 150+ accounts<br/>3% GRR · $76M ARR</div>
+              <div class="stop-words">115% targets<br/>150+ accounts<br/>3% GRR · $76M ARR</div>
             </div>
             <div class="work-stop">
-              <div class="stop-dot"></div>
               <div class="stop-year">2021 · 2023</div>
               <div class="stop-role">Customer Success Manager</div>
-              <div class="stop-words">$5.8M portfolio · solo<br/>Higher Ed · Fortune 500</div>
+              <div class="stop-words">$5.8M portfolio<br/>Higher Ed · Fortune 500</div>
             </div>
           </div>
         </div>
         <div class="company-block">
-          <div class="company-label">Fast Simon · 2019 → 2021</div>
           <div class="company-stops">
             <div class="work-stop">
-              <div class="stop-dot"></div>
               <div class="stop-year">2019 · 2021</div>
               <div class="stop-role">Lead CSM</div>
-              <div class="stop-words">100+ accounts · built from zero<br/>Klaviyo partnership</div>
+              <div class="stop-words">100+ accounts<br/>built from zero<br/>Klaviyo partnership</div>
             </div>
           </div>
         </div>
         <div class="company-block">
-          <div class="company-label">MFA · Ministry of Foreign Affairs · 2014 → 2018</div>
           <div class="company-stops">
             <div class="work-stop">
-              <div class="stop-dot"></div>
               <div class="stop-year">2014 · 2018</div>
               <div class="stop-role">Research Assistant</div>
               <div class="stop-words">75% manual effort eliminated<br/>system still runs today</div>
+
             </div>
           </div>
         </div>
@@ -810,7 +811,7 @@
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4.5 4L1 7L4.5 10M9.5 4L13 7L9.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Build
         </div>
-        <div class="skill-chips"><span class="skill-chip">Vibe Coding</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">Git &amp; GitHub</span><span class="skill-chip">Markdown</span><span class="skill-chip">HTML &amp; CSS</span><span class="skill-chip">Claude Code</span></div>
+        <div class="skill-chips"><span class="skill-chip">Vibe Coding</span><span class="skill-chip">Prompt Engineering</span><span class="skill-chip">Git &amp; GitHub</span><span class="skill-chip">Markdown</span><span class="skill-chip">HTML &amp; CSS</span><span class="skill-chip">Claude Code</span><span class="skill-chip">Devin</span><span class="skill-chip">Windsurf</span></div>
       </div>
       <div class="skill-row">
         <div class="skill-row-cat">
@@ -1097,10 +1098,9 @@ Over time, it becomes more than documentation. It becomes a working partner that
       <div class="sticky-note">
         <div class="sticky-note-hdr">Currently working on</div>
         <ul class="sticky-list">
-          <li>Deep Research prompt library, created from my own second brain</li>
-          <li>Hiring our first CSM AI Engineer, who will report to me</li>
-          <li>Attending Vista Accelerate Cohort 16, Chicago, June 2026</li>
-          <li>Coaching my team · always the top priority</li>
+          <li>Deep Research agents - first prototypes</li>
+          <li>Attending Vista Accelerate Cohort 16, Chicago</li>
+          <li>Presenting at customer events this fall in TX and NC</li>
         </ul>
       </div>
 
@@ -1218,6 +1218,7 @@ Over time, it becomes more than documentation. It becomes a working partner that
       dots.forEach((d, i) => d.classList.toggle('active', i === cur));
       prevBtn.disabled = cur === 0;
       nextBtn.disabled = cur === cards.length - 1;
+      wrapper.style.height = track.children[cur].offsetHeight + 'px';
     }
 
     prevBtn.onclick = () => goTo(cur - 1);
